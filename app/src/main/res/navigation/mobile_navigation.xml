@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_sitios_interes">
+
+    <fragment
+        android:id="@+id/navigation_iglesias"
+        android:name="brayan.rivera.whitecity.ui.iglesias.Iglesias"
+        android:label="@string/title_iglesias"
+        tools:layout="@layout/fragment_sitios_interes" />
+
+    <fragment
+        android:id="@+id/navigation_sitios_interes"
+        android:name="brayan.rivera.whitecity.ui.sitios_interes.SitiosInteres"
+        android:label="@string/title_sitios_interes"
+        tools:layout="@layout/fragment_hoteles" />
+
+    <fragment
+        android:id="@+id/navigation_museos"
+        android:name="brayan.rivera.whitecity.ui.museos.MuseosFragment"
+        android:label="@string/title_museos"
+        tools:layout="@layout/fragment_museos" />
+    <fragment
+        android:id="@+id/navigation_comida_tradicional"
+        android:name="brayan.rivera.whitecity.ui.comida_tradicional.ComidaTradicional"
+        android:label="@string/title_comidas_tradicionales"
+        tools:layout="@layout/fragment_iglesias" />
+    <fragment
+        android:id="@+id/navigation_hoteles"
+        android:name="brayan.rivera.whitecity.ui.hoteles.Hoteles"
+        android:label="@string/title_hoteles"
+        tools:layout="@layout/fragment_comida_tradicional" />
+</navigation>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "283116685709",
+    "firebase_url": "https://whitecity-16b15.firebaseio.com",
+    "project_id": "whitecity-16b15",
+    "storage_bucket": "whitecity-16b15.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:283116685709:android:544e25fd22d0663daa95c4",
+        "android_client_info": {
+          "package_name": "brayan.rivera.whitecity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "283116685709-j6n0qqsv6l3b425q7hr5dh3486sdgu2g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "brayan.rivera.whitecity",
+            "certificate_hash": "cf504862997b2aebbd0adf71ff32bb0f6de30542"
+          }
+        },
+        {
+          "client_id": "283116685709-pnf20es18vt52hnkuqdv9hflso40je79.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArWQ98fIB0wKO7A5pu2HkVCWxmZiBu5PA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "283116685709-pnf20es18vt52hnkuqdv9hflso40je79.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

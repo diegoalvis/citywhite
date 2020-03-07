@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">WhiteCity</string>
+    <string name="title_comidas_tradicionales">Comidas Tradicionales</string>
+    <string name="title_hoteles">Hoteles</string>
+    <string name="title_museos">Museos</string>
+    <string name="title_iglesias">Iglesias</string>
+    <string name="title_sitios_interes">Sitios de Interes</string>
+
+
+    <string name="hint1">citywhite2020@gmail.com</string>
+    <string name="hint2">password</string>
+    <string name="hint3">correo</string>
+    <string name="txtbtn1">Login</string>
+    <string name="txtbtn2">Registro Usuario</string>
+    <string name="txtbtn3">Registro Sitio</string>
+    <string name="txtbtn4">Registrar</string>
+    <string name="hint5">Nombre Sitio turistico</string>ss
+    <string name="hint6">Descripción sitio turistico</string>
+    <string name="hint7">Calle 57 c 43 </string>
+    <string name="hint8">3188959954</string>
+    <string name="hint9">Facebook</string>
+    <string name="txtTitulo">SITIOS TURISTICOS</string>
+
+</resources>
