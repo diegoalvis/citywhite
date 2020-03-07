@@ -6,6 +6,7 @@
     <dist:module dist:instant="true" />
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -18,13 +19,15 @@
         <activity android:name=".ui.MenuPrincipal.CrearUsuarios" />
         <activity android:name=".ui.MenuPrincipal.AdminActivity" />
 
-        <activity android:name=".Splash"/>
-            <activity android:name=".MainActivity" >
+        <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity" >
+
         </activity>
         <activity
             android:name=".ui.MenuPrincipal.LoginAdmin"
