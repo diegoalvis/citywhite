@@ -3,27 +3,27 @@
 
     <item
         android:id="@+id/navigation_iglesias"
-        android:icon="@drawable/iglesia"
+        android:icon="@drawable/ic_iglesia"
         android:title="@string/title_iglesias" />
 
     <item
         android:id="@+id/navigation_sitios_interes"
-        android:icon="@drawable/museo"
+        android:icon="@drawable/ic_museo"
         android:title="@string/title_sitios_interes" />
 
     <item
         android:id="@+id/navigation_museos"
-        android:icon="@drawable/museo"
+        android:icon="@drawable/ic_museo"
         android:title="@string/title_museos" />
 
     <item
         android:id="@+id/navigation_comida_tradicional"
-        android:icon="@drawable/restaurante"
+        android:icon="@drawable/ic_restaurante"
         android:title="@string/title_comidas_tradicionales" />
 
     <item
         android:id="@+id/navigation_hoteles"
-        android:icon="@drawable/hotel"
+        android:icon="@drawable/ic_hotel"
         android:title="@string/title_hoteles" />
 
 
