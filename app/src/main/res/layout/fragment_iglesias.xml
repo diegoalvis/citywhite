@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.iglesias.Iglesias">
+    tools:context=".modelo.iglesias.Iglesias">
 
-    <TextView
-        android:id="@+id/fragment_iglesias"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_lista_Iglesias"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_height="match_parent"/>
+
 
 </FrameLayout>

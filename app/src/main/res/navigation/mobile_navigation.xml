@@ -6,30 +6,33 @@
     app:startDestination="@+id/navigation_sitios_interes">
 
     <fragment
+
         android:id="@+id/navigation_iglesias"
-        android:name="brayan.rivera.whitecity.ui.iglesias.Iglesias"
+        android:name="brayan.rivera.whitecity.modelo.iglesias.Iglesias"
         android:label="@string/title_iglesias"
+
         tools:layout="@layout/fragment_sitios_interes" />
 
     <fragment
         android:id="@+id/navigation_sitios_interes"
-        android:name="brayan.rivera.whitecity.ui.sitios_interes.SitiosInteres"
+        android:name="brayan.rivera.whitecity.modelo.sitios_interes.SitiosInteres"
         android:label="@string/title_sitios_interes"
         tools:layout="@layout/fragment_hoteles" />
 
     <fragment
         android:id="@+id/navigation_museos"
-        android:name="brayan.rivera.whitecity.ui.museos.MuseosFragment"
+        android:name="brayan.rivera.whitecity.modelo.museos.MuseosFragment"
         android:label="@string/title_museos"
         tools:layout="@layout/fragment_museos" />
     <fragment
         android:id="@+id/navigation_comida_tradicional"
-        android:name="brayan.rivera.whitecity.ui.comida_tradicional.ComidaTradicional"
+        android:name="brayan.rivera.whitecity.modelo.comida_tradicional.ComidaTradicional"
         android:label="@string/title_comidas_tradicionales"
         tools:layout="@layout/fragment_iglesias" />
     <fragment
         android:id="@+id/navigation_hoteles"
-        android:name="brayan.rivera.whitecity.ui.hoteles.Hoteles"
+        android:name="brayan.rivera.whitecity.modelo.hoteles.Hoteles"
         android:label="@string/title_hoteles"
         tools:layout="@layout/fragment_comida_tradicional" />
+
 </navigation>

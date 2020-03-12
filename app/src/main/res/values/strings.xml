@@ -1,10 +1,14 @@
 <resources>
     <string name="app_name">WhiteCity</string>
+
     <string name="title_comidas_tradicionales">Comida Tipica</string>
     <string name="title_hoteles">Hoteles</string>
     <string name="title_museos">Museos</string>
     <string name="title_iglesias">Iglesias</string>
     <string name="title_sitios_interes">Sitios Interes</string>
+
+    <string name="tittle_carmelita">Carmelita</string>
+    <string name="tittle_moraCastilla">Mora Castilla</string>
 
 
     <string name="hint1">citywhite2020@gmail.com</string>
