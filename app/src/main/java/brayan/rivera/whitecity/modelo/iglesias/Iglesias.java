@@ -1,7 +1,10 @@
 package brayan.rivera.whitecity.modelo.iglesias;
 
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,18 +14,22 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import brayan.rivera.whitecity.R;
+import brayan.rivera.whitecity.controlador.Adaptador_Sitios;
 import brayan.rivera.whitecity.controlador.FireBaseHelper;
 import brayan.rivera.whitecity.modelo.MainActivity;
+
 
 public class Iglesias extends Fragment {
 
     private IglesiasViewModel mViewModel;
     RecyclerView rv_lista_Sitios;
     FireBaseHelper helper;
+    Adaptador_Sitios adaptador;
 
     public static Iglesias newInstance() {
         return new Iglesias();
@@ -37,15 +44,38 @@ public class Iglesias extends Fragment {
         //MainActivity.listafotos.add("iglesia_santo_domingo.jpeg");
 
 
-        View view = inflater.inflate(R.layout.fragment_iglesias, container, false);
+             View view = inflater.inflate(R.layout.fragment_iglesias, container, false);
 
-        rv_lista_Sitios=view.findViewById(R.id.rv_lista_Iglesias);
-        rv_lista_Sitios.setLayoutManager(new GridLayoutManager(getContext(),1));
+            rv_lista_Sitios = view.findViewById(R.id.rv_lista_Iglesias);
+            rv_lista_Sitios.setLayoutManager(new GridLayoutManager(getContext(), 1));
 
-        //creamos un objeto nuevo de tipo Firebase helper y le mandamos el contesto
-        helper=new FireBaseHelper(getActivity());
-        //le mandamos nuestro recyclerview a nuesta clase firebase que maneja la consulta de datos
-        helper.listarsitios(rv_lista_Sitios);
+            //creamos un objeto nuevo de tipo Firebase helper y le mandamos el contesto
+            helper = new FireBaseHelper(getActivity());
+
+            //creamos un objeto de tipo adaptador he invocamos el metodo de la calse firebaseheleper que me trae la lista de datos
+            adaptador=new Adaptador_Sitios(helper.listarsitios());
+            adaptador.notifyDataSetChanged();
+
+            rv_lista_Sitios.setAdapter(adaptador);
+
+            adaptador.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+
+
+
+
+            }
+        });
+
+
+
+
+
+
         return view;
     }
 

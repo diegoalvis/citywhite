@@ -38,9 +38,9 @@ public class MuseosFragment extends Fragment {
         rv_lista_Sitios.setLayoutManager(new GridLayoutManager(this.getActivity(),1));
 
         //creamos un objeto nuevo de tipo Firebase helper y le mandamos el contesto
-        helper=new FireBaseHelper(getContext());
+        helper=new FireBaseHelper(getActivity());
         //le mandamos nuestro recyclerview a nuesta clase firebase que maneja la consulta de datos
-        helper.listarsitios(rv_lista_Sitios);
+
         return view;
 
 

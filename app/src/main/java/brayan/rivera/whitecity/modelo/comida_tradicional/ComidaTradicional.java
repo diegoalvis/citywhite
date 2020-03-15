@@ -1,5 +1,6 @@
 package brayan.rivera.whitecity.modelo.comida_tradicional;
 
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
@@ -16,9 +17,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import brayan.rivera.whitecity.R;
 import brayan.rivera.whitecity.controlador.FireBaseHelper;
-import brayan.rivera.whitecity.modelo.Adaptador_Sitios;
 import brayan.rivera.whitecity.modelo.MainActivity;
-import brayan.rivera.whitecity.modelo.hoteles.HotelesViewModel;
+
 
 public class ComidaTradicional extends Fragment {
 
@@ -37,6 +37,7 @@ public class ComidaTradicional extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         //MainActivity.listafotos.clear();
         MainActivity.nodo="Comida Tradicional";
+
         //MainActivity.listafotos.add("comida_mora_castilla.jpeg");
 
 
@@ -46,9 +47,9 @@ public class ComidaTradicional extends Fragment {
         rv_lista_Sitios.setLayoutManager(new GridLayoutManager(this.getActivity(),1));
 
         //creamos un objeto nuevo de tipo Firebase helper y le mandamos el contesto
-        helper=new FireBaseHelper(getContext());
+        helper=new FireBaseHelper(getActivity());
         //le mandamos nuestro recyclerview a nuesta clase firebase que maneja la consulta de datos
-        helper.listarsitios(rv_lista_Sitios);
+        helper.listarsitios();
 
         return view;
     }

@@ -1,5 +1,6 @@
-package brayan.rivera.whitecity.modelo;
+package brayan.rivera.whitecity.controlador;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,19 +9,23 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 import brayan.rivera.whitecity.R;
+
 
 public class Adaptador_Sitios extends RecyclerView.Adapter<Adaptador_Sitios.SitioViewHolder> implements View.OnClickListener {
 
 
-    static  ArrayList<Sitio>ListaSitios;
+    public  static  ArrayList<Sitio>ListaSitios;
     //escuchador onclicklistener
     private View.OnClickListener onClickListener;
+    private Fragment fragment;
 
 
     public Adaptador_Sitios(ArrayList<Sitio> listallena) {
-
         ListaSitios=listallena;
 
     }
@@ -88,9 +93,11 @@ public class Adaptador_Sitios extends RecyclerView.Adapter<Adaptador_Sitios.Siti
 
     @Override
     public void onClick(View v ) {
-        if (onClickListener!=null)
+        if (this.onClickListener!=null)
         {
-            onClickListener.onClick(v);
+            this.onClickListener.onClick(v);
+
         }
     }
+
 }

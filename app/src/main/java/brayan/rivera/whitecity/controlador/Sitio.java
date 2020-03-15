@@ -1,4 +1,4 @@
-package brayan.rivera.whitecity.modelo;
+package brayan.rivera.whitecity.controlador;
 
 import androidx.annotation.NonNull;
 

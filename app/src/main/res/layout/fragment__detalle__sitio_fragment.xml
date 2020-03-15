@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fr_detalle_sitio"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".modelo.detallesitio.Fragment_Detalle_Sitio">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/txt_nombre_DETALLE_SITIO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="40dp"
+            android:textStyle="bold|italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/img_sitio_DETALLE_SITIO"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_nombre_DETALLE_SITIO"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/txt_descripcion_DETALLE_SITIO"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_sitio_DETALLE_SITIO"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/lbl_direccion_DETALLE_SITIO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="8dp"
+            android:text="Direccion:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_descripcion_DETALLE_SITIO"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/txt_direccion_DETALLE_SITIO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="TextView"
+            app:layout_constraintStart_toEndOf="@+id/lbl_direccion_DETALLE_SITIO"
+            app:layout_constraintTop_toBottomOf="@+id/txt_descripcion_DETALLE_SITIO"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/lbl_telefono_DETALLE_SITIO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:text="Telefono"
+            app:layout_constraintStart_toEndOf="@+id/txt_direccion_DETALLE_SITIO"
+            app:layout_constraintTop_toBottomOf="@+id/txt_descripcion_DETALLE_SITIO"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/txt_telefono_DETALLE_SITIO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="TextView"
+            app:layout_constraintStart_toEndOf="@+id/lbl_telefono_DETALLE_SITIO"
+            app:layout_constraintTop_toBottomOf="@+id/txt_descripcion_DETALLE_SITIO"
+            tools:ignore="MissingConstraints" />
+
+        <RatingBar
+            android:id="@+id/rb_calificacion_DETALLE_SITIO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lbl_direccion_DETALLE_SITIO" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</FrameLayout>

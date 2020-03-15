@@ -4,18 +4,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import brayan.rivera.whitecity.R;
 import brayan.rivera.whitecity.controlador.FireBaseHelper;
-import brayan.rivera.whitecity.modelo.Adaptador_Sitios;
 import brayan.rivera.whitecity.modelo.MainActivity;
 
 public class Hoteles extends Fragment {
@@ -39,7 +35,7 @@ public class Hoteles extends Fragment {
         //creamos un objeto nuevo de tipo Firebase helper y le mandamos el contesto
         helper=new FireBaseHelper(getContext());
         //le mandamos nuestro recyclerview a nuesta clase firebase que maneja la consulta de datos
-        helper.listarsitios(rv_lista_Sitios);
+        helper.listarsitios();
 
         return view;
     }

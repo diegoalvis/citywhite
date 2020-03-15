@@ -9,11 +9,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import brayan.rivera.whitecity.R;
+
 
 public class MainActivity extends AppCompatActivity {
     public static String nodo="";
@@ -38,10 +41,16 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navView, navController);
 
 
+
         listafotos=new ArrayList<>();
-        MainActivity.listafotos.add("iglesia_ermita.jpg");
-        MainActivity.listafotos.add("iglesia_santo_domingo.jpeg");
-        MainActivity.listafotos.add("iglesia_santo_domingo.jpeg");
+        MainActivity.listafotos.add("goku2.jpg");
+        MainActivity.listafotos.add("goku2.jpg");
+        MainActivity.listafotos.add("goku2.jpg");
+        MainActivity.listafotos.add("goku2.jpg");
+        MainActivity.listafotos.add("goku2.jpg");
+        MainActivity.listafotos.add("goku2.jpg");
+
+
     }
 
 

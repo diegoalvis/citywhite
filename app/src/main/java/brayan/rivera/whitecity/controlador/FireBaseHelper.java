@@ -25,11 +25,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-import brayan.rivera.whitecity.modelo.Adaptador_Sitios;
-import brayan.rivera.whitecity.modelo.DetalleSitio;
+
 import brayan.rivera.whitecity.modelo.MainActivity;
-import brayan.rivera.whitecity.modelo.Sitio;
+
 
 public class FireBaseHelper {
     //crear la intacia a la vase de tados dentro de firebase
@@ -46,7 +44,7 @@ public class FireBaseHelper {
     private Adaptador_Sitios adaptador_sitios;
 
 
-    private ArrayList<Sitio> sitios;
+    public static ArrayList<Sitio> sitios;
     public static int posicion2;
 
 
@@ -57,13 +55,11 @@ public class FireBaseHelper {
         this.context = context;
     }
 
-
-
-    public void listarsitios(final RecyclerView rv_lista_sitios){
-
+    public ArrayList<Sitio>listarsitios(){
 
         sitios =new ArrayList<>();
         FirebaseDatabase database=FirebaseDatabase.getInstance();
+
         DatabaseReference myref=database.getReference("Sitios").child(MainActivity.nodo);
 
         myref.addValueEventListener(new ValueEventListener() {
@@ -76,7 +72,6 @@ public class FireBaseHelper {
                     Sitio sitio=dato.getValue(Sitio.class);
                     sitios.add(sitio);
                 }
-                adaptador_sitios.notifyDataSetChanged();
 
             }
 
@@ -86,38 +81,13 @@ public class FireBaseHelper {
             }
         });
 
-        adaptador_sitios=new Adaptador_Sitios(sitios);
-        rv_lista_sitios.setAdapter(adaptador_sitios);
-
-
-        //metodo para ponerle el clickal recycler
-        onClickadaptador(rv_lista_sitios);
-
-
-    }
-
-    public void onClickadaptador(final RecyclerView rv_lista_sitios)
-    {
-        //agregamos el evento del click al adaptador
-        adaptador_sitios.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context,"Ingresaste a sitio turistico : "+sitios.get(rv_lista_sitios.getChildAdapterPosition(v)).getNombre()
-                        ,Toast.LENGTH_SHORT).show();
-
-                posicion2=rv_lista_sitios.getChildLayoutPosition(v);
-                Intent intent=new Intent(context, DetalleSitio.class);
-
-                context.startActivity(intent);
-
-            }
-        });
+        return  sitios;
     }
 
     public void consultarImagen(final ImageView img_sitio, String nombreforo)
     {
         FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef = storage.getReferenceFromUrl("gs://whitecity-16b15.appspot.com").child(nombreforo);
+        StorageReference storageRef = storage.getReferenceFromUrl("gs://whitecity-16b15.appspot.com").child("fotos").child(nombreforo);
 
         /*try {
             final File localFile = File.createTempFile("images", "jpg");

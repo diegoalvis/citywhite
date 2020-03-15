@@ -35,11 +35,11 @@ public class SitiosInteres extends Fragment {
 
         rv_lista_Sitios=view.findViewById(R.id.rv_lista_Sitios_Interes);
         rv_lista_Sitios.setLayoutManager(new GridLayoutManager(getContext(),1));
-
+        /*
         //creamos un objeto nuevo de tipo Firebase helper y le mandamos el contesto
         helper=new FireBaseHelper(getActivity());
         //le mandamos nuestro recyclerview a nuesta clase firebase que maneja la consulta de datos
-        helper.listarsitios(rv_lista_Sitios);
+        helper.listarsitios(rv_lista_Sitios);*/
         return view;
 
     }
