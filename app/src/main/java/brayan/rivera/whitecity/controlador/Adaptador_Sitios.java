@@ -1,6 +1,5 @@
 package brayan.rivera.whitecity.controlador;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +9,6 @@ import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 import brayan.rivera.whitecity.R;
 
@@ -57,6 +54,21 @@ public class Adaptador_Sitios extends RecyclerView.Adapter<Adaptador_Sitios.Siti
 
     }
 
+    public  void setOnClickListener(View.OnClickListener listener  ){
+         this.onClickListener=listener;
+    }
+
+
+    @Override
+    public void onClick(View v) {
+
+        if (onClickListener!=null)
+        {
+            onClickListener.onClick(v);
+        }
+
+    }
+
 
     //metodo para instaciar cada elemento de la plantilla perzonalizada
     public static  class SitioViewHolder extends RecyclerView.ViewHolder {
@@ -84,20 +96,5 @@ public class Adaptador_Sitios extends RecyclerView.Adapter<Adaptador_Sitios.Siti
 
 
 
-    //metodo para recibir el evento del click en la lista
-    public  void setOnClickListener(View.OnClickListener onClickListener)
-    {
-        this.onClickListener=onClickListener;
-
-    }
-
-    @Override
-    public void onClick(View v ) {
-        if (this.onClickListener!=null)
-        {
-            this.onClickListener.onClick(v);
-
-        }
-    }
 
 }

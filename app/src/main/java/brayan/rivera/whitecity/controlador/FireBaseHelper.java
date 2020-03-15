@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import brayan.rivera.whitecity.modelo.MainActivity;
 
@@ -43,10 +44,7 @@ public class FireBaseHelper {
 
     private Adaptador_Sitios adaptador_sitios;
 
-
-    public static ArrayList<Sitio> sitios;
-    public static int posicion2;
-
+    public  static ArrayList<Sitio> sitios;
 
     private Context context;
 
@@ -55,13 +53,12 @@ public class FireBaseHelper {
         this.context = context;
     }
 
-    public ArrayList<Sitio>listarsitios(){
+    public void listarsitios (final RecyclerView rv_lista_sitios){
 
         sitios =new ArrayList<>();
-        FirebaseDatabase database=FirebaseDatabase.getInstance();
+        database=FirebaseDatabase.getInstance();
 
-        DatabaseReference myref=database.getReference("Sitios").child(MainActivity.nodo);
-
+        myref=database.getReference("Sitios").child(MainActivity.nodo);
         myref.addValueEventListener(new ValueEventListener() {
 
             @Override
@@ -73,6 +70,8 @@ public class FireBaseHelper {
                     sitios.add(sitio);
                 }
 
+                adaptador_sitios.notifyDataSetChanged();
+
             }
 
             @Override
@@ -81,8 +80,12 @@ public class FireBaseHelper {
             }
         });
 
-        return  sitios;
+        adaptador_sitios=new Adaptador_Sitios(sitios);
+        rv_lista_sitios.setAdapter(adaptador_sitios);
+
+
     }
+
 
     public void consultarImagen(final ImageView img_sitio, String nombreforo)
     {

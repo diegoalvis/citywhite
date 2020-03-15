@@ -52,24 +52,8 @@ public class Iglesias extends Fragment {
             //creamos un objeto nuevo de tipo Firebase helper y le mandamos el contesto
             helper = new FireBaseHelper(getActivity());
 
-            //creamos un objeto de tipo adaptador he invocamos el metodo de la calse firebaseheleper que me trae la lista de datos
-            adaptador=new Adaptador_Sitios(helper.listarsitios());
-            adaptador.notifyDataSetChanged();
 
-            rv_lista_Sitios.setAdapter(adaptador);
-
-            adaptador.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-
-
-
-
-
-            }
-        });
+            helper.listarsitios(rv_lista_Sitios);
 
 
 

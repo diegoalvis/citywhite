@@ -35,7 +35,7 @@ public class Hoteles extends Fragment {
         //creamos un objeto nuevo de tipo Firebase helper y le mandamos el contesto
         helper=new FireBaseHelper(getContext());
         //le mandamos nuestro recyclerview a nuesta clase firebase que maneja la consulta de datos
-        helper.listarsitios();
+        //helper.listarsitios(rv_lista_Sitios);
 
         return view;
     }
