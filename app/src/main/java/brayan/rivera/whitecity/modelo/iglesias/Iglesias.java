@@ -1,10 +1,8 @@
 package brayan.rivera.whitecity.modelo.iglesias;
 
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,6 +16,8 @@ import android.widget.Toast;
 
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import brayan.rivera.whitecity.modelo.Detalle_Sitio;
 import brayan.rivera.whitecity.R;
 import brayan.rivera.whitecity.controlador.Adaptador_Sitios;
 import brayan.rivera.whitecity.controlador.FireBaseHelper;
@@ -39,9 +39,7 @@ public class Iglesias extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         MainActivity.nodo="Iglesias";
-        //MainActivity.listafotos.clear();
-        //MainActivity.listafotos.add("iglesia_ermita.jpg");
-        //MainActivity.listafotos.add("iglesia_santo_domingo.jpeg");
+
 
 
              View view = inflater.inflate(R.layout.fragment_iglesias, container, false);
@@ -54,6 +52,27 @@ public class Iglesias extends Fragment {
 
 
             helper.listarsitios(rv_lista_Sitios);
+
+            FireBaseHelper.adaptador_sitios.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                 FireBaseHelper.posicion2=rv_lista_Sitios.getChildLayoutPosition(v);
+
+                Toast.makeText(getContext(),"Ingresaste a sitio turistico : "+FireBaseHelper.sitios.get(rv_lista_Sitios.getChildAdapterPosition(v)).getNombre()+
+                                "en la posicion "+(FireBaseHelper.posicion2+1)
+                        ,Toast.LENGTH_SHORT).show();
+
+                // Crea el nuevo fragmento y la transacción.
+                Fragment nuevoFragmento = new Detalle_Sitio();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.nav_host_fragment, nuevoFragmento);
+                transaction.addToBackStack(null);
+
+                // Commit a la transacción
+                transaction.commit();
+
+            }
+        });
 
 
 

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/buscador_palabras"
+        android:title="Buscador"
+        android:icon="@drawable/item_buscador"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="always|collapseActionView"
+        />
+
+    <item
+        android:id="@+id/item_registrar_sitios"
+        android:icon="@drawable/registrar_sitio"
+        android:title="Registrar Sitio"
+        app:showAsAction="always"/>
+
+
+    <item
+
+        android:id="@+id/item_menu_principal"
+        android:icon="@drawable/menu_principal"
+        android:title="Menu Principal"
+        app:showAsAction="always"/>
+
+</menu>
