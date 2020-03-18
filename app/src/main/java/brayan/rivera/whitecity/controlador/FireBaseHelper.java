@@ -1,8 +1,6 @@
 package brayan.rivera.whitecity.controlador;
 
 import android.content.Context;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.util.Log;
 import android.widget.ImageView;
@@ -20,13 +18,18 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import brayan.rivera.whitecity.modelo.Registro_Sitio;
 import brayan.rivera.whitecity.modelo.MainActivity;
+import brayan.rivera.whitecity.modelo.comida_tradicional.ComidaTradicional;
+import brayan.rivera.whitecity.modelo.hoteles.Hoteles;
+import brayan.rivera.whitecity.modelo.iglesias.Iglesias;
+import brayan.rivera.whitecity.modelo.museos.Museos;
+import brayan.rivera.whitecity.modelo.sitios_interes.SitiosInteres;
 
 
 public class FireBaseHelper {
@@ -40,11 +43,34 @@ public class FireBaseHelper {
 
     public static  int posicion2;
     public static  Adaptador_Sitios adaptador_sitios;
+
     public  static ArrayList<Sitio> sitios;
+
+
+
+    public static ArrayList<Sitio> todosLosSitios;
+
+
 
     public FireBaseHelper( Context context) {
 
         this.context = context;
+    }
+
+
+    public void registrarSitio(String nomb,String desc,String dir,String tel,String face)
+    {
+        FirebaseDatabase bd=FirebaseDatabase.getInstance();
+        DatabaseReference indice=bd.getReference("Sitios");
+        Sitio datos=new Sitio();
+
+        datos.setNombre(nomb);
+        datos.setDescripcion(desc);
+        datos.setDireccion(dir);
+        datos.setTelefono(tel);
+        datos.setFacebook(face);
+
+        indice.child(Registro_Sitio.categoria).child(nomb).setValue(datos);
     }
 
     public void listarsitios (final RecyclerView rv_lista_sitios){
@@ -53,6 +79,7 @@ public class FireBaseHelper {
         database=FirebaseDatabase.getInstance();
 
         myref=database.getReference("Sitios").child(MainActivity.nodo);
+
         myref.addValueEventListener(new ValueEventListener() {
 
             @Override
@@ -80,6 +107,8 @@ public class FireBaseHelper {
 
     }
 
+
+
     public void consultarImagen(final ImageView img_sitio, String nombreforo)
     {
         FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -95,5 +124,57 @@ public class FireBaseHelper {
             }
         });
     }
+
+    public void consultarTodosLosSitios()
+    {
+        database=FirebaseDatabase.getInstance();
+        todosLosSitios=new ArrayList<>();
+
+       ArrayList<String>categoria=new ArrayList<>();
+       categoria.add("Iglesias");
+       categoria.add("Sitios de Interes");
+       categoria.add("Museos");
+       categoria.add("Comida Tipica");
+       categoria.add("Hoteles");
+
+        DatabaseReference myref1=database.getReference("Sitios");
+
+        if (todosLosSitios.size()>2)
+        {
+        todosLosSitios.removeAll(todosLosSitios);
+        }
+
+       for (int i=0;i<=categoria.size()-1;i++)
+       {
+
+           myref1.child(categoria.get(i)).addValueEventListener(new ValueEventListener() {
+
+               @Override
+               public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                   for (DataSnapshot dato: dataSnapshot.getChildren()) {
+
+                       Sitio sitio1=dato.getValue(Sitio.class);
+                       todosLosSitios.add(sitio1);
+                   }
+
+;                       adaptador_sitios.notifyDataSetChanged();
+               }
+
+               @Override
+               public void onCancelled(@NonNull DatabaseError databaseError) {
+
+               }
+           });
+
+
+
+
+       }
+    }
+
+
+
+
 
 }

@@ -95,6 +95,14 @@ public class Adaptador_Sitios extends RecyclerView.Adapter<Adaptador_Sitios.Siti
     }
 
 
+    public  void setFilter(ArrayList<Sitio>listafiltrada)
+    {
+        this.ListaSitios=new ArrayList<>();
+        this.ListaSitios.addAll(listafiltrada);
+        notifyDataSetChanged();
+    }
+
+
 
 
 }

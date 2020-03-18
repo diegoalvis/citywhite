@@ -19,11 +19,12 @@ import brayan.rivera.whitecity.R;
 import brayan.rivera.whitecity.controlador.FireBaseHelper;
 import brayan.rivera.whitecity.modelo.Detalle_Sitio;
 import brayan.rivera.whitecity.modelo.MainActivity;
+import brayan.rivera.whitecity.modelo.iglesias.Iglesias;
 
 public class SitiosInteres extends Fragment {
 
     private SitiosInteresViewModel sitiosInteresViewModel;
-    RecyclerView rv_lista_Sitios;
+    public static RecyclerView rv_lista_Sitios;
     FireBaseHelper helper;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -49,9 +50,7 @@ public class SitiosInteres extends Fragment {
             @Override
             public void onClick(View v) {
                 FireBaseHelper.posicion2=rv_lista_Sitios.getChildLayoutPosition(v);
-                Toast.makeText(getContext(),"Ingresaste a sitio turistico : "+FireBaseHelper.sitios.get(rv_lista_Sitios.getChildAdapterPosition(v)).getNombre()+
-                                "en la posicion "+(FireBaseHelper.posicion2+1)
-                        ,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),"Ingresaste a sitio turistico : "+FireBaseHelper.todosLosSitios.get(rv_lista_Sitios.getChildAdapterPosition(v)).getNombre(),Toast.LENGTH_SHORT).show();
 
                 // Crea el nuevo fragmento y la transacción.
                 Fragment nuevoFragmento = new Detalle_Sitio();

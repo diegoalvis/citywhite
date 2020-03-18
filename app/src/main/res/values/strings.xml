@@ -28,4 +28,14 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <array name="categorias">
+        <item>Seleccionar</item>
+        <item>Iglesias</item>
+        <item>Sitios de Interes</item>
+        <item>Museos</item>
+        <item>Comida Tradicional</item>
+        <item>Hoteles</item>
+
+    </array>
+
 </resources>

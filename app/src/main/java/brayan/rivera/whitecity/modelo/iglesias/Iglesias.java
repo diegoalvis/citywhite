@@ -27,7 +27,8 @@ import brayan.rivera.whitecity.modelo.MainActivity;
 public class Iglesias extends Fragment {
 
     private IglesiasViewModel mViewModel;
-    RecyclerView rv_lista_Sitios;
+    public static RecyclerView rv_lista_Sitios;
+    public static int validacion=1;
     FireBaseHelper helper;
     Adaptador_Sitios adaptador;
 
@@ -57,10 +58,7 @@ public class Iglesias extends Fragment {
             @Override
             public void onClick(View v) {
                  FireBaseHelper.posicion2=rv_lista_Sitios.getChildLayoutPosition(v);
-
-                Toast.makeText(getContext(),"Ingresaste a sitio turistico : "+FireBaseHelper.sitios.get(rv_lista_Sitios.getChildAdapterPosition(v)).getNombre()+
-                                "en la posicion "+(FireBaseHelper.posicion2+1)
-                        ,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),"Ingresaste a sitio turistico : "+FireBaseHelper.sitios.get(rv_lista_Sitios.getChildAdapterPosition(v)).getNombre(),Toast.LENGTH_SHORT).show();
 
                 // Crea el nuevo fragmento y la transacción.
                 Fragment nuevoFragmento = new Detalle_Sitio();

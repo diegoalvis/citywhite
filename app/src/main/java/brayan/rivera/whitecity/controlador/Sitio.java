@@ -13,11 +13,21 @@ public class Sitio {
     private String direccion;
     private String telefono;
     private String facebook;
+    private String categoria;
+    private String valorcalificacion;
 
-    @NonNull
-    @Override
-    public String toString() {
-        return nombre;
+    public Sitio() {
+    }
+
+    public Sitio(String idSitio, String nombre, String descripcion, String direccion, String telefono, String facebook, String categoria, String valorcalificacion) {
+        this.idSitio = idSitio;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.facebook = facebook;
+        this.categoria = categoria;
+        this.valorcalificacion = valorcalificacion;
     }
 
     public String getIdSitio() {
@@ -56,24 +66,33 @@ public class Sitio {
         return telefono;
     }
 
-    public void setTelefono(String telefono) { this.telefono = telefono; }
-
-    public String getFacebook(){return facebook;}
-
-    public void setFacebook (String facebook) {this.facebook = facebook;}
-
-    public Sitio() {
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
-    public Sitio(String idSitio, String nombre, String descripcion, String direccion, String telefono, String facebook) {
-        this.idSitio = idSitio;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.direccion = direccion;
-        this.telefono = telefono;
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public void setFacebook(String facebook) {
         this.facebook = facebook;
     }
 
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public String getValorcalificacion() {
+        return valorcalificacion;
+    }
+
+    public void setValorcalificacion(String valorcalificacion) {
+        this.valorcalificacion = valorcalificacion;
+    }
 
     public ArrayList<String>fotosiglesias()
     {
@@ -141,7 +160,7 @@ public class Sitio {
     {
         ArrayList<String>sonidos=new ArrayList<>();
         sonidos.add("iglesia_belen.m4a");
-        sonidos.add("iglesia_catedral.mp3");
+        sonidos.add("iglesia_catedral.m4a");
         sonidos.add("iglesia_ermita.m4a");
         sonidos.add("iglesia_san_francisco.m4a");
         sonidos.add("iglesia_santo_domingo.mp3");

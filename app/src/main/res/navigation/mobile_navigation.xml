@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/navigation_museos"
-        android:name="brayan.rivera.whitecity.modelo.museos.MuseosFragment"
+        android:name="brayan.rivera.whitecity.modelo.museos.Museos"
         android:label="@string/title_museos"
         tools:layout="@layout/fragment_museos" />
     <fragment

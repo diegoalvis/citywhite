@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".modelo.Registro_Sitio">
+
+    <EditText
+        android:id="@+id/txt_nombre_Sitio_REGISTRO_SITIO"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Ingrese Nombre"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <EditText
+        android:id="@+id/txt_descripcion_Sitio_REGISTRO_SITIO"
+        android:layout_width="400dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:hint="Ingrese Descripción"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_nombre_Sitio_REGISTRO_SITIO"
+        tools:ignore="RtlCompat" />
+
+    <EditText
+        android:id="@+id/txt_direccion_Sitio_REGISTRO_SITIO"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Ingrese Dirección"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_descripcion_Sitio_REGISTRO_SITIO" />
+
+    <EditText
+        android:id="@+id/txt_telefono_Sitio_REGISTRO_SITIO"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Ingrese Telefono"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_direccion_Sitio_REGISTRO_SITIO" />
+
+    <EditText
+        android:id="@+id/txt_facebook_Sitio_REGISTRO_SITIO"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Ingrese Facebook"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_telefono_Sitio_REGISTRO_SITIO" />
+
+    <TextView
+        android:id="@+id/txt_categorias_REGISTRO_SITIO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="16dp"
+        android:text="Categoria"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_facebook_Sitio_REGISTRO_SITIO" />
+
+    <Spinner
+        android:id="@+id/sp_categorias_Sitio_REGISTRO_SITIIO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="13dp"
+        app:layout_constraintStart_toEndOf="@+id/txt_categorias_REGISTRO_SITIO"
+        app:layout_constraintTop_toBottomOf="@+id/txt_facebook_Sitio_REGISTRO_SITIO" />
+
+    <Button
+        android:id="@+id/btn_subir_Sitio_REGISTRO_SITIO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Registrar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sp_categorias_Sitio_REGISTRO_SITIIO" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

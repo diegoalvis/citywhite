@@ -9,7 +9,7 @@
 
     <item
         android:id="@+id/navigation_sitios_interes"
-        android:icon="@drawable/ic_museo"
+        android:icon="@drawable/ic_sitio_interes"
         android:title="@string/title_sitios_interes" />
 
     <item

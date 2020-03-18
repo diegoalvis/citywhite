@@ -21,11 +21,12 @@ import brayan.rivera.whitecity.R;
 import brayan.rivera.whitecity.controlador.FireBaseHelper;
 import brayan.rivera.whitecity.modelo.Detalle_Sitio;
 import brayan.rivera.whitecity.modelo.MainActivity;
+import brayan.rivera.whitecity.modelo.iglesias.Iglesias;
 
 
 public class ComidaTradicional extends Fragment {
 
-    RecyclerView rv_lista_Sitios;
+    public static  RecyclerView rv_lista_Sitios;
     FireBaseHelper helper;
 
 
@@ -39,7 +40,8 @@ public class ComidaTradicional extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         //MainActivity.listafotos.clear();
-        MainActivity.nodo="Comida Tradicional";
+        MainActivity.nodo="Comida Tipica";
+        Iglesias.validacion=4;
 
         //MainActivity.listafotos.add("comida_mora_castilla.jpeg");
 
@@ -59,9 +61,7 @@ public class ComidaTradicional extends Fragment {
             @Override
             public void onClick(View v) {
                 FireBaseHelper.posicion2=rv_lista_Sitios.getChildLayoutPosition(v);
-                Toast.makeText(getContext(),"Ingresaste a sitio turistico : "+FireBaseHelper.sitios.get(rv_lista_Sitios.getChildAdapterPosition(v)).getNombre()+
-                                "en la posicion "+(FireBaseHelper.posicion2+1)
-                        ,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),"Ingresaste a sitio turistico : "+FireBaseHelper.sitios.get(rv_lista_Sitios.getChildAdapterPosition(v)).getNombre(),Toast.LENGTH_SHORT).show();
 
                 // Crea el nuevo fragmento y la transacción.
                 Fragment nuevoFragmento = new Detalle_Sitio();

@@ -16,17 +16,19 @@ import brayan.rivera.whitecity.R;
 import brayan.rivera.whitecity.controlador.FireBaseHelper;
 import brayan.rivera.whitecity.modelo.Detalle_Sitio;
 import brayan.rivera.whitecity.modelo.MainActivity;
+import brayan.rivera.whitecity.modelo.iglesias.Iglesias;
 
 public class Hoteles extends Fragment {
 
     private HotelesViewModel hotelesViewModel;
-    RecyclerView rv_lista_Sitios;
+    public static RecyclerView rv_lista_Sitios;
     FireBaseHelper helper;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         //MainActivity.listafotos.clear();
         MainActivity.nodo="Hoteles";
+        Iglesias.validacion=5;
         //MainActivity.listafotos.add("comida_mora_castilla.jpeg");
 
         hotelesViewModel = ViewModelProviders.of(this).get(HotelesViewModel.class);
@@ -41,13 +43,16 @@ public class Hoteles extends Fragment {
 
         helper.listarsitios(rv_lista_Sitios);
 
+
+
+
+
+
         FireBaseHelper.adaptador_sitios.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FireBaseHelper.posicion2=rv_lista_Sitios.getChildLayoutPosition(v);
-                Toast.makeText(getContext(),"Ingresaste a sitio turistico : "+FireBaseHelper.sitios.get(rv_lista_Sitios.getChildAdapterPosition(v)).getNombre()+
-                                "en la posicion "+(FireBaseHelper.posicion2+1)
-                        ,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),"Ingresaste a sitio turistico : "+FireBaseHelper.sitios.get(rv_lista_Sitios.getChildAdapterPosition(v)).getNombre(),Toast.LENGTH_SHORT).show();
 
                 // Crea el nuevo fragmento y la transacción.
                 Fragment nuevoFragmento = new Detalle_Sitio();

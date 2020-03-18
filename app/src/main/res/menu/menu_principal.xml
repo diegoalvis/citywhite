@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/buscador_palabras"
-        android:title="Buscador"
+        android:id="@+id/item_buscador"
+        android:title="Buscardor"
         android:icon="@drawable/item_buscador"
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="always|collapseActionView"
@@ -15,7 +15,6 @@
         android:icon="@drawable/registrar_sitio"
         android:title="Registrar Sitio"
         app:showAsAction="always"/>
-
 
     <item
 
