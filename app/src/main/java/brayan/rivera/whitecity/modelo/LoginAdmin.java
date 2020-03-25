@@ -53,8 +53,8 @@ public class LoginAdmin extends AppCompatActivity {
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d("ANDROID", "signInWithEmail:éxito");
                                 FirebaseUser user = mAuth.getCurrentUser();
-                                Intent intent = new Intent(LoginAdmin.this, AdminActivity.class);
-                                startActivity(intent);
+                                //Intent intent = new Intent(LoginAdmin.this, AdminActivity.class);
+                                //startActivity(intent);
 
                             } else {
                                 // If sign in fails, display a message to the user.

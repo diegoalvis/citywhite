@@ -24,11 +24,11 @@ public class CrearUsuarios extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_crear_usuarios);
+        //setContentView(R.layout.activity_crear_usuarios);
         // Inicializar Firebase Auth
-        mAuth = FirebaseAuth.getInstance();
-        editTextNuevoCorreo = findViewById(R.id.nuevoCorreo);
-        editTextNuevoPassword = findViewById(R.id.nuevoPassword);
+        //mAuth = FirebaseAuth.getInstance();
+        //editTextNuevoCorreo = findViewById(R.id.nuevoCorreo);
+        //editTextNuevoPassword = findViewById(R.id.nuevoPassword);
     }
 
     public void createUser(View view) {

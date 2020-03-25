@@ -25,6 +25,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.RecyclerView;
 
+import brayan.rivera.whitecity.Administrador;
 import brayan.rivera.whitecity.R;
 
 import brayan.rivera.whitecity.controlador.Adaptador_Sitios;
@@ -109,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements  SearchView.OnQue
                 break;
 
             case R.id.item_registrar_sitios:
-                Intent intent= new Intent(MainActivity.this, Registro_Sitio.class);
+                Intent intent= new Intent(MainActivity.this, Administrador.class);
                 startActivity(intent);
             break;
 

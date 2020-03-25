@@ -71,7 +71,6 @@ public class Registro_Sitio extends AppCompatActivity implements View.OnClickLis
 
                 switch (posicion)
                 {
-
                     case 1:
                         categoria="Iglesias";
                         break;
@@ -105,7 +104,6 @@ public class Registro_Sitio extends AppCompatActivity implements View.OnClickLis
 
         helper.registrarSitio(nombre,descripcion,direccion,telefono,facebook);
     }
-
 
 
     @Override

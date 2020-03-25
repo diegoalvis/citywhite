@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 
 import com.bumptech.glide.Glide;
@@ -23,6 +24,8 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import brayan.rivera.whitecity.Registrar_Sitio;
+import brayan.rivera.whitecity.modelo.CrearUsuarios;
 import brayan.rivera.whitecity.modelo.Registro_Sitio;
 import brayan.rivera.whitecity.modelo.MainActivity;
 import brayan.rivera.whitecity.modelo.comida_tradicional.ComidaTradicional;
@@ -70,8 +73,11 @@ public class FireBaseHelper {
         datos.setTelefono(tel);
         datos.setFacebook(face);
 
-        indice.child(Registro_Sitio.categoria).child(nomb).setValue(datos);
+        indice.child(Registrar_Sitio.categoria).child(nomb).setValue(datos);
+
+        Toast.makeText(context, "Sitio subido exitosamente...", Toast.LENGTH_LONG).show();
     }
+
 
     public void listarsitios (final RecyclerView rv_lista_sitios){
 
@@ -125,7 +131,7 @@ public class FireBaseHelper {
         });
     }
 
-    public void consultarTodosLosSitios()
+    public void consultarTodosLosSitios( final RecyclerView rv_lista_sitios)
     {
         database=FirebaseDatabase.getInstance();
         todosLosSitios=new ArrayList<>();
@@ -159,6 +165,7 @@ public class FireBaseHelper {
                    }
 
 ;                       adaptador_sitios.notifyDataSetChanged();
+
                }
 
                @Override
@@ -168,13 +175,11 @@ public class FireBaseHelper {
            });
 
 
-
-
        }
+
+        adaptador_sitios=new Adaptador_Sitios(todosLosSitios);
+        rv_lista_sitios.setAdapter(adaptador_sitios);
+
     }
-
-
-
-
 
 }
