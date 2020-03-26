@@ -15,11 +15,13 @@ public class Sitio {
     private String facebook;
     private String categoria;
     private String valorcalificacion;
+    private String nombreimagen;
+    private String nombresonido;
 
     public Sitio() {
     }
 
-    public Sitio(String idSitio, String nombre, String descripcion, String direccion, String telefono, String facebook, String categoria, String valorcalificacion) {
+    public Sitio(String idSitio, String nombre, String descripcion, String direccion, String telefono, String facebook, String categoria, String valorcalificacion, String nombreimagen, String nombresonido) {
         this.idSitio = idSitio;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -28,6 +30,8 @@ public class Sitio {
         this.facebook = facebook;
         this.categoria = categoria;
         this.valorcalificacion = valorcalificacion;
+        this.nombreimagen = nombreimagen;
+        this.nombresonido = nombresonido;
     }
 
     public String getIdSitio() {
@@ -92,6 +96,22 @@ public class Sitio {
 
     public void setValorcalificacion(String valorcalificacion) {
         this.valorcalificacion = valorcalificacion;
+    }
+
+    public String getNombreimagen() {
+        return nombreimagen;
+    }
+
+    public void setNombreimagen(String nombreimagen) {
+        this.nombreimagen = nombreimagen;
+    }
+
+    public String getNombresonido() {
+        return nombresonido;
+    }
+
+    public void setNombresonido(String nombresonido) {
+        this.nombresonido = nombresonido;
     }
 
     public ArrayList<String>fotosiglesias()

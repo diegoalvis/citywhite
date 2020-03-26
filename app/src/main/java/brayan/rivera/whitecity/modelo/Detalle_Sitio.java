@@ -95,21 +95,7 @@ public class Detalle_Sitio extends Fragment implements View.OnClickListener {
         referenciaElementos();
         //metodo para obtener la informacion de cada sitio
         obtenerInformacion();
-        //metodo para saber que nodo se debe consultar
-        validarNodo();
-
-
-
-        //obtenemos el nombre de la foto del lugar que queremos consultar
-        String nombrefoto=listalugares.get(FireBaseHelper.posicion2);
-        //obtenemos el nombre del sonido del lugar que queremos consultar
-        nombresonido=listasonidos.get(FireBaseHelper.posicion2);
-
-
-       /*invocamos el metdo consultarimagen de la clase firebasehelper para mandarle el img de nuestra vista
-        y  el nombre de la foto que queremosmconsultar*/
-        helper.consultarImagen(img_sitio_DETALLE_SITIO,nombrefoto);
-
+        //metodo para traer el sonido del storage
         consultarSonido();
 
         //le digo que el boton me detecte el click en este contesto
@@ -149,44 +135,21 @@ public class Detalle_Sitio extends Fragment implements View.OnClickListener {
         txt_direccion_DETALLE_SITIO.setText(sitio.getDireccion());
         txt_telefono_DETALLE_SITIO.setText(sitio.getTelefono());
 
+        //obtenemos el nombre de la foto del lugar que queremos consultar
+        String nombrefoto=sitio.getNombre();
+        //obtenemos el nombre del sonido del lugar que queremos consultar
+        nombresonido=sitio.getNombresonido();
+
+         /*invocamos el metdo consultarimagen de la clase firebasehelper para mandarle el img de nuestra vista
+        y  el nombre de la foto que queremosmconsultar*/
+        helper.consultarImagen(img_sitio_DETALLE_SITIO,nombrefoto);
+
+
         mp_sonido_Sitio_DETALLE_SITIO=new MediaPlayer();
 
     }
 
-    public void validarNodo()
-    {
-        if (MainActivity.nodo.equals("Iglesias"))
-        {
-            listalugares=sitio.fotosiglesias();
-            listasonidos=sitio.sonidosIglesias();
 
-        }
-
-        if (MainActivity.nodo.equals("Sitios de Interes"))
-        {
-            listalugares=sitio.fotosSitiosInteres();
-            listasonidos=sitio.sonidosInteres();
-        }
-        if (MainActivity.nodo.equals("Museos"))
-        {
-            listalugares=sitio.fotosMuseos();
-            listasonidos=sitio.sonidosMuseos();
-        }
-        if (MainActivity.nodo.equals("Comida Tipica"))
-        {
-            listalugares=sitio.fotosComidaTipica();
-            listasonidos=sitio.sonidosComidaTipica();
-        }
-
-        if (MainActivity.nodo.equals("Hoteles"))
-        {
-            listalugares=sitio.fotosHoteles();
-            listasonidos=sitio.sonidosHoteles();
-        }
-
-
-
-    }
 
     public void consultarSonido()
     {
