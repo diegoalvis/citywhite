@@ -1,10 +1,6 @@
 package brayan.rivera.whitecity.controlador;
 
-import androidx.annotation.NonNull;
-
 import java.util.ArrayList;
-
-import brayan.rivera.whitecity.modelo.MainActivity;
 
 public class Sitio {
     private String idSitio;
@@ -15,7 +11,7 @@ public class Sitio {
     private String facebook;
     private String categoria;
     private String valorcalificacion;
-    private String nombreimagen;
+    private String nombreimg;
     private String nombresonido;
 
     public Sitio() {
@@ -30,7 +26,7 @@ public class Sitio {
         this.facebook = facebook;
         this.categoria = categoria;
         this.valorcalificacion = valorcalificacion;
-        this.nombreimagen = nombreimagen;
+        this.nombreimg = nombreimagen;
         this.nombresonido = nombresonido;
     }
 
@@ -99,11 +95,11 @@ public class Sitio {
     }
 
     public String getNombreimagen() {
-        return nombreimagen;
+        return nombreimg;
     }
 
     public void setNombreimagen(String nombreimagen) {
-        this.nombreimagen = nombreimagen;
+        this.nombreimg = nombreimagen;
     }
 
     public String getNombresonido() {
