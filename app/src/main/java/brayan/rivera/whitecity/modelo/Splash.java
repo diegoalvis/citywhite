@@ -33,6 +33,7 @@ public class Splash extends AppCompatActivity {
         };
         Timer tiempo = new Timer();
         tiempo.schedule(actividad,2000);
+
     }
     private void solicitarPermisos() {
 

@@ -8,7 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
         <EditText
             android:id="@+id/txt_nombre_Sitio_REGISTRO_ADMIN"
@@ -25,7 +25,7 @@
         <EditText
             android:id="@+id/txt_descripcion_Sitio_REGISTRO_ADMIN"
             android:layout_width="400dp"
-            android:layout_height="150dp"
+            android:layout_height="80dp"
             android:layout_marginTop="8dp"
             android:gravity="center_vertical"
             android:hint="Ingrese Descripción"
@@ -72,30 +72,73 @@
             android:id="@+id/txt_categorias_REGISTRO_ADMIN"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="120dp"
-            android:layout_marginTop="16dp"
             android:text="Categoria"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_facebook_Sitio_REGISTRO_ADMIN" />
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="216dp" />
 
         <Spinner
             android:id="@+id/sp_categorias_Sitio_REGISTRO_ADMIN"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="13dp"
-            app:layout_constraintStart_toEndOf="@+id/txt_categorias_REGISTRO_ADMIN"
-            app:layout_constraintTop_toBottomOf="@+id/txt_facebook_Sitio_REGISTRO_ADMIN" />
+            tools:layout_editor_absoluteX="30dp"
+            tools:layout_editor_absoluteY="255dp" />
 
         <Button
             android:id="@+id/btn_subir_Sitio_REGISTRO_ADMIN"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:text="Registrar"
-            app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_editor_absoluteX="6dp"
+            tools:layout_editor_absoluteY="149dp" />
+
+        <EditText
+            android:id="@+id/edt_nombre_Imagen_ADMIN"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="78dp"
+            android:hint="Ingrese nombre imagen"
+            android:textSize="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/edt_nombre_Sonido_ADMIN"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sp_categorias_Sitio_REGISTRO_ADMIN" />
+            app:layout_constraintTop_toBottomOf="@+id/txt_facebook_Sitio_REGISTRO_ADMIN" />
+
+        <EditText
+            android:id="@+id/edt_nombre_Sonido_ADMIN"
+            android:layout_width="110dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="92dp"
+            android:layout_marginTop="44dp"
+            android:hint="Ingrese nombre audio"
+            android:textSize="8dp"
+            app:layout_constraintStart_toEndOf="@+id/edt_nombre_Imagen_ADMIN"
+            app:layout_constraintTop_toBottomOf="@+id/txt_facebook_Sitio_REGISTRO_ADMIN" />
+
+        <ImageButton
+            android:id="@+id/btn_nombre_Imagen_ADMIN"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/icono"
+            app:layout_constraintStart_toEndOf="@+id/edt_nombre_Imagen_ADMIN"
+            app:layout_constraintTop_toBottomOf="@+id/txt_facebook_Sitio_REGISTRO_ADMIN"
+            tools:src="@tools:sample/avatars" />
+
+        <ImageButton
+            android:id="@+id/btn_nombre_Sonido_ADMIN"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/sonido"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/edt_nombre_Sonido_ADMIN"
+            app:layout_constraintTop_toBottomOf="@+id/txt_facebook_Sitio_REGISTRO_ADMIN"
+            tools:src="@tools:sample/avatars" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -59,13 +59,7 @@ public class MainActivity extends AppCompatActivity implements  SearchView.OnQue
         NavigationUI.setupWithNavController(navView, navController);
 
 
-
-
     }
-
-
-
-
 
 
 

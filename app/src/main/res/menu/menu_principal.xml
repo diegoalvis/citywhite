@@ -23,4 +23,11 @@
         android:title="Menu Principal"
         app:showAsAction="always"/>
 
+    <item
+
+        android:id="@+id/item_menu_admin"
+        android:icon="@drawable/administrador"
+        android:title="Menu Principal"
+        app:showAsAction="always"/>
+
 </menu>
