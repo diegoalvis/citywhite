@@ -1,15 +1,9 @@
 package brayan.rivera.whitecity.modelo;
 
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.os.Handler;
-import android.text.style.UpdateAppearance;
-import android.text.style.UpdateLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,12 +13,11 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
+import androidx.fragment.app.Fragment;
+
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.network.UpdateMetadataNetworkRequest;
-
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -102,7 +95,6 @@ public class Detalle_Sitio extends Fragment implements View.OnClickListener {
         btn_reproducir_Sonido_DETALLE_SITIO.setOnClickListener(this);
 
         handler=new Handler();
-
 
 
 
