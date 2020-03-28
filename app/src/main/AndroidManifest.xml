@@ -20,7 +20,6 @@
             android:name=".Administrador"
             android:label="@string/title_activity_administrador"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".modelo.Registro_Sitio" />
         <activity android:name=".modelo.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

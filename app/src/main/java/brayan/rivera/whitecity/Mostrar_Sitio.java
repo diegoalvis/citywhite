@@ -75,7 +75,7 @@ public class Mostrar_Sitio extends Fragment {
         rc_mostrar_Sitio_ADMIN = view.findViewById(R.id.rc_mostrar_Sitio_ADMIN);
         rc_mostrar_Sitio_ADMIN.setLayoutManager(new GridLayoutManager(getContext(), 1));
 
-        helper.consultarTodosLosSitios(rc_mostrar_Sitio_ADMIN);
+       // helper.consultarTodosLosSitios(rc_mostrar_Sitio_ADMIN);
 
 
         return view;

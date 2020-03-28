@@ -65,5 +65,6 @@
         android:hint="@string/hint2"
         android:inputType="textPassword"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="213dp" />
+        tools:layout_editor_absoluteY="213dp"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

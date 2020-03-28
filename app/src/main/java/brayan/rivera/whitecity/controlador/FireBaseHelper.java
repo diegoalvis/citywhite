@@ -1,5 +1,6 @@
 package brayan.rivera.whitecity.controlador;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.widget.Toast;
 
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -16,23 +18,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import brayan.rivera.whitecity.Administrador;
 import brayan.rivera.whitecity.Registrar_Sitio;
-import brayan.rivera.whitecity.modelo.CrearUsuarios;
-import brayan.rivera.whitecity.modelo.Registro_Sitio;
 import brayan.rivera.whitecity.modelo.MainActivity;
-import brayan.rivera.whitecity.modelo.comida_tradicional.ComidaTradicional;
-import brayan.rivera.whitecity.modelo.hoteles.Hoteles;
-import brayan.rivera.whitecity.modelo.iglesias.Iglesias;
-import brayan.rivera.whitecity.modelo.museos.Museos;
-import brayan.rivera.whitecity.modelo.sitios_interes.SitiosInteres;
 
 
 public class FireBaseHelper {
@@ -61,7 +60,7 @@ public class FireBaseHelper {
     }
 
 
-    public void registrarSitio(String nomb,String desc,String dir,String tel,String face)
+    public void registrarSitio(String nomb,String desc,String dir,String tel,String face,String img,String audio)
     {
         FirebaseDatabase bd=FirebaseDatabase.getInstance();
         DatabaseReference indice=bd.getReference("Sitios");
@@ -72,10 +71,67 @@ public class FireBaseHelper {
         datos.setDireccion(dir);
         datos.setTelefono(tel);
         datos.setFacebook(face);
+        datos.setNombreimagen(img);
+        datos.setNombresonido(audio);
 
         indice.child(Registrar_Sitio.categoria).child(nomb).setValue(datos);
 
         Toast.makeText(context, "Sitio subido exitosamente...", Toast.LENGTH_LONG).show();
+
+    }
+
+    public void subirImagen(String img){
+
+        FirebaseStorage storage2;
+        StorageReference storagereference2;
+
+        storage2=FirebaseStorage.getInstance();
+        storagereference2=storage2.getReference();
+
+        if(Administrador.url_Imagen_ADMIN!=null){
+
+            final ProgressDialog progressdialog = new ProgressDialog(context);
+            progressdialog.setTitle("subiendo...");
+            progressdialog.show();
+
+            StorageReference ref= storagereference2.child("fotos/").child(Registrar_Sitio.categoria+"/").child(img);
+            ref.putFile(Administrador.url_Imagen_ADMIN)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                    progressdialog.dismiss();
+                    Toast.makeText(context,"Imagen subida",Toast.LENGTH_SHORT).show();
+
+                }
+            })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
+                            progressdialog.dismiss();
+                            Toast.makeText(context,"Fallo "+e.getMessage(),Toast.LENGTH_SHORT).show();
+
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
+
+                            double progreso=(100.0*taskSnapshot.getBytesTransferred()/taskSnapshot.getTotalByteCount());
+
+                            progressdialog.setMessage("Subiendo... "+(int)progreso+" %");
+
+                        }
+                    });
+
+
+
+
+
+        }
+
+
     }
 
 
@@ -115,7 +171,7 @@ public class FireBaseHelper {
 
 
 
-    public void consultarImagen(final ImageView img_sitio, String nombreforo)
+    public void consultarImagen(final ImageView img_sitio, String nombreforo )
     {
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReferenceFromUrl("gs://whitecity-16b15.appspot.com");
@@ -160,7 +216,7 @@ public class FireBaseHelper {
 
                    for (DataSnapshot dato: dataSnapshot.getChildren()) {
 
-                       Sitio sitio1=dato.getValue(Sitio.class);
+                        Sitio sitio1=dato.getValue(Sitio.class);
                        todosLosSitios.add(sitio1);
                    }
 

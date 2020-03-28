@@ -1,9 +1,14 @@
 package brayan.rivera.whitecity;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +16,20 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import brayan.rivera.whitecity.controlador.FireBaseHelper;
+
+import static android.app.Activity.RESULT_OK;
 
 
 /**
@@ -34,7 +50,20 @@ public class Registrar_Sitio extends Fragment implements View.OnClickListener {
     EditText txt_direccion_REGISTRO_ADMIN;
     EditText txt_telefono_REGISTRO_ADMIN;
     EditText txt_facebook_REGISTRO_ADMIN;
+    EditText txt_nombre_Imagen_ADMIN;
+    EditText txt_nombre_Sonido_ADMIN;
+
     Button btn_subir_Sitios_REGISTRO_ADMIN;
+
+    public static ImageView ibtn_escoger_Imagen_ADMIN;
+    ImageView ibtn_escoger_Sonido_ADMIN;
+
+    public static ImageView img_imagen_Sitio_ADMIN;
+
+
+    static  final int PICK_IMAGE_REQUEST=71;
+
+
 
     public  static String categoria;
     FireBaseHelper helper;
@@ -44,6 +73,8 @@ public class Registrar_Sitio extends Fragment implements View.OnClickListener {
     String direccion;
     String telefono;
     String facebook;
+    String nombreImagen;
+    String nombreAudio;
 
 
     // TODO: Rename and change types of parameters
@@ -92,7 +123,8 @@ public class Registrar_Sitio extends Fragment implements View.OnClickListener {
 
         referenciarElementos();
         cargarCategorias();
-        btn_subir_Sitios_REGISTRO_ADMIN.setOnClickListener(this);
+
+
 
 
         return view;
@@ -105,8 +137,19 @@ public class Registrar_Sitio extends Fragment implements View.OnClickListener {
         txt_direccion_REGISTRO_ADMIN=view.findViewById(R.id.txt_direccion_Sitio_REGISTRO_ADMIN);
         txt_telefono_REGISTRO_ADMIN=view.findViewById(R.id.txt_telefono_Sitio_REGISTRO_ADMIN);
         txt_facebook_REGISTRO_ADMIN=view.findViewById(R.id.txt_facebook_Sitio_REGISTRO_ADMIN);
+        txt_nombre_Imagen_ADMIN=view.findViewById(R.id.edt_nombre_Imagen_ADMIN);
+        txt_nombre_Sonido_ADMIN=view.findViewById(R.id.edt_nombre_Sonido_ADMIN);
         sp_categorias_REGISTRO_ADMIN=view.findViewById(R.id.sp_categorias_Sitio_REGISTRO_ADMIN);
+        ibtn_escoger_Imagen_ADMIN=view.findViewById(R.id.ibtn_escoger_Imagen_ADMIN);
+        ibtn_escoger_Sonido_ADMIN=view.findViewById(R.id.ibtn_escoger_Sonido_ADMIN);
+        img_imagen_Sitio_ADMIN=view.findViewById(R.id.img_imagen_Sitio_ADMIN);
         btn_subir_Sitios_REGISTRO_ADMIN=view.findViewById(R.id.btn_subir_Sitio_REGISTRO_ADMIN);
+
+        btn_subir_Sitios_REGISTRO_ADMIN.setOnClickListener(this);
+        ibtn_escoger_Imagen_ADMIN.setOnClickListener(this);
+        ibtn_escoger_Sonido_ADMIN.setOnClickListener(this);
+
+
     }
 
     public void cargarCategorias()
@@ -148,14 +191,37 @@ public class Registrar_Sitio extends Fragment implements View.OnClickListener {
         direccion=txt_direccion_REGISTRO_ADMIN.getText().toString();
         telefono=txt_telefono_REGISTRO_ADMIN.getText().toString();
         facebook=txt_facebook_REGISTRO_ADMIN.getText().toString();
+        nombreImagen=txt_nombre_Imagen_ADMIN.getText().toString();
+        nombreAudio=txt_nombre_Sonido_ADMIN.getText().toString();
 
-        helper.registrarSitio(nombre,descripcion,direccion,telefono,facebook);
+        helper.registrarSitio(nombre,descripcion,direccion,telefono,facebook,nombreImagen,nombreAudio);
     }
 
 
     @Override
     public void onClick(View v) {
-        extraerDatos();
+         switch (v.getId()){
+
+            case R.id.btn_subir_Sitio_REGISTRO_ADMIN:
+                extraerDatos();
+                helper.subirImagen(nombreImagen);
+                break;
+             case R.id.ibtn_escoger_Imagen_ADMIN:
+                 escogerImagen();
+                 break;
+        }
 
     }
+
+    private void escogerImagen() {
+
+        //vamos a crear un intent para abrir el storage del celular  y traer un archivo tipo imagen
+        Intent intent=new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent,"Selecione una imagen"),PICK_IMAGE_REQUEST);
+
+    }
+
+
 }
