@@ -9,7 +9,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_lista_Iglesias"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        tools:itemCount="9"
+        tools:listitem="@layout/recycler_view_item" />
 
 
 </FrameLayout>
