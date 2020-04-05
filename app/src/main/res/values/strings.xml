@@ -55,6 +55,6 @@
     <string name="la_ciudad_blanca">La Ciudad Blanca</string>
     <string name="text_iniciar_sesion">Ya tengo cuenta, Iniciar Sesion</string>
     <string name="iniciar_sesion">Iniciar Sesion</string>
-    <string name="no_tengo_cuenta">No tengo cuenta, Registrase</string>
+    <string name="no_tengo_cuenta">No tengo cuenta. Registrame</string>
 
 </resources>
