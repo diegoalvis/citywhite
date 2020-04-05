@@ -17,17 +17,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Administrador"
+            android:name=".AdministradorActivity"
             android:label="@string/title_activity_administrador"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".modelo.Splash">
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ui.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".modelo.MainActivity" />
+        <activity android:name=".ui.home.MainActivity" />
     </application>
 
 </manifest>

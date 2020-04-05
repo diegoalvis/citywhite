@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-
     <item
         android:id="@+id/navigation_iglesias"
         android:icon="@drawable/ic_iglesia"
         android:title="@string/title_iglesias" />
 
     <item
-        android:id="@+id/navigation_sitios_interes"
-        android:icon="@drawable/ic_sitio_interes"
-        android:title="@string/title_sitios_interes" />
-
-    <item
         android:id="@+id/navigation_museos"
         android:icon="@drawable/ic_museo"
         android:title="@string/title_museos" />
+
+    <item
+        android:id="@+id/navigation_favoritos"
+        android:icon="@drawable/ic_sitio_interes"
+        android:title="@string/title_sitios_interes" />
 
     <item
         android:id="@+id/navigation_comida_tradicional"
@@ -26,8 +25,5 @@
         android:id="@+id/navigation_hoteles"
         android:icon="@drawable/ic_hotel"
         android:title="@string/title_hoteles" />
-
-
-
 
 </menu>
