@@ -22,19 +22,19 @@
         tools:srcCompat="@drawable/popayan" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/btn_login_registro_splash"
         style="@style/boton_style"
         android:layout_height="wrap_content"
         android:text="@string/texto_login_boton"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
+        app:layout_constraintBottom_toTopOf="@+id/btn_tengo_cuenta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgsplash"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
-        android:id="@+id/button4"
+        android:id="@+id/btn_invitado"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -48,7 +48,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button5" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_login_registro_splash" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

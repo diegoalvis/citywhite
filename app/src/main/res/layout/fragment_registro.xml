@@ -48,14 +48,14 @@
         android:shadowColor="#2E3032"
         android:text="@string/completa_el_formulario_a_continuacion_y_disfruta_de_esta_hermosa_ciudad"
         android:textColor="#2C2727"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintBottom_toTopOf="@+id/input_name_registro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/input_name_registro"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
@@ -63,7 +63,7 @@
         android:ems="10"
         android:hint="@string/nombre"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/editText5"
+        app:layout_constraintBottom_toTopOf="@+id/input_email_registro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
@@ -81,7 +81,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline" />
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/input_pass_2_registro"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:autofillHints=""
@@ -89,25 +89,25 @@
         android:hint="@string/confirma_contrasenia"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toEndOf="@+id/editText6"
-        app:layout_constraintStart_toStartOf="@+id/editText6"
-        app:layout_constraintTop_toBottomOf="@+id/editText6" />
+        app:layout_constraintEnd_toEndOf="@+id/input_pass_registro"
+        app:layout_constraintStart_toStartOf="@+id/input_pass_registro"
+        app:layout_constraintTop_toBottomOf="@+id/input_pass_registro" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/input_pass_registro"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/contrasenia"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/editText7"
-        app:layout_constraintEnd_toEndOf="@+id/editText5"
-        app:layout_constraintStart_toStartOf="@+id/editText5"
-        app:layout_constraintTop_toBottomOf="@+id/editText5" />
+        app:layout_constraintBottom_toTopOf="@+id/input_pass_2_registro"
+        app:layout_constraintEnd_toEndOf="@+id/input_email_registro"
+        app:layout_constraintStart_toStartOf="@+id/input_email_registro"
+        app:layout_constraintTop_toBottomOf="@+id/input_email_registro" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/input_email_registro"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="14dp"
@@ -115,14 +115,14 @@
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/editText6"
-        app:layout_constraintEnd_toEndOf="@+id/editText"
+        app:layout_constraintBottom_toTopOf="@+id/input_pass_registro"
+        app:layout_constraintEnd_toEndOf="@+id/input_name_registro"
         app:layout_constraintHorizontal_bias="0.343"
-        app:layout_constraintStart_toStartOf="@+id/editText"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintStart_toStartOf="@+id/input_name_registro"
+        app:layout_constraintTop_toBottomOf="@+id/input_name_registro" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn_registrar"
         style="@style/boton_style"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -130,14 +130,14 @@
         android:layout_marginEnd="16dp"
         android:background="@drawable/btn_login"
         android:text="@string/registrar"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
+        app:layout_constraintBottom_toTopOf="@+id/btn_tengo_cuenta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <TextView
-        android:id="@+id/button4"
+        android:id="@+id/btn_tengo_cuenta"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -151,7 +151,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_registrar" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
