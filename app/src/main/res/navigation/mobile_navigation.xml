@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_museos"
-        android:name="brayan.rivera.whitecity.ui.museos.Museos"
+        android:name="brayan.rivera.whitecity.ui.museos.MuseosFragment"
         android:label="@string/title_museos"
         tools:layout="@layout/fragment_lista" />
 
@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/navigation_comida_tradicional"
-        android:name="brayan.rivera.whitecity.ui.comida_tradicional.ComidaTradicional"
+        android:name="brayan.rivera.whitecity.ui.comida_tradicional.ComidaTradicionalFragment"
         android:label="@string/title_comidas_tradicionales"
         tools:layout="@layout/fragment_lista" />
     <fragment

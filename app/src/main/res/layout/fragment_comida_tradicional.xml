@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.comida_tradicional.ComidaTradicional">
+    tools:context=".ui.comida_tradicional.ComidaTradicionalFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_lista_Comida_Tradicional"

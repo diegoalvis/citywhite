@@ -5,30 +5,19 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.SearchView;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-
-import java.util.ArrayList;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.MenuItemCompat;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import java.util.ArrayList;
 import brayan.rivera.whitecity.AdministradorActivity;
 import brayan.rivera.whitecity.R;
-
-import brayan.rivera.whitecity.controlador.FireBaseHelper;
 import brayan.rivera.whitecity.data.modelos.Sitio;
 
 
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
-    public static String nodo = "";
 
 
     @Override
@@ -39,15 +28,8 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-
-
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(navView, navHostFragment.getNavController());
-
-//        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.navigation.mobile_navigation).build();
-//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-//        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-//        NavigationUI.setupWithNavController(navView, navController);
     }
 
 

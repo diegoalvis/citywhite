@@ -1,4 +1,4 @@
-package brayan.rivera.whitecity.ui.museos;
+package brayan.rivera.whitecity.ui.comida_tradicional;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -28,10 +28,9 @@ import brayan.rivera.whitecity.controlador.AdaptadorSitios;
 import brayan.rivera.whitecity.controlador.FireBaseHelper;
 import brayan.rivera.whitecity.data.modelos.Sitio;
 import brayan.rivera.whitecity.ui.home.MainActivity;
-import brayan.rivera.whitecity.ui.iglesias.IglesiasFragment;
 
-public class Museos extends Fragment {
 
+public class ComidaTradicionalFragment extends Fragment {
     private RecyclerView rvLista;
     private TextView titulo;
     private ProgressBar progressBar;
@@ -60,7 +59,7 @@ public class Museos extends Fragment {
         super.onResume();
         progressBar.setVisibility(View.VISIBLE);
         // cargamos datos de Firebase (iglesias)
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("sitios/museos");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("sitios/comidas");
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

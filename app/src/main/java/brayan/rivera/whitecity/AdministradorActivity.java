@@ -14,8 +14,6 @@ import android.provider.MediaStore;
 
 import java.io.IOException;
 
-import brayan.rivera.whitecity.ui.SectionsPagerAdapter;
-
 public class AdministradorActivity extends AppCompatActivity {
 
     public  static  Uri url_Imagen_ADMIN = null;
@@ -26,9 +24,7 @@ public class AdministradorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_administrador);
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
         ViewPager viewPager = findViewById(R.id.view_pager);
-        viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
 
