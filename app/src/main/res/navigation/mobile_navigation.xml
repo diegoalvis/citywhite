@@ -30,7 +30,7 @@
         tools:layout="@layout/fragment_lista" />
     <fragment
         android:id="@+id/navigation_hoteles"
-        android:name="brayan.rivera.whitecity.ui.hoteles.Hoteles"
+        android:name="brayan.rivera.whitecity.ui.hoteles.HotelesFragment"
         android:label="@string/title_hoteles"
         tools:layout="@layout/fragment_lista" />
 

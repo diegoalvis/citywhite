@@ -15,7 +15,8 @@ public class Sitio {
     private Double lat;
     private Double lng;
 
-    public Sitio() { }
+    public Sitio() {
+    }
 
     public String getImagenPath() {
         return imagenPath;
@@ -103,14 +104,6 @@ public class Sitio {
 
     public void setValorcalificacion(String valorcalificacion) {
         this.valorcalificacion = valorcalificacion;
-    }
-
-    public String getNombreimagen() {
-        return imagenPath;
-    }
-
-    public void setNombreimagen(String nombreimagen) {
-        this.imagenPath = nombreimagen;
     }
 
     public String getNombreSonido() {

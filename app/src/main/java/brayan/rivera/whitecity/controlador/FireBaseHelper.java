@@ -83,7 +83,6 @@ public class FireBaseHelper {
         datos.setDireccion(dir);
         datos.setTelefono(tel);
         datos.setFacebook(face);
-        datos.setNombreimagen(img);
         datos.setNombreSonido(audio);
 
         indice.child(Registrar_Sitio.categoria).child(nomb).setValue(datos);

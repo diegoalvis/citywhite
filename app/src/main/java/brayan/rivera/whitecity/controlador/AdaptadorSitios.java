@@ -1,5 +1,7 @@
 package brayan.rivera.whitecity.controlador;
 
+import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,17 +21,18 @@ import java.util.ArrayList;
 
 import brayan.rivera.whitecity.R;
 import brayan.rivera.whitecity.data.modelos.Sitio;
+import brayan.rivera.whitecity.ui.detalle.DetalleActivity;
 
 
-public class AdaptadorSitios extends RecyclerView.Adapter<AdaptadorSitios.SitioViewHolder> implements View.OnClickListener {
+public class AdaptadorSitios extends RecyclerView.Adapter<AdaptadorSitios.SitioViewHolder> {
 
     private ArrayList<Sitio> sitios;
     //escuchador onclicklistener
-    private View.OnClickListener onClickListener;
+    private Context context;
 
 
-    public AdaptadorSitios(View.OnClickListener onClickListener) {
-        this.onClickListener = onClickListener;
+    public AdaptadorSitios(Context context) {
+        this.context = context;
         sitios = new ArrayList<>();
     }
 
@@ -38,7 +41,6 @@ public class AdaptadorSitios extends RecyclerView.Adapter<AdaptadorSitios.SitioV
     @Override
     public SitioViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.lugar_item, parent, false);
-        v.setOnClickListener(this);
         SitioViewHolder holder = new SitioViewHolder(v);
         return holder;
     }
@@ -49,12 +51,21 @@ public class AdaptadorSitios extends RecyclerView.Adapter<AdaptadorSitios.SitioV
         Sitio sitio = sitios.get(position);
         holder.nombre.setText(sitios.get(position).getNombre());
 
-        // cargar imagen alamcenada en firebase
+        // cargar imagen guardada en firebase
         StorageReference storageRef = FirebaseStorage.getInstance().getReference();
-        storageRef.child("Fotos/Iglesias/" + sitio.getNombreimagen()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        storageRef.child("fotos/" + sitio.getImagenPath()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
                 Picasso.get().load(uri).into(holder.imagen);
+            }
+        });
+
+        // set ver mas listener
+        holder.verMas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, DetalleActivity.class);
+                context.startActivity(intent);
             }
         });
     }
@@ -62,13 +73,6 @@ public class AdaptadorSitios extends RecyclerView.Adapter<AdaptadorSitios.SitioV
     @Override
     public int getItemCount() {
         return sitios.size();
-    }
-
-    @Override
-    public void onClick(View v) {
-        if (onClickListener != null) {
-            onClickListener.onClick(v);
-        }
     }
 
     public ArrayList<Sitio> getSitios() {
@@ -83,17 +87,14 @@ public class AdaptadorSitios extends RecyclerView.Adapter<AdaptadorSitios.SitioV
     class SitioViewHolder extends RecyclerView.ViewHolder {
         TextView nombre;
         ImageView imagen;
+        TextView verMas;
 
         public SitioViewHolder(@NonNull View itemView) {
             super(itemView);
             this.nombre = itemView.findViewById(R.id.titulo_lugar);
             this.imagen = itemView.findViewById(R.id.imagen_lugar);
+            this.verMas = itemView.findViewById(R.id.ver_mas);
         }
     }
 
-    public void setFilter(ArrayList<Sitio> listafiltrada) {
-        this.sitios = new ArrayList<>();
-        this.sitios.addAll(listafiltrada);
-        notifyDataSetChanged();
-    }
 }
