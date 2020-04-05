@@ -44,5 +44,15 @@
     <string name="white_city">white city</string>
     <string name="texto_login_boton">Login / Registraté</string>
     <string name="texto_invitado_boton">Continuar como Invitado</string>
+    <string name="nombre">Nombre</string>
+    <string name="email">Email</string>
+    <string name="contrasenia">Contraseña</string>
+    <string name="confirma_contrasenia">Confirma Contraseña</string>
+    <string name="registro_de_nuevo_usuario">Registro de Nuevo Usuario</string>
+    <string name="registrar">Registrar</string>
+    <string name="completa_el_formulario_a_continuacion_y_disfruta_de_esta_hermosa_ciudad">Completa el formulario a continuacion y disfruta de esta hermosa ciudad...</string>
+    <string name="bienvenidos">Bienvenidos!!</string>
+    <string name="la_ciudad_blanca">La Ciudad Blanca</string>
+    <string name="text_iniciar_sesion">Ya tengo cuenta, Iniciar Sesion</string>
 
 </resources>
