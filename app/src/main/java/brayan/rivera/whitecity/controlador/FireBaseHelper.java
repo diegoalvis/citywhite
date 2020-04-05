@@ -8,26 +8,19 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 
-import java.util.ArrayList;
-
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
 import brayan.rivera.whitecity.AdministradorActivity;
 import brayan.rivera.whitecity.Registrar_Sitio;
 import brayan.rivera.whitecity.data.modelos.Sitio;
-import brayan.rivera.whitecity.ui.home.MainActivity;
 
 
 public class FireBaseHelper {
@@ -91,7 +84,7 @@ public class FireBaseHelper {
         datos.setTelefono(tel);
         datos.setFacebook(face);
         datos.setNombreimagen(img);
-        datos.setNombresonido(audio);
+        datos.setNombreSonido(audio);
 
         indice.child(Registrar_Sitio.categoria).child(nomb).setValue(datos);
 

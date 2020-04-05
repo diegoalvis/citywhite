@@ -23,7 +23,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import brayan.rivera.whitecity.R;
-import brayan.rivera.whitecity.controlador.AdaptadorSitios;
 import brayan.rivera.whitecity.controlador.FireBaseHelper;
 import brayan.rivera.whitecity.data.modelos.Sitio;
 import brayan.rivera.whitecity.ui.home.MainActivity;
@@ -131,7 +130,7 @@ public class Detalle_Sitio extends Fragment implements View.OnClickListener {
         //obtenemos el nombre de la foto del lugar que queremos consultar
         String nombrefoto=sitio.getNombre();
         //obtenemos el nombre del sonido del lugar que queremos consultar
-        nombresonido=sitio.getNombresonido();
+        nombresonido=sitio.getNombreSonido();
 
          /*invocamos el metdo consultarimagen de la clase firebasehelper para mandarle el img de nuestra vista
         y  el nombre de la foto que queremosmconsultar*/

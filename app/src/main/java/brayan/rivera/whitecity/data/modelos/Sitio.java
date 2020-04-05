@@ -1,8 +1,7 @@
 package brayan.rivera.whitecity.data.modelos;
 
-import java.util.ArrayList;
-
 public class Sitio {
+
     private String idSitio;
     private String nombre;
     private String descripcion;
@@ -11,19 +10,19 @@ public class Sitio {
     private String facebook;
     private String categoria;
     private String valorcalificacion;
-    private String nombreimg;
-    private String nombresonido;
+    private String imagenPath;
+    private String nombreSonido;
     private Double lat;
     private Double lng;
 
     public Sitio() { }
 
-    public String getNombreimg() {
-        return nombreimg;
+    public String getImagenPath() {
+        return imagenPath;
     }
 
-    public void setNombreimg(String nombreimg) {
-        this.nombreimg = nombreimg;
+    public void setImagenPath(String imagenPath) {
+        this.imagenPath = imagenPath;
     }
 
     public Double getLat() {
@@ -107,124 +106,19 @@ public class Sitio {
     }
 
     public String getNombreimagen() {
-        return nombreimg;
+        return imagenPath;
     }
 
     public void setNombreimagen(String nombreimagen) {
-        this.nombreimg = nombreimagen;
+        this.imagenPath = nombreimagen;
     }
 
-    public String getNombresonido() {
-        return nombresonido;
+    public String getNombreSonido() {
+        return nombreSonido;
     }
 
-    public void setNombresonido(String nombresonido) {
-        this.nombresonido = nombresonido;
+    public void setNombreSonido(String nombreSonido) {
+        this.nombreSonido = nombreSonido;
     }
-
-
-
-
-    public ArrayList<String> fotosiglesias() {
-        ArrayList<String> fotos = new ArrayList<>();
-
-        fotos.add("iglesia_belen.jpg");
-        fotos.add("iglesia_catedral.jpg");
-        fotos.add("iglesia_ermita.jpg");
-        fotos.add("iglesia_san_francisco.jpg");
-        fotos.add("iglesia_santo_domingo.jpeg");
-        return fotos;
-    }
-
-
-    public ArrayList<String> fotosSitiosInteres() {
-        ArrayList<String> fotos = new ArrayList<>();
-        fotos.add("sitio_interes_morro.jpg");
-        fotos.add("sitio_interes_parque_caldas.jpeg");
-        fotos.add("sitio_interes_pueblito_patojo.jpg");
-        fotos.add("sitio_interes_puente_humilladero.jpeg");
-        fotos.add("sitio_interes_torre_reloj.jpeg");
-
-        return fotos;
-    }
-
-
-    public ArrayList<String> fotosMuseos() {
-        ArrayList<String> fotos = new ArrayList<>();
-        fotos.add("museo_arte_religioso.jpeg");
-        fotos.add("museo_historia_natural.jpg");
-        fotos.add("museo_leon_valencia.jpeg");
-        fotos.add("museo_mosquera.jpeg");
-        fotos.add("museo_panteon_proceres.jpg");
-
-
-        return fotos;
-    }
-
-    public ArrayList<String> fotosComidaTipica() {
-        ArrayList<String> fotos = new ArrayList<>();
-        fotos.add("comida_tipica_carmelita.jpeg");
-        fotos.add("comida_tipica_moracastilla.jpg");
-
-
-        return fotos;
-    }
-
-    public ArrayList<String> fotosHoteles() {
-        ArrayList<String> fotos = new ArrayList<>();
-        fotos.add("hotel_balcones.jpg");
-        fotos.add("hotel_camino_real.jpe");
-        fotos.add("hotel_herreria.jpg");
-        fotos.add("hotel_monasterio.jp");
-        fotos.add("hotel_san_martin.jpg");
-
-        return fotos;
-    }
-
-    public ArrayList<String> sonidosIglesias() {
-        ArrayList<String> sonidos = new ArrayList<>();
-        sonidos.add("iglesia_belen.m4a");
-        sonidos.add("iglesia_catedral.m4a");
-        sonidos.add("iglesia_ermita.m4a");
-        sonidos.add("iglesia_san_francisco.m4a");
-        sonidos.add("iglesia_santo_domingo.mp3");
-
-        return sonidos;
-    }
-
-
-    public ArrayList<String> sonidosInteres() {
-        ArrayList<String> sonidos = new ArrayList<>();
-        sonidos.add("sitio_interes_morro_tulcan.m4a");
-        sonidos.add("sitio_interes_parque_caldas.m4a");
-        sonidos.add("sitio_interes_pueblito_patojo.m4a");
-        sonidos.add("sitio_interes_puente_humilladero.m4a");
-        sonidos.add("sitio_interes_torre_reloj.m4a");
-        return sonidos;
-    }
-
-    public ArrayList<String> sonidosMuseos() {
-        ArrayList<String> sonidos = new ArrayList<>();
-        sonidos.add("museo_arte_religiosa.m4a");
-        sonidos.add("museo_historial_natural.m4a");
-        sonidos.add("museo_leon_valencia.m4a");
-        sonidos.add("museo_mosquera.m4a");
-        sonidos.add("museo_panteon_proceres.m4a");
-
-        return sonidos;
-    }
-
-
-    public ArrayList<String> sonidosComidaTipica() {
-        ArrayList<String> sonidos = new ArrayList<>();
-        return sonidos;
-    }
-
-
-    public ArrayList<String> sonidosHoteles() {
-        ArrayList<String> sonidos = new ArrayList<>();
-        return sonidos;
-    }
-
 
 }

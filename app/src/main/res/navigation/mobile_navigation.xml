@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_iglesias"
-        android:name="brayan.rivera.whitecity.ui.iglesias.Iglesias"
+        android:name="brayan.rivera.whitecity.ui.iglesias.IglesiasFragment"
         android:label="@string/title_iglesias"
         tools:layout="@layout/fragment_lista" />
 

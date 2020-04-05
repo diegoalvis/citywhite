@@ -1,26 +1,20 @@
 package brayan.rivera.whitecity.ui.comida_tradicional;
 
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProviders;
-
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
-
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import brayan.rivera.whitecity.R;
 import brayan.rivera.whitecity.controlador.FireBaseHelper;
-import brayan.rivera.whitecity.ui.Detalle_Sitio;
 import brayan.rivera.whitecity.ui.home.MainActivity;
-import brayan.rivera.whitecity.ui.iglesias.Iglesias;
 
 
 public class ComidaTradicional extends Fragment {
@@ -29,7 +23,6 @@ public class ComidaTradicional extends Fragment {
     FireBaseHelper helper;
 
 
-    private ComidaTradicionalViewModel mViewModel;
 
     public static ComidaTradicional newInstance() {
         return new ComidaTradicional();
@@ -40,7 +33,6 @@ public class ComidaTradicional extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         //MainActivity.listafotos.clear();
         MainActivity.nodo="Comida Tipica";
-        Iglesias.validacion=4;
 
         //MainActivity.listafotos.add("comida_mora_castilla.jpeg");
 
@@ -76,13 +68,6 @@ public class ComidaTradicional extends Fragment {
 
 
         return view;
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(ComidaTradicionalViewModel.class);
-        // TODO: Use the ViewModel
     }
 
 }
