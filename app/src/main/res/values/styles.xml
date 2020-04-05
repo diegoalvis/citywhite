@@ -25,4 +25,10 @@
         <item name="android:background">@drawable/btn_login</item>
     </style>
 
+    <style name="input_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:ems">10</item>
+    </style>
+
 </resources>
