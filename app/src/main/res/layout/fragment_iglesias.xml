@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".modelo.iglesias.Iglesias">
+    tools:context=".ui.iglesias.Iglesias">
+
+    <TextView
+        android:text="@string/title_iglesias"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:layout_height="wrap_content"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_lista_Iglesias"
@@ -14,4 +21,4 @@
         tools:listitem="@layout/recycler_view_item" />
 
 
-</FrameLayout>
+</LinearLayout>
