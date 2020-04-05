@@ -6,7 +6,9 @@ import androidx.lifecycle.ViewModel;
 
 public class HotelesViewModel extends ViewModel {
 
+
     private MutableLiveData<String> mText;
+
 
     public HotelesViewModel() {
         mText = new MutableLiveData<>();

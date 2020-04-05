@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/height_item_card"
     android:layout_margin="@dimen/margen_card"
+    android:elevation="8dp"
     app:cardCornerRadius="34dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,7 +30,7 @@
             app:layout_constraintGuide_percent="0.62" />
 
         <TextView
-            android:id="@+id/titulo_lugar"
+                android:id="@+id/titulo_lugar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
