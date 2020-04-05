@@ -62,6 +62,13 @@ public class IglesiasFragment extends Fragment implements View.OnClickListener {
                 ArrayList<Sitio> sitios = new ArrayList<>();
                 for (DataSnapshot iglesiaSnapshot : dataSnapshot.getChildren()) {
                     sitios.add(iglesiaSnapshot.getValue(Sitio.class));
+                    sitios.add(iglesiaSnapshot.getValue(Sitio.class));
+                    sitios.add(iglesiaSnapshot.getValue(Sitio.class));
+                    sitios.add(iglesiaSnapshot.getValue(Sitio.class));
+                    sitios.add(iglesiaSnapshot.getValue(Sitio.class));
+                    sitios.add(iglesiaSnapshot.getValue(Sitio.class));
+                    sitios.add(iglesiaSnapshot.getValue(Sitio.class));
+                    sitios.add(iglesiaSnapshot.getValue(Sitio.class));
                 }
                 adaptador.setSitios(sitios);
                 adaptador.notifyDataSetChanged();
