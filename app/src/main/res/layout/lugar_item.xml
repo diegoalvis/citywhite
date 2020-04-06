@@ -32,17 +32,8 @@
 
         <TextView
             android:id="@+id/titulo_lugar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:textSize="@dimen/size_titulo_card"
-            android:textStyle="bold"
+            style="@style/titulo_lugar_style"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imagen_lugar"
             tools:text="CATEDRAL BASÍLICA NUESTRA SEÑORA DE LA ASUNCIÓN" />
