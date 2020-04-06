@@ -1,86 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="4dp">
 
-    <ImageView
-        android:id="@+id/imagen_lugar"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-1dp">
 
-    <TextView
-        android:id="@+id/titulo_lugar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
-        android:ellipsize="end"
-        android:maxLines="2"
-        android:textSize="@dimen/size_titulo_card"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imagen_lugar"
-        tools:text="CATEDRAL BASÍLICA NUESTRA SEÑORA DE LA ASUNCIÓN" />
+        <ImageView
+            android:id="@+id/imagen_lugar_detalle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toTopOf="@+id/guideline4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/descripcion_lugar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="16dp"
-        android:text="MultiAutoCompleteTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titulo_lugar" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.3" />
 
-    <TextView
-        android:id="@+id/facebook_lugar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="facebook"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="347dp" />
+        <TextView
+            android:id="@+id/titulo_lugar_detalle"
+            style="@style/titulo_lugar_style"
+            android:layout_marginTop="24dp"
+            android:text="CATEDRAL BASÍLICA NUESTRA SEÑORA DE LA ASUNCIÓN Y DE LA GRAN BENDICION"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imagen_lugar_detalle"
+            tools:text="CATEDRAL BASÍLICA NUESTRA SEÑORA DE LA ASUNCIÓN Y DE LA GRAN BENDICION" />
 
-    <TextView
-        android:id="@+id/telefono_lugar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="telefono"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="301dp" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_add_favorito_detalle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="#FE4081"
+            android:clickable="true"
+            android:drawingCacheQuality="auto"
+            android:focusable="true"
+            android:soundEffectsEnabled="false"
+            app:fabCustomSize="50dp"
+            app:fabSize="auto"
+            app:layout_constraintBottom_toBottomOf="@+id/imagen_lugar_detalle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imagen_lugar_detalle"
+            app:maxImageSize="30dp"
+            app:srcCompat="@drawable/ic_favorite_black_24dp" />
 
-    <TextView
-        android:id="@+id/direccion_lugar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Direccion"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="257dp" />
+        <TextView
+            android:id="@+id/direccion_lugar_detalle"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Direcion"
+            app:layout_constraintStart_toStartOf="@+id/scrollView2"
+            app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:drawingCacheQuality="auto"
-        android:soundEffectsEnabled="false"
-        app:maxImageSize="56dp"
-        app:srcCompat="@android:drawable/btn_star_big_on"
-        tools:layout_editor_absoluteX="343dp"
-        tools:layout_editor_absoluteY="98dp" />
+        <TextView
+            android:id="@+id/facebook_lugar_detalle"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="facebook"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/telefono_lugar_detalle"
+            app:layout_constraintTop_toBottomOf="@+id/telefono_lugar_detalle"
+            app:layout_constraintVertical_bias="0.0" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/telefono_lugar_detalle"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="telefono"
+            app:layout_constraintStart_toStartOf="@+id/direccion_lugar_detalle"
+            app:layout_constraintTop_toBottomOf="@+id/direccion_lugar_detalle" />
+
+        <TextView
+            android:id="@+id/ubicion_detalle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:padding="10dp"
+            android:text="@string/texto_ubicacion_detalle"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/size_texto"
+            android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@+id/telefono_lugar_detalle"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="0dp"
+            android:layout_height="210dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="180dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titulo_lugar_detalle"
+            app:layout_constraintVertical_bias="0.0">
+
+            <TextView
+                android:id="@+id/descripcion_lugar_detalle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="1.2sp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="@string/bio"
+                tools:text="@string/bio" />
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
+
+
+
