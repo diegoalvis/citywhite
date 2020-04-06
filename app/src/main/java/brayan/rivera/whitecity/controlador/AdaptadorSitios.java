@@ -48,7 +48,7 @@ public class AdaptadorSitios extends RecyclerView.Adapter<AdaptadorSitios.SitioV
     //metodo para asignar los valores a cada elemento de la plantilla personalizada
     @Override
     public void onBindViewHolder(@NonNull final SitioViewHolder holder, final int position) {
-        Sitio sitio = sitios.get(position);
+        final Sitio sitio = sitios.get(position);
         holder.nombre.setText(sitios.get(position).getNombre());
 
         // cargar imagen guardada en firebase
@@ -68,9 +68,17 @@ public class AdaptadorSitios extends RecyclerView.Adapter<AdaptadorSitios.SitioV
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, DetalleActivity.class);
+                intent.putExtra("sitio", sitio);
                 context.startActivity(intent);
             }
         });
+
+
+        // todo agregar a favoritos
+//        String key = new SessionHelper(context).getUserId();
+//        FireBaseHelper fireBaseHelper = new FireBaseHelper(context);
+//
+//        fireBaseHelper.agregarFavorito(sitio, key);
     }
 
     @Override

@@ -99,7 +99,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                     invitadoButton.setOnClickListener(SplashActivity.this);
                 }
             }
-        }, 200);
+        }, 1000);
 
     }
 

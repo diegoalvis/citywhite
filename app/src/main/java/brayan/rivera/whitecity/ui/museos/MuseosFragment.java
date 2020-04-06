@@ -65,8 +65,8 @@ public class MuseosFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<Sitio> sitios = new ArrayList<>();
-                for (DataSnapshot iglesiaSnapshot : dataSnapshot.getChildren()) {
-                    sitios.add(iglesiaSnapshot.getValue(Sitio.class));
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    sitios.add(snapshot.getValue(Sitio.class));
                 }
                 progressBar.setVisibility(View.GONE);
                 adaptador.setSitios(sitios);

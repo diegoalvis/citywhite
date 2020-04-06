@@ -4,30 +4,21 @@
 
     <item
         android:id="@+id/item_buscador"
+        android:icon="@drawable/ic_search"
         android:title="Buscardor"
-        android:icon="@drawable/item_buscador"
         app:actionViewClass="android.widget.SearchView"
-        app:showAsAction="always|collapseActionView"
-        />
+        app:showAsAction="always|collapseActionView" />
 
     <item
         android:id="@+id/item_registrar_sitios"
-        android:icon="@drawable/registrar_sitio"
+        android:icon="@drawable/ic_assignment"
         android:title="Registrar Sitio"
-        app:showAsAction="always"/>
+        app:showAsAction="always" />
 
     <item
-
-        android:id="@+id/item_menu_principal"
-        android:icon="@drawable/menu_principal"
+        android:id="@+id/item_menu_perfil"
+        android:icon="@drawable/ic_account"
         android:title="Menu Principal"
-        app:showAsAction="always"/>
-
-    <item
-
-        android:id="@+id/item_menu_admin"
-        android:icon="@drawable/administrador"
-        android:title="Menu Principal"
-        app:showAsAction="always"/>
+        app:showAsAction="always" />
 
 </menu>

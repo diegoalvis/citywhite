@@ -12,13 +12,12 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
-
 import brayan.rivera.whitecity.R;
+import brayan.rivera.whitecity.controlador.SessionHelper;
 import brayan.rivera.whitecity.data.modelos.Sitio;
-
+import brayan.rivera.whitecity.ui.registrar_sitio.RegistrarSitioActivity;
 
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +37,11 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_principal, menu);
 
-        MenuItem item = menu.findItem(R.id.item_buscador);
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
-
+        //creamos un item del menu para buscar
+        MenuItem itemBuscador = menu.findItem(R.id.item_buscador);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(itemBuscador);
         searchView.setOnQueryTextListener(this);
-
-        MenuItemCompat.setOnActionExpandListener(item, new MenuItemCompat.OnActionExpandListener() {
+        MenuItemCompat.setOnActionExpandListener(itemBuscador, new MenuItemCompat.OnActionExpandListener() {
             @Override
             public boolean onMenuItemActionExpand(MenuItem item) {
                 return true;
@@ -53,9 +51,17 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
             public boolean onMenuItemActionCollapse(MenuItem item) {
                 return true;
             }
+
         });
 
-        //creamos un item del menu para buscar
+        MenuItem itemRegistrarSitio = menu.findItem(R.id.item_registrar_sitios);
+        SessionHelper session = new SessionHelper(this);
+        if (session.getIsAdmin()) {
+            itemRegistrarSitio.setVisible(true);
+        } else {
+            itemRegistrarSitio.setVisible(false);
+        }
+
         return true;
     }
 
@@ -63,27 +69,19 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     //metodo por defecto para detectar que icono se presiona en el action bar
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
         //implemento un switch para realizar las acciones dependiendo del boton presionado
         switch (item.getItemId()) {
-
-            case R.id.item_menu_principal:
+            case R.id.item_menu_perfil:
                 break;
-
             case R.id.item_registrar_sitios:
-                Intent intent = new Intent(MainActivity.this, AdministradorActivity.class);
+                Intent intent = new Intent(MainActivity.this, RegistrarSitioActivity.class);
                 startActivity(intent);
                 break;
-
-
             default:
                 return super.onOptionsItemSelected(item);
-
         }
 
-
         return true;
-
     }
 
     @Override

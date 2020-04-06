@@ -11,8 +11,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -25,15 +23,14 @@ import java.util.ArrayList;
 
 import brayan.rivera.whitecity.R;
 import brayan.rivera.whitecity.controlador.AdaptadorSitios;
-import brayan.rivera.whitecity.controlador.FireBaseHelper;
 import brayan.rivera.whitecity.data.modelos.Sitio;
-import brayan.rivera.whitecity.ui.home.MainActivity;
 
 
 public class ComidaTradicionalFragment extends Fragment {
     private RecyclerView rvLista;
     private TextView titulo;
     private ProgressBar progressBar;
+
 
     private AdaptadorSitios adaptador;
 
@@ -64,8 +61,8 @@ public class ComidaTradicionalFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<Sitio> sitios = new ArrayList<>();
-                for (DataSnapshot iglesiaSnapshot : dataSnapshot.getChildren()) {
-                    sitios.add(iglesiaSnapshot.getValue(Sitio.class));
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    sitios.add(snapshot.getValue(Sitio.class));
                 }
                 progressBar.setVisibility(View.GONE);
                 adaptador.setSitios(sitios);
