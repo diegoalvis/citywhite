@@ -56,7 +56,10 @@ public class AdaptadorSitios extends RecyclerView.Adapter<AdaptadorSitios.SitioV
         storageRef.child("fotos/" + sitio.getImagenPath()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).into(holder.imagen);
+                Picasso.get().load(uri)
+                        .resize(600, 900)
+                        .centerInside()
+                        .into(holder.imagen);
             }
         });
 

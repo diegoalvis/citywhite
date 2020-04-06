@@ -13,8 +13,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import brayan.rivera.whitecity.R;
 import brayan.rivera.whitecity.controlador.SessionHelper;
+import brayan.rivera.whitecity.data.modelos.Usuario;
 import brayan.rivera.whitecity.ui.home.MainActivity;
 import brayan.rivera.whitecity.ui.login.LoginActivity;
 
@@ -58,11 +65,32 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                SessionHelper session = new SessionHelper(SplashActivity.this);
+                final SessionHelper session = new SessionHelper(SplashActivity.this);
+                // validar si el usuario tiene id (ya se ha logueado)
                 if (session.getUserId() != null) {
-                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
+                    // leer dato para saber si es admin o no
+                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("usuarios");
+                    ref.child(session.getUserId()).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            Usuario usuario = dataSnapshot.getValue(Usuario.class);
+                            // actualizar localmente si es admin o no
+                            session.saveIsAdmin(usuario.isAdmin());
+
+                            // navegar al main
+                            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                            // navegar al main
+                            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
                 } else {
                     loginRegistroButton.setVisibility(View.VISIBLE);
                     loginRegistroButton.setOnClickListener(SplashActivity.this);
@@ -71,19 +99,21 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                     invitadoButton.setOnClickListener(SplashActivity.this);
                 }
             }
-        }, 2000);
+        }, 200);
 
     }
 
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.button_invitado) {
+            // navegar al main
             Intent intent = new Intent(SplashActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
         }
 
         if (v.getId() == R.id.button_LoginRegistro) {
+            // navegar al registro
             Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();

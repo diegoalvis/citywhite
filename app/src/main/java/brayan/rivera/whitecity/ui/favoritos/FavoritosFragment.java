@@ -80,7 +80,7 @@ public class FavoritosFragment extends Fragment {
         });
 
 
-        registrarNuevoUsuario(new Usuario("teae", "sdasdsa", "asdas"));
+//        registrarNuevoUsuario(new Usuario("teae", "sdasdsa", "asdas", false));
     }
 
 

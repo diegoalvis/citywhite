@@ -12,7 +12,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
-import brayan.rivera.whitecity.AdministradorActivity;
+
 import brayan.rivera.whitecity.R;
 import brayan.rivera.whitecity.data.modelos.Sitio;
 

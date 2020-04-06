@@ -18,8 +18,7 @@ import com.google.firebase.storage.UploadTask;
 
 import androidx.annotation.NonNull;
 
-import brayan.rivera.whitecity.AdministradorActivity;
-import brayan.rivera.whitecity.Registrar_Sitio;
+import brayan.rivera.whitecity.ui.registrar_sitio.RegistrarSitioFragment;
 import brayan.rivera.whitecity.data.modelos.Sitio;
 
 
@@ -85,7 +84,7 @@ public class FireBaseHelper {
         datos.setFacebook(face);
         datos.setNombreSonido(audio);
 
-        indice.child(Registrar_Sitio.categoria).child(nomb).setValue(datos);
+//        indice.child(RegistrarSitioFragment.categoria).child(nomb).setValue(datos);
 
         Toast.makeText(context, "Sitio subido exitosamente...", Toast.LENGTH_LONG).show();
 
@@ -99,46 +98,46 @@ public class FireBaseHelper {
         storage2 = FirebaseStorage.getInstance();
         storagereference2 = storage2.getReference();
 
-        if (AdministradorActivity.url_Imagen_ADMIN != null) {
-
-            final ProgressDialog progressdialog = new ProgressDialog(context);
-            progressdialog.setTitle("subiendo...");
-            progressdialog.show();
-
-            StorageReference ref = storagereference2.child("fotos/").child(Registrar_Sitio.categoria + "/").child(img);
-            ref.putFile(AdministradorActivity.url_Imagen_ADMIN)
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                            progressdialog.dismiss();
-                            Toast.makeText(context, "Imagen subida", Toast.LENGTH_SHORT).show();
-
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-
-                            progressdialog.dismiss();
-                            Toast.makeText(context, "Fallo " + e.getMessage(), Toast.LENGTH_SHORT).show();
-
-                        }
-                    })
-                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
-
-                            double progreso = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-
-                            progressdialog.setMessage("Subiendo... " + (int) progreso + " %");
-
-                        }
-                    });
-
-
-        }
-
+//        if (AdministradorActivity.url_Imagen_ADMIN != null) {
+//
+//            final ProgressDialog progressdialog = new ProgressDialog(context);
+//            progressdialog.setTitle("subiendo...");
+//            progressdialog.show();
+//
+//            StorageReference ref = storagereference2.child("fotos/").child(img);
+//            ref.putFile(AdministradorActivity.url_Imagen_ADMIN)
+//                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                        @Override
+//                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//
+//                            progressdialog.dismiss();
+//                            Toast.makeText(context, "Imagen subida", Toast.LENGTH_SHORT).show();
+//
+//                        }
+//                    })
+//                    .addOnFailureListener(new OnFailureListener() {
+//                        @Override
+//                        public void onFailure(@NonNull Exception e) {
+//
+//                            progressdialog.dismiss();
+//                            Toast.makeText(context, "Fallo " + e.getMessage(), Toast.LENGTH_SHORT).show();
+//
+//                        }
+//                    })
+//                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+//                        @Override
+//                        public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
+//
+//                            double progreso = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+//
+//                            progressdialog.setMessage("Subiendo... " + (int) progreso + " %");
+//
+//                        }
+//                    });
+//
+//
+//        }
+//
 
     }
 
