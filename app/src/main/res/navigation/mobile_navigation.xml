@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/navigation_favoritos"
         android:name="brayan.rivera.whitecity.ui.favoritos.FavoritosFragment"
-        android:label="@string/title_sitios_interes"
+        android:label="@string/title_favoitos"
         tools:layout="@layout/fragment_lista" />
 
     <fragment

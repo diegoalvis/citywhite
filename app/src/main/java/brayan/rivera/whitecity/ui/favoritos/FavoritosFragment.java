@@ -46,7 +46,7 @@ public class FavoritosFragment extends Fragment {
         rvLista = view.findViewById(R.id.rv_lista);
         progressBar = view.findViewById(R.id.progress);
 
-        titulo.setText(R.string.title_iglesias);
+        titulo.setText(R.string.title_favoitos);
         adaptador = new AdaptadorSitios(getActivity());
 
         rvLista.setAdapter(adaptador);

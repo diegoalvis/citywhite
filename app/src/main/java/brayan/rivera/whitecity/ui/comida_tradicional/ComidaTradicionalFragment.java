@@ -46,7 +46,7 @@ public class ComidaTradicionalFragment extends Fragment {
         rvLista = view.findViewById(R.id.rv_lista);
         progressBar = view.findViewById(R.id.progress);
 
-        titulo.setText(R.string.title_iglesias);
+        titulo.setText(R.string.title_comidas_tradicionales);
         adaptador = new AdaptadorSitios(getActivity());
 
         rvLista.setAdapter(adaptador);
