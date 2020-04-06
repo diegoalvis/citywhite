@@ -7,39 +7,22 @@
     <string name="title_iglesias">Iglesias</string>
     <string name="title_sitios_interes">Sitios Interes</string>
 
-    <string name="tittle_carmelita">Carmelita</string>
-    <string name="tittle_moraCastilla">Mora Castilla</string>
-
 
     <string name="hint1">citywhite2020@gmail.com</string>
     <string name="hint2">password</string>
-    <string name="hint3">correo</string>
     <string name="txtbtn1">Login</string>
-    <string name="txtbtn2">Registro Usuario</string>
-    <string name="txtbtn3">Registro Sitio</string>
-    <string name="txtbtn4">Registrar</string>
-    <string name="hint5">Nombre Sitio turistico</string>ss
-    <string name="hint6">Descripción sitio turistico</string>
-    <string name="hint7">Calle 57 c 43 </string>
-    <string name="hint8">3188959954</string>
-    <string name="hint9">Facebook</string>
-    <string name="txtTitulo">SITIOS TURISTICOS</string>
+    ss
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <array name="categorias">
         <item>Seleccionar</item>
         <item>Iglesias</item>
-        <item>Sitios de Interes</item>
         <item>Museos</item>
         <item>Comida Tradicional</item>
         <item>Hoteles</item>
 
     </array>
-    <string name="title_activity_administrador">Administrador</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
     <string name="view_more">ver mas</string>
     <string name="white_city">white city</string>
     <string name="texto_login_boton">Login / Registraté</string>

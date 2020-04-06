@@ -19,10 +19,6 @@
         <activity android:name=".ui.detalle.DetalleActivity"></activity>
         <activity android:name=".ui.login.LoginActivity"></activity>
         <activity
-            android:name=".AdministradorActivity"
-            android:label="@string/title_activity_administrador"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".ui.SplashActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>

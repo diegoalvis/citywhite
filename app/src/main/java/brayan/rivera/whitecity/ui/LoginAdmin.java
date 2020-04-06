@@ -6,14 +6,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import brayan.rivera.whitecity.R;
 
 public class LoginAdmin extends AppCompatActivity {
@@ -31,6 +32,7 @@ public class LoginAdmin extends AppCompatActivity {
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
     }
+
     private void inicializarViews() {
         editTextCorreo = findViewById(R.id.correo);
         editTextPassword = findViewById(R.id.password);
@@ -38,7 +40,7 @@ public class LoginAdmin extends AppCompatActivity {
 
     public void loginUser(View view) {
 
-        if(validar()){
+        if (validar()) {
             //conectar con firebase
 
             String email = editTextCorreo.getText().toString(); //capturar texto gmail
@@ -63,17 +65,17 @@ public class LoginAdmin extends AppCompatActivity {
                             }
                         }
                     });
-        }else{
-            Toast.makeText(this, "Corregir los errores",Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, "Corregir los errores", Toast.LENGTH_LONG).show();
         }
     }
 
     private boolean validar() {
-        if(editTextCorreo.getText().toString().length() == 0){
+        if (editTextCorreo.getText().toString().length() == 0) {
             editTextCorreo.setError("Debe ingresar un correo electroico");
             return false;
         }
-        if(editTextPassword.getText().toString().length() == 0){
+        if (editTextPassword.getText().toString().length() == 0) {
             editTextPassword.setError("Debe ingresar un password para el usuario");
             return false;
         }

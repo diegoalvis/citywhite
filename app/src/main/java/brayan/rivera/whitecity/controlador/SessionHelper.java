@@ -34,6 +34,18 @@ public class SessionHelper {
         return preferences.getString("id", null);
     }
 
+    public void saveIsAdmin(boolean isAdmin) {
+        SharedPreferences preferences = context.getSharedPreferences(preferencias, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("admin", isAdmin);
+        editor.apply();
+    }
+
+    public boolean getIsAdmin() {
+        SharedPreferences preferences = context.getSharedPreferences(preferencias, Context.MODE_PRIVATE);
+        return preferences.getBoolean("admin", false);
+    }
+
 
     public void registrarNuevoUsuario(Usuario usuario) {
         DatabaseReference database = FirebaseDatabase.getInstance().getReference();

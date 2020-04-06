@@ -5,11 +5,13 @@ public class Usuario {
     private String nombre;
     private String correo;
     private String password;
+    private boolean isAdmin;
 
-    public Usuario(String nombre, String correo, String password) {
+    public Usuario(String nombre, String correo, String password, boolean isAdmin) {
         this.nombre = nombre;
         this.correo = correo;
         this.password = password;
+        this.isAdmin = isAdmin;
     }
 
     public String getNombre() {
@@ -34,5 +36,13 @@ public class Usuario {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
     }
 }
