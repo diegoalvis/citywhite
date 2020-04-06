@@ -38,22 +38,21 @@
             app:layout_constraintTop_toBottomOf="@+id/imagen_lugar"
             tools:text="CATEDRAL BASÍLICA NUESTRA SEÑORA DE LA ASUNCIÓN" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+
+        <ImageView
             android:id="@+id/btn_lista_item"
-            android:layout_width="64dp"
-            android:layout_height="19dp"
-            android:clickable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
             android:drawingCacheQuality="auto"
             android:focusable="true"
             android:soundEffectsEnabled="false"
-            app:backgroundTint="#FE4081"
             app:fabCustomSize="20dp"
             app:fabSize="auto"
             app:layout_constraintBottom_toTopOf="@+id/ver_mas"
             app:layout_constraintStart_toStartOf="@+id/ver_mas"
             app:layout_constraintTop_toBottomOf="@+id/ver_mas"
             app:maxImageSize="10dp"
-            app:srcCompat="@drawable/ic_favorite_black_24dp" />
+            app:srcCompat="@drawable/ic_favorite_red" />
 
         <TextView
             android:id="@+id/ver_mas"
@@ -61,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="@dimen/appbar_padding_top"
-            android:paddingLeft="20dp"
+            android:paddingLeft="22dp"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
             android:text="@string/view_more"
