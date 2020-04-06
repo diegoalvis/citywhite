@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_usuario_item"
     android:layout_width="match_parent"
     android:layout_height="100dp"
     android:layout_margin="@dimen/margen_card"
@@ -14,34 +15,30 @@
 
 
         <TextView
-            android:id="@+id/titulo_lugar"
+            android:id="@+id/nombre_usuario_item"
             style="@style/titulo_lugar_style"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="16dp"
             android:layout_marginEnd="32dp"
-            android:layout_marginBottom="16dp"
             android:textColor="@android:color/black"
-            app:layout_constraintBottom_toTopOf="@+id/textView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="@+id/imageView"
-            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/image_usuario_item"
+            app:layout_constraintTop_toTopOf="@+id/image_usuario_item"
             app:layout_constraintVertical_chainStyle="packed"
             tools:text="Jaime Andres Zapata P" />
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Academico"
-            tools:text="Academico"
+            android:id="@+id/correo_usuario_item"
+            android:layout_width="54dp"
+            android:layout_height="21dp"
+            android:text="Usuarios123@hotmail.com"
             android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView"
-            app:layout_constraintStart_toStartOf="@+id/titulo_lugar"
-            app:layout_constraintTop_toBottomOf="@+id/titulo_lugar"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintBottom_toBottomOf="@+id/image_usuario_item"
+            app:layout_constraintStart_toStartOf="@+id/nombre_usuario_item"
+            app:layout_constraintTop_toBottomOf="@+id/nombre_usuario_item"
+            tools:text="Usuarios123@hotmail.com" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/image_usuario_item"
             android:layout_width="66dp"
             android:layout_height="66dp"
             android:layout_marginStart="32dp"
