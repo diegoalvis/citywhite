@@ -84,23 +84,5 @@ public class FavoritosFragment extends Fragment {
     }
 
 
-    public void registrarNuevoUsuario(Usuario usuario) {
-        DatabaseReference database = FirebaseDatabase.getInstance().getReference();
-        String key = database.child("usuarios").push().getKey();
-        database.child("usuarios/" + key + "/").setValue(usuario)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        SessionHelper session = new SessionHelper(getContext());
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.e("error", "aejkldhasld");
-                        // TODO mostrar toast no se pudo crear usuario
-                    }
-                });
-    }
 
 }

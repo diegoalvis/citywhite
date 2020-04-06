@@ -11,8 +11,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -24,10 +22,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import brayan.rivera.whitecity.R;
-import brayan.rivera.whitecity.controlador.AdaptadorSitios;
-import brayan.rivera.whitecity.controlador.FireBaseHelper;
-import brayan.rivera.whitecity.data.modelos.Sitio;
-import brayan.rivera.whitecity.ui.home.MainActivity;
+import brayan.rivera.whitecity.controlador.AdaptadorComida;
+import brayan.rivera.whitecity.data.modelos.Comida;
 
 
 public class ComidaTradicionalFragment extends Fragment {
@@ -35,7 +31,7 @@ public class ComidaTradicionalFragment extends Fragment {
     private TextView titulo;
     private ProgressBar progressBar;
 
-    private AdaptadorSitios adaptador;
+    private AdaptadorComida adaptador;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -47,7 +43,7 @@ public class ComidaTradicionalFragment extends Fragment {
         progressBar = view.findViewById(R.id.progress);
 
         titulo.setText(R.string.title_comidas_tradicionales);
-        adaptador = new AdaptadorSitios(getActivity());
+        adaptador = new AdaptadorComida(getActivity());
 
         rvLista.setAdapter(adaptador);
         return view;
@@ -59,16 +55,16 @@ public class ComidaTradicionalFragment extends Fragment {
         super.onResume();
         progressBar.setVisibility(View.VISIBLE);
         // cargamos datos de Firebase (iglesias)
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("sitios/comidas");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("comidas");
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                ArrayList<Sitio> sitios = new ArrayList<>();
+                ArrayList<Comida> sitios = new ArrayList<>();
                 for (DataSnapshot iglesiaSnapshot : dataSnapshot.getChildren()) {
-                    sitios.add(iglesiaSnapshot.getValue(Sitio.class));
+                    sitios.add(iglesiaSnapshot.getValue(Comida.class));
                 }
                 progressBar.setVisibility(View.GONE);
-                adaptador.setSitios(sitios);
+                adaptador.setComidas(sitios);
                 adaptador.notifyDataSetChanged();
             }
 

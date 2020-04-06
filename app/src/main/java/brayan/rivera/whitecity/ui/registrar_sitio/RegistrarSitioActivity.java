@@ -3,9 +3,7 @@ package brayan.rivera.whitecity.ui.registrar_sitio;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -13,13 +11,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
-import androidx.fragment.app.Fragment;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import brayan.rivera.whitecity.R;
-import brayan.rivera.whitecity.controlador.FireBaseHelper;
 
 
-public class RegistrarSitioFragment extends Fragment implements View.OnClickListener {
+public class RegistrarSitioActivity extends AppCompatActivity implements View.OnClickListener {
 
     Spinner sp_categorias_REGISTRO_ADMIN;
     EditText txt_nombre_Sitio_REGISTRO_ADMIN;
@@ -45,40 +43,36 @@ public class RegistrarSitioFragment extends Fragment implements View.OnClickList
     String nombreAudio;
 
 
-    public RegistrarSitioFragment() {
+    public RegistrarSitioActivity() {
         // Required empty public constructor
     }
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_registrar_sitio);
 
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_registrar_sitio, container, false);
-
-        txt_nombre_Sitio_REGISTRO_ADMIN = view.findViewById(R.id.txt_nombre_Sitio_REGISTRO_ADMIN);
-        txt_descripcion_REGISTRO_ADMIN = view.findViewById(R.id.txt_descripcion_Sitio_REGISTRO_ADMIN);
-        txt_direccion_REGISTRO_ADMIN = view.findViewById(R.id.txt_direccion_Sitio_REGISTRO_ADMIN);
-        txt_telefono_REGISTRO_ADMIN = view.findViewById(R.id.txt_telefono_Sitio_REGISTRO_ADMIN);
-        txt_facebook_REGISTRO_ADMIN = view.findViewById(R.id.txt_facebook_Sitio_REGISTRO_ADMIN);
-        txt_nombre_Sonido_ADMIN = view.findViewById(R.id.edt_nombre_Sonido_ADMIN);
-        sp_categorias_REGISTRO_ADMIN = view.findViewById(R.id.sp_categorias_Sitio_REGISTRO_ADMIN);
-        ibtn_escoger_Sonido_ADMIN = view.findViewById(R.id.ibtn_escoger_Sonido_ADMIN);
-        img_imagen_Sitio_ADMIN = view.findViewById(R.id.img_imagen_Sitio_ADMIN);
-        btn_subir_Sitios_REGISTRO_ADMIN = view.findViewById(R.id.btn_subir_Sitio_REGISTRO_ADMIN);
+        txt_nombre_Sitio_REGISTRO_ADMIN = findViewById(R.id.txt_nombre_Sitio_REGISTRO_ADMIN);
+        txt_descripcion_REGISTRO_ADMIN = findViewById(R.id.txt_descripcion_Sitio_REGISTRO_ADMIN);
+        txt_direccion_REGISTRO_ADMIN = findViewById(R.id.txt_direccion_Sitio_REGISTRO_ADMIN);
+        txt_telefono_REGISTRO_ADMIN = findViewById(R.id.txt_telefono_Sitio_REGISTRO_ADMIN);
+        txt_facebook_REGISTRO_ADMIN = findViewById(R.id.txt_facebook_Sitio_REGISTRO_ADMIN);
+        txt_nombre_Sonido_ADMIN = findViewById(R.id.edt_nombre_Sonido_ADMIN);
+        sp_categorias_REGISTRO_ADMIN = findViewById(R.id.sp_categorias_Sitio_REGISTRO_ADMIN);
+        ibtn_escoger_Sonido_ADMIN = findViewById(R.id.ibtn_escoger_Sonido_ADMIN);
+        img_imagen_Sitio_ADMIN = findViewById(R.id.img_imagen_Sitio_ADMIN);
+        btn_subir_Sitios_REGISTRO_ADMIN = findViewById(R.id.btn_subir_Sitio_REGISTRO_ADMIN);
 
         btn_subir_Sitios_REGISTRO_ADMIN.setOnClickListener(this);
         ibtn_escoger_Sonido_ADMIN.setOnClickListener(this);
 
         cargarCategorias();
-
-        return view;
     }
 
 
     public void cargarCategorias() {
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.categorias, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.categorias, android.R.layout.simple_spinner_item);
         sp_categorias_REGISTRO_ADMIN.setAdapter(adapter);
         sp_categorias_REGISTRO_ADMIN.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> spn, android.view.View v, int posicion, long id) {
@@ -106,7 +100,8 @@ public class RegistrarSitioFragment extends Fragment implements View.OnClickList
         });
     }
 
-    public void extraerDatos() {
+    private void realizarRegistro() {
+        //                helper.subirImagen(nombreImagen);
         nombre = txt_nombre_Sitio_REGISTRO_ADMIN.getText().toString();
         descripcion = txt_descripcion_REGISTRO_ADMIN.getText().toString();
         direccion = txt_direccion_REGISTRO_ADMIN.getText().toString();
@@ -122,8 +117,7 @@ public class RegistrarSitioFragment extends Fragment implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_subir_Sitio_REGISTRO_ADMIN:
-                extraerDatos();
-//                helper.subirImagen(nombreImagen);
+                realizarRegistro();
                 break;
             case R.id.img_imagen_Sitio_ADMIN:
                 escogerImagen();

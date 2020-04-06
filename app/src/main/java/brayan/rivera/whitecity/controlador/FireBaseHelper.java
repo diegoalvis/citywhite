@@ -1,24 +1,16 @@
 package brayan.rivera.whitecity.controlador;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.widget.Toast;
 
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
 
-import androidx.annotation.NonNull;
-
-import brayan.rivera.whitecity.ui.registrar_sitio.RegistrarSitioFragment;
 import brayan.rivera.whitecity.data.modelos.Sitio;
 
 
