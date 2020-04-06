@@ -1,6 +1,10 @@
 package brayan.rivera.whitecity.data.modelos;
 
-public class Sitio {
+
+import java.io.Serializable;
+
+// Serializable para enviarlo por los extras
+public class Sitio implements Serializable {
 
     private String nombre;
     private String descripcion;

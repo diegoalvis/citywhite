@@ -39,5 +39,6 @@
     <string name="text_iniciar_sesion">Ya tengo cuenta, Iniciar Sesion</string>
     <string name="iniciar_sesion">Iniciar Sesion</string>
     <string name="no_tengo_cuenta">No tengo cuenta. Registrame</string>
+    <string name="no_hay_sitios">No hay sitios agregados en favoritos</string>
 
 </resources>

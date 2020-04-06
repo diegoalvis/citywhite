@@ -3,13 +3,11 @@ package brayan.rivera.whitecity.controlador;
 import android.content.Context;
 import android.widget.Toast;
 
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-
 
 import brayan.rivera.whitecity.data.modelos.Sitio;
 
@@ -64,9 +62,14 @@ public class FireBaseHelper {
 //    }
 
 
+    void agregarFavorito(Sitio sitio, String key) {
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference().child("usuarios/" + key + "/favoritos/").push();
+        database.setValue(sitio);
+    }
+
     public void registrarSitio(String nomb, String desc, String dir, String tel, String face, String img, String audio) {
         FirebaseDatabase bd = FirebaseDatabase.getInstance();
-        DatabaseReference indice = bd.getReference("Sitios");
+        DatabaseReference indice = bd.getReference("sitios");
         Sitio datos = new Sitio();
 
         datos.setNombre(nomb);
@@ -79,8 +82,8 @@ public class FireBaseHelper {
 //        indice.child(RegistrarSitioFragment.categoria).child(nomb).setValue(datos);
 
         Toast.makeText(context, "Sitio subido exitosamente...", Toast.LENGTH_LONG).show();
-
     }
+
 
     public void subirImagen(String img) {
 
