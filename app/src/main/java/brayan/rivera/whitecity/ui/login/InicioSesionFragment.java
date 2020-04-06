@@ -19,6 +19,7 @@ public class InicioSesionFragment extends Fragment implements View.OnClickListen
 
     private TextView registro;
     private EditText editEmail;
+    private EditText editPass;
     private Button buttonIniciar;
 
     public InicioSesionFragment(View.OnClickListener irARegistroListener) {
@@ -35,6 +36,7 @@ public class InicioSesionFragment extends Fragment implements View.OnClickListen
 
         editEmail = v.findViewById(R.id.input_email_iniciar_sesion);
         buttonIniciar = v.findViewById(R.id.btn_login_iniciar_sesion);
+        editPass = v.findViewById(R.id.input_pass_iniciar_sesion);
         buttonIniciar.setOnClickListener(this);
 
         return v;
@@ -44,10 +46,10 @@ public class InicioSesionFragment extends Fragment implements View.OnClickListen
     private void validarCampos() {
         if (editEmail.getText().toString().isEmpty()) {
             Toast.makeText(getContext(), "Email esta vacio", Toast.LENGTH_LONG).show();
-        } else if (editEmail.getText().toString().isEmpty()) {
-
+        } else if (editPass.getText().toString().isEmpty()) {
+            Toast.makeText(getContext(), "Contraseña esta vacio", Toast.LENGTH_LONG).show();
         } else {
-            Toast.makeText(getContext(), "Correcto", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "Correcto!", Toast.LENGTH_LONG).show();
         }
     }
 
