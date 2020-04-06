@@ -114,7 +114,7 @@ public class RegistrarSitioFragment extends Fragment implements View.OnClickList
         facebook = txt_facebook_REGISTRO_ADMIN.getText().toString();
         nombreImagen = nombre + "_imagen";
         nombreAudio = txt_nombre_Sonido_ADMIN.getText().toString();
-        helper.registrarSitio(nombre, descripcion, direccion, telefono, facebook, nombreImagen, nombreAudio);
+//        helper.registrarSitio(nombre, descripcion, direccion, telefono, facebook, nombreImagen, nombreAudio);
     }
 
 
@@ -123,7 +123,7 @@ public class RegistrarSitioFragment extends Fragment implements View.OnClickList
         switch (v.getId()) {
             case R.id.btn_subir_Sitio_REGISTRO_ADMIN:
                 extraerDatos();
-                helper.subirImagen(nombreImagen);
+//                helper.subirImagen(nombreImagen);
                 break;
             case R.id.img_imagen_Sitio_ADMIN:
                 escogerImagen();
