@@ -73,7 +73,7 @@
         android:layout_height="wrap_content"
         android:autofillHints=""
         android:ems="10"
-        android:hint="@string/contrasenia"
+        android:hint="@string/cambiar_contrasenia"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/pass_2_edit_usuario"
         app:layout_constraintEnd_toEndOf="@+id/email_edit_usuario"
