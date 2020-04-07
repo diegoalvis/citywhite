@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
-        android:text="Editar Usuarios"
+        android:text="My Cuenta"
         android:textColor="#2E3032"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
