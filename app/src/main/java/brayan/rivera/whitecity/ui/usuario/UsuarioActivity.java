@@ -28,9 +28,12 @@ public class UsuarioActivity extends AppCompatActivity {
     private void cargarInfo(Usuario usuario) {
 
         TextView nombre = (TextView) findViewById(R.id.name_edit_usuario);
+        TextView email = (TextView) findViewById(R.id.email_edit_usuario);
+
 
 
         nombre.setText(usuario.getNombre());
+        email.setText(usuario.getCorreo());
 
     }
 }
