@@ -1,12 +1,16 @@
 package brayan.rivera.whitecity.data.modelos;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable {
 
     private String nombre;
     private String correo;
     private String password;
     private boolean isAdmin;
 
+    public Usuario() {
+    }
 
     public Usuario(String nombre, String correo, String password, boolean isAdmin) {
         this.nombre = nombre;

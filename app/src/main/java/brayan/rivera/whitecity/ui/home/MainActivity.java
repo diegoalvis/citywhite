@@ -5,17 +5,28 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.SearchView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.MenuItemCompat;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
+
 import brayan.rivera.whitecity.R;
 import brayan.rivera.whitecity.controlador.SessionHelper;
 import brayan.rivera.whitecity.data.modelos.Sitio;
+import brayan.rivera.whitecity.data.modelos.Usuario;
 import brayan.rivera.whitecity.ui.registrar_sitio.RegistrarSitioActivity;
+import brayan.rivera.whitecity.ui.usuario.UsuarioActivity;
 
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
@@ -71,11 +82,29 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         //implemento un switch para realizar las acciones dependiendo del boton presionado
         switch (item.getItemId()) {
-            case R.id.item_menu_perfil:
-                break;
             case R.id.item_registrar_sitios:
                 Intent intent = new Intent(MainActivity.this, RegistrarSitioActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.item_menu_perfil:
+                final SessionHelper session = new SessionHelper(MainActivity.this);
+                // validar si el usuario tiene id (ya se ha logueado)
+                if (session.getUserId() != null) {
+                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("usuarios");
+                    ref.child(session.getUserId()).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            Usuario usuario = dataSnapshot.getValue(Usuario.class);
+                            Intent intent = new Intent(MainActivity.this, UsuarioActivity.class);
+                            intent.putExtra("usuario", usuario);
+                            startActivity(intent);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                        }
+                    });
+                }
                 break;
             default:
                 return super.onOptionsItemSelected(item);
