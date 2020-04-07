@@ -56,7 +56,7 @@ public class ComidaTradicionalFragment extends Fragment {
         super.onResume();
         progressBar.setVisibility(View.VISIBLE);
         // cargamos datos de Firebase (iglesias)
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("sitios/comidas");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("sitios/comida_tradicional");
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
