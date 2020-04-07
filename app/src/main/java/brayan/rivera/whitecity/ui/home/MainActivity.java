@@ -25,7 +25,9 @@ import brayan.rivera.whitecity.R;
 import brayan.rivera.whitecity.controlador.SessionHelper;
 import brayan.rivera.whitecity.data.modelos.Sitio;
 import brayan.rivera.whitecity.data.modelos.Usuario;
-import brayan.rivera.whitecity.ui.registrar_sitio.RegistrarSitioActivity;
+import brayan.rivera.whitecity.ui.admin.ListarSitiosActivity;
+import brayan.rivera.whitecity.ui.admin.ListarUsuariosActivity;
+import brayan.rivera.whitecity.ui.admin.RegistrarSitioActivity;
 import brayan.rivera.whitecity.ui.usuario.UsuarioActivity;
 
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
@@ -83,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         //implemento un switch para realizar las acciones dependiendo del boton presionado
         switch (item.getItemId()) {
             case R.id.item_admin:
-                Intent intent = new Intent(MainActivity.this, RegistrarSitioActivity.class);
+                Intent intent = new Intent(MainActivity.this, ListarUsuariosActivity.class);
                 startActivity(intent);
                 break;
             case R.id.item_menu_perfil:
@@ -121,9 +123,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     @Override
     public boolean onQueryTextChange(String newText) {
         try {
-
 //            FireBaseHelper.adaptador_sitios.setFilter(filter(FireBaseHelper.todosLosSitios,newText));
-
         } catch (Exception e) {
             e.printStackTrace();
         }

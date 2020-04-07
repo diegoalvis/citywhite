@@ -1,4 +1,4 @@
-package brayan.rivera.whitecity.ui.registrar_sitio;
+package brayan.rivera.whitecity.ui.admin;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -174,6 +174,7 @@ public class RegistrarSitioActivity extends AppCompatActivity implements View.On
         Sitio sitio = new Sitio(nombre, descripcion, direccion, telefono, facebook, nombreImagen, nombreAudio, latitud, longitud);
         FireBaseHelper helper = new FireBaseHelper();
         helper.registrarSitio(sitio, categoria);
+        finish();
     }
 
 

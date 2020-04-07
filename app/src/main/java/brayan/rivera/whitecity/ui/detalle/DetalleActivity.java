@@ -139,10 +139,11 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-    // detener audio cuando la activitidad se destruye
+    // detener audio cuando la activitidad se detiene
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    protected void onStop() {
+        super.onStop();
         mediaPlayer.stop();
     }
+
 }
