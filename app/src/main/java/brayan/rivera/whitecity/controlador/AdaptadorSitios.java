@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import brayan.rivera.whitecity.R;
 import brayan.rivera.whitecity.data.modelos.Sitio;
 import brayan.rivera.whitecity.ui.detalle.DetalleActivity;
+import brayan.rivera.whitecity.ui.login.LoginActivity;
 
 
 public class AdaptadorSitios extends RecyclerView.Adapter<AdaptadorSitios.SitioViewHolder> {
@@ -83,11 +84,23 @@ public class AdaptadorSitios extends RecyclerView.Adapter<AdaptadorSitios.SitioV
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        // validar si el usuario esta logueado
-                        String key = new SessionHelper(context).getUserId();
-                        FireBaseHelper fireBaseHelper = new FireBaseHelper();
-                        fireBaseHelper.agregarFavorito(sitio, key);
-                        Toast.makeText(context, "Sitio agregado a favoritos", Toast.LENGTH_SHORT).show();
+
+                        SessionHelper session = new SessionHelper(context);
+                        // validar si el usuario tiene id (ya se ha logueado)
+                        if (session.getUserId() != null) {
+                            // esto cuando esta logueado
+                            String key = new SessionHelper(context).getUserId();
+                            FireBaseHelper fireBaseHelper = new FireBaseHelper();
+                            fireBaseHelper.agregarFavorito(sitio, key);
+                            Toast.makeText(context, "Sitio agregado a favoritos", Toast.LENGTH_SHORT).show();
+
+                        } else {
+                            // navegar al registro
+                            Intent intent = new Intent(context, LoginActivity.class);
+                            context.startActivity(intent);
+                        }
+
+
                     }
                 });
     }

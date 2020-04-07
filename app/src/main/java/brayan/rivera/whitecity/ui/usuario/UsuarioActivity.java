@@ -3,6 +3,7 @@ package brayan.rivera.whitecity.ui.usuario;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import brayan.rivera.whitecity.R;
 import brayan.rivera.whitecity.data.modelos.Sitio;
@@ -25,6 +26,11 @@ public class UsuarioActivity extends AppCompatActivity {
     }
 
     private void cargarInfo(Usuario usuario) {
+
+        TextView nombre = (TextView) findViewById(R.id.name_edit_usuario);
+
+
+        nombre.setText(usuario.getNombre());
 
     }
 }
