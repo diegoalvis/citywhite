@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -49,7 +50,8 @@ public class AdaptadorSitios extends RecyclerView.Adapter<AdaptadorSitios.SitioV
     @Override
     public void onBindViewHolder(@NonNull final SitioViewHolder holder, final int position) {
         final Sitio sitio = sitios.get(position);
-        holder.nombre.setText(sitios.get(position).getNombre());
+        holder.nombre.setText(sitio.getNombre());
+        holder.descripcion.setText(sitio.getDescripcion());
 
         // cargar imagen guardada en firebase
         StorageReference storageRef = FirebaseStorage.getInstance().getReference();
@@ -73,12 +75,16 @@ public class AdaptadorSitios extends RecyclerView.Adapter<AdaptadorSitios.SitioV
             }
         });
 
-
-        // todo agregar a favoritos
-//        String key = new SessionHelper(context).getUserId();
-//        FireBaseHelper fireBaseHelper = new FireBaseHelper(context);
-//
-//        fireBaseHelper.agregarFavorito(sitio, key);
+        holder.favorito.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String key = new SessionHelper(context).getUserId();
+                        FireBaseHelper fireBaseHelper = new FireBaseHelper();
+                        fireBaseHelper.agregarFavorito(sitio, key);
+                        Toast.makeText(context, "Sitio agregado a favoritos", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     @Override
@@ -97,7 +103,9 @@ public class AdaptadorSitios extends RecyclerView.Adapter<AdaptadorSitios.SitioV
     //metodo para instaciar cada elemento de la plantilla perzonalizada
     class SitioViewHolder extends RecyclerView.ViewHolder {
         TextView nombre;
+        TextView descripcion;
         ImageView imagen;
+        ImageView favorito;
         TextView verMas;
 
         public SitioViewHolder(@NonNull View itemView) {
@@ -105,6 +113,8 @@ public class AdaptadorSitios extends RecyclerView.Adapter<AdaptadorSitios.SitioV
             this.nombre = itemView.findViewById(R.id.titulo_lugar);
             this.imagen = itemView.findViewById(R.id.imagen_lugar);
             this.verMas = itemView.findViewById(R.id.ver_mas);
+            this.favorito = itemView.findViewById(R.id.btn_add_favorito);
+            this.descripcion = itemView.findViewById(R.id.descripcion_lugar);
         }
     }
 

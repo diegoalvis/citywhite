@@ -1,9 +1,5 @@
 package brayan.rivera.whitecity.controlador;
 
-import android.content.Context;
-import android.widget.Toast;
-
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -13,75 +9,32 @@ import brayan.rivera.whitecity.data.modelos.Sitio;
 
 
 public class FireBaseHelper {
+
     //crear la intacia a la vase de tados dentro de firebase
     private FirebaseDatabase database;
-    //crear una referencia para navegar dentro el arbl de la base de datos en firebase
-    private DatabaseReference myref;
-    //crear el login para vlidar dats dentro de firebase
-    private FirebaseAuth login;
-    private Context context;
 
-
-    public FireBaseHelper(Context context) {
-        this.context = context;
+    public FireBaseHelper() {
         this.database = FirebaseDatabase.getInstance();
     }
 
-
-//    public void listarsitios(final RecyclerView rv_lista_sitios) {
-//        sitios = new ArrayList<>();
-//        database = FirebaseDatabase.getInstance();
-//
-//        myref = database.getReference("sitios").child(MainActivity.nodo);
-//
-//        myref.addValueEventListener(new ValueEventListener() {
-//
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                sitios.removeAll(sitios);
-//                for (DataSnapshot dato : dataSnapshot.getChildren()) {
-//
-//                    Sitio sitio = dato.getValue(Sitio.class);
-//                    sitios.add(sitio);
-//                }
-//
-//                adaptador_sitios.notifyDataSetChanged();
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-//
-//        adaptador_sitios = new AdaptadorSitios(sitios);
-//        rv_lista_sitios.setAdapter(adaptador_sitios);
-//
-//
-//    }
-
-
     void agregarFavorito(Sitio sitio, String key) {
-        DatabaseReference database = FirebaseDatabase.getInstance().getReference().child("usuarios/" + key + "/favoritos/").push();
-        database.setValue(sitio);
+        DatabaseReference ref = database.getReference().child("usuarios/" + key + "/favoritos/" + sitio.getNombre());
+        ref.setValue(sitio);
     }
 
-    public void registrarSitio(String nomb, String desc, String dir, String tel, String face, String img, String audio) {
-        FirebaseDatabase bd = FirebaseDatabase.getInstance();
-        DatabaseReference indice = bd.getReference("sitios");
+    public void registrarSitio(Sitio sitio, String categoria) {
+        DatabaseReference ref = database.getReference("sitios/" + categoria);
         Sitio datos = new Sitio();
-
-        datos.setNombre(nomb);
-        datos.setDescripcion(desc);
-        datos.setDireccion(dir);
-        datos.setTelefono(tel);
-        datos.setFacebook(face);
-        datos.setNombreSonido(audio);
+//
+//        datos.setNombre(nomb);
+//        datos.setDescripcion(desc);
+//        datos.setDireccion(dir);
+//        datos.setTelefono(tel);
+//        datos.setFacebook(face);
+//        datos.setNombreSonido(audio);
 
 //        indice.child(RegistrarSitioFragment.categoria).child(nomb).setValue(datos);
 
-        Toast.makeText(context, "Sitio subido exitosamente...", Toast.LENGTH_LONG).show();
     }
 
 
@@ -106,6 +59,7 @@ public class FireBaseHelper {
 //                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 //
 //                            progressdialog.dismiss();
+//
 //                            Toast.makeText(context, "Imagen subida", Toast.LENGTH_SHORT).show();
 //
 //                        }

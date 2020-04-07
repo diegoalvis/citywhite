@@ -20,6 +20,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import brayan.rivera.whitecity.R;
 import brayan.rivera.whitecity.controlador.AdaptadorSitios;

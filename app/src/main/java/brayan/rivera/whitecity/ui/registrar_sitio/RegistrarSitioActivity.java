@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import brayan.rivera.whitecity.R;
+import brayan.rivera.whitecity.controlador.FireBaseHelper;
 
 
 public class RegistrarSitioActivity extends AppCompatActivity implements View.OnClickListener {
@@ -64,8 +65,9 @@ public class RegistrarSitioActivity extends AppCompatActivity implements View.On
         img_imagen_Sitio_ADMIN = findViewById(R.id.img_imagen_Sitio_ADMIN);
         btn_subir_Sitios_REGISTRO_ADMIN = findViewById(R.id.btn_subir_Sitio_REGISTRO_ADMIN);
 
-        btn_subir_Sitios_REGISTRO_ADMIN.setOnClickListener(this);
+        img_imagen_Sitio_ADMIN.setOnClickListener(this);
         ibtn_escoger_Sonido_ADMIN.setOnClickListener(this);
+        btn_subir_Sitios_REGISTRO_ADMIN.setOnClickListener(this);
 
         cargarCategorias();
     }
@@ -101,7 +103,8 @@ public class RegistrarSitioActivity extends AppCompatActivity implements View.On
     }
 
     private void realizarRegistro() {
-        //                helper.subirImagen(nombreImagen);
+        FireBaseHelper helper = new FireBaseHelper();
+        helper.subirImagen(nombreImagen);
         nombre = txt_nombre_Sitio_REGISTRO_ADMIN.getText().toString();
         descripcion = txt_descripcion_REGISTRO_ADMIN.getText().toString();
         direccion = txt_direccion_REGISTRO_ADMIN.getText().toString();
