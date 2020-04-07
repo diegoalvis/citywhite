@@ -30,27 +30,28 @@
 
     <TextView
         android:id="@+id/textView7"
-        android:layout_width="357dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:shadowColor="#2E3032"
         android:text="@string/text_edit_user"
         android:textColor="#2C2727"
         app:layout_constraintBottom_toTopOf="@+id/name_edit_usuario"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
 
     <EditText
         android:id="@+id/name_edit_usuario"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/nombre"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/email_edit_usuario"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView7"
         app:layout_constraintStart_toStartOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
@@ -84,7 +85,6 @@
         android:id="@+id/email_edit_usuario"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="14dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/email"

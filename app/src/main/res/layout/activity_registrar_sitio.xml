@@ -63,6 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:hint="Ingrese Telefono"
+            android:inputType="number"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="@+id/txt_direccion_Sitio_REGISTRO_ADMIN"
             app:layout_constraintStart_toStartOf="@+id/txt_direccion_Sitio_REGISTRO_ADMIN"
