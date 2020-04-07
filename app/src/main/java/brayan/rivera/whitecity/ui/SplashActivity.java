@@ -75,7 +75,11 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             Usuario usuario = dataSnapshot.getValue(Usuario.class);
                             // actualizar localmente si es admin o no
-                            session.saveIsAdmin(usuario.isAdmin());
+                            if (usuario != null) {
+                                session.saveIsAdmin(usuario.isAdmin());
+                            } else {
+                                session.saveUserId(null);
+                            }
 
                             // navegar al main
                             Intent intent = new Intent(SplashActivity.this, MainActivity.class);

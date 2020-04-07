@@ -26,9 +26,7 @@ import brayan.rivera.whitecity.controlador.SessionHelper;
 import brayan.rivera.whitecity.data.modelos.Sitio;
 import brayan.rivera.whitecity.data.modelos.Usuario;
 import brayan.rivera.whitecity.ui.admin.AdminActivity;
-import brayan.rivera.whitecity.ui.admin.ListarSitiosActivity;
-import brayan.rivera.whitecity.ui.admin.ListarUsuariosActivity;
-import brayan.rivera.whitecity.ui.admin.RegistrarSitioActivity;
+import brayan.rivera.whitecity.ui.login.LoginActivity;
 import brayan.rivera.whitecity.ui.usuario.UsuarioActivity;
 
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
@@ -83,10 +81,11 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     //metodo por defecto para detectar que icono se presiona en el action bar
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Intent intent;
         //implemento un switch para realizar las acciones dependiendo del boton presionado
         switch (item.getItemId()) {
             case R.id.item_admin:
-                Intent intent = new Intent(MainActivity.this, AdminActivity.class);
+                intent = new Intent(MainActivity.this, AdminActivity.class);
                 startActivity(intent);
                 break;
             case R.id.item_menu_perfil:
@@ -107,6 +106,10 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                         public void onCancelled(@NonNull DatabaseError databaseError) {
                         }
                     });
+                } else {
+                    // navegar al registro
+                    intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(intent);
                 }
                 break;
             default:
