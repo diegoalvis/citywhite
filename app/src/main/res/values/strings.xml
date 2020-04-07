@@ -10,9 +10,6 @@
     <string name="title_favoitos">Favoritos</string>
 
 
-    <string name="hint1">citywhite2020@gmail.com</string>
-    <string name="hint2">password</string>
-    <string name="txtbtn1">Login</string>
     <string name="bio">Michael Schumacher (pronunciado /mɪçaeːl ʃuːmaxɐ/) (Hürth-Hermülheim, Alemania Occidental; 3 de enero de 1969) es un expiloto alemán de automovilismo de velocidad, el más laureado de la historia de Fórmula 1. Ha ganado siete campeonatos mundiales de Fórmula 1: dos con la escudería Benetton en 1994 y 1995,1​ y cinco con Ferrari entre 2000 y 2004,1​ superando en ello los cinco campeonatos conseguidos por Juan Manuel Fangio.
 Asimismo, fue subcampeón en 1998 y 2006, tercero en 1992, 1996 y 2005, cuarto en 1993 y quinto en 1999. En 1997 acabó subcampeón, aunque fue posteriormente descalificado sin puntos. Acumuló 91 victorias y 155 podios, superando los números de Alain Prost, quien ostentaba dichos récords en la década de los 90. Si tenemos en cuenta el actual sistema de puntos, el Káiser contaría con 3.890 puntos, siendo así el piloto con más puntos en la historia de Fórmula 1.
 Tras retirarse de Fórmula 1 en 2006, Schumacher compitió en motociclismo de velocidad en 2007. Sin embargo, regresó a Fórmula 1 en 2010 a las órdenes de Ross Brawn en el equipo Mercedes.2​ Se retiró de forma definitiva al terminar 20123​ tras el anuncio del fichaje de Lewis Hamilton por las flechas de plata.4​
@@ -50,9 +47,7 @@ El 29 de diciembre de 2013, mientras disfrutaba de las vacaciones navideñas con
     <string name="texto_ubicacion_detalle">VER EN MAPA</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="text_edit_user">Edita tu informacion personal</string>
     <string name="text_btn_actualizar_datos_usuario">ACTUALIZAR DATOS</string>
-    <string name="agregar_a_favoritos">agregar a favoritos</string>
 
 </resources>
