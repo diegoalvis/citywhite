@@ -37,7 +37,7 @@ public class ListarSitiosActivity extends AppCompatActivity {
         rvLista = findViewById(R.id.rv_lista);
         progressBar = findViewById(R.id.progress);
 
-        titulo.setText(R.string.title_iglesias);
+        titulo.setText(R.string.title_lista_sitios);
         adaptador = new AdaptadorSitios(this);
 
         rvLista.setAdapter(adaptador);

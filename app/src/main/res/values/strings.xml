@@ -5,6 +5,8 @@
     <string name="title_hoteles">Hoteles</string>
     <string name="title_museos">Museos</string>
     <string name="title_iglesias">Iglesias</string>
+    <string name="title_lista_usuario">Lista de Usuarios</string>
+    <string name="title_lista_sitios">Lista de Sitios</string>
     <string name="title_favoitos">Favoritos</string>
 
 
