@@ -1,6 +1,8 @@
 package brayan.rivera.whitecity.ui.detalle;
 
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +16,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
+
+import java.io.IOException;
 
 import brayan.rivera.whitecity.R;
 import brayan.rivera.whitecity.controlador.FireBaseHelper;
@@ -47,6 +51,7 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
         TextView facebook = (TextView) findViewById(R.id.facebook_lugar_detalle);
         final ImageView imagen = (ImageView) findViewById(R.id.imagen_lugar_detalle);
         ImageView favorito = (ImageView) findViewById(R.id.btn_add_favorito_detalle);
+        ImageView playSonido = (ImageView) findViewById(R.id.btn_play_sonido);
 
 
         // cargar imagen guardada en firebase
@@ -74,7 +79,8 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
         verUbicacion.setOnClickListener(this);
         // agregar listener para el boton facebook
         facebook.setOnClickListener(this);
-
+        // agregar listener para el boton play sonido
+        playSonido.setOnClickListener(this);
     }
 
 
@@ -105,6 +111,26 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
         if (v.getId() == R.id.facebook_lugar_detalle) {
             String uri = sitio.getFacebook();
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(uri)));
+        }
+
+        if (v.getId() == R.id.btn_play_sonido) {
+            // cargar sonido url desde firebase storage
+            StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+            storageRef.child("sonidos/" + sitio.getNombreSonido()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    try {
+                        MediaPlayer mediaPlayer = new MediaPlayer();
+                        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                        mediaPlayer.setDataSource(uri.toString());
+                        mediaPlayer.prepare(); // might take long! (for buffering, etc)
+                        mediaPlayer.start();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
         }
     }
 }

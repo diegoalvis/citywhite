@@ -61,6 +61,26 @@
             app:maxImageSize="30dp"
             app:srcCompat="@drawable/ic_favorite_white" />
 
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_play_sonido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="#FE4081"
+            android:clickable="true"
+            android:layout_marginTop="8dp"
+            android:drawingCacheQuality="auto"
+            android:focusable="true"
+            android:soundEffectsEnabled="false"
+            app:fabCustomSize="40dp"
+            app:fabSize="auto"
+            app:layout_constraintStart_toStartOf="@+id/titulo_lugar_detalle"
+            app:layout_constraintTop_toBottomOf="@+id/titulo_lugar_detalle"
+            app:maxImageSize="30dp"
+            app:srcCompat="@drawable/ic_favorite_white" />
+
+
         <TextView
             android:id="@+id/ubicion_detalle"
             android:layout_width="wrap_content"
@@ -81,9 +101,9 @@
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="24dp"
+            android:fadingEdge="vertical"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
-            android:fadingEdge="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
