@@ -1,6 +1,7 @@
 package brayan.rivera.whitecity.ui.detalle;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,7 +25,24 @@ public class DetalleActivity extends AppCompatActivity {
     }
 
     private void cargarInfo(Sitio sitio) {
-        sitio.getNombre();
+        //sitio.getNombre();
+
+        TextView nombre = (TextView) findViewById(R.id.titulo_lugar_detalle);
+        TextView descripcion = (TextView) findViewById(R.id.descripcion_lugar_detalle);
+        TextView direccion = (TextView) findViewById(R.id.direccion_lugar_detalle);
+        TextView telefono = (TextView) findViewById(R.id.telefono_lugar_detalle);
+        TextView facebook = (TextView) findViewById(R.id.facebook_lugar_detalle);
+
+
+
+        nombre.setText(sitio.getNombre());
+        descripcion.setText(sitio.getDescripcion());
+        direccion.setText(sitio.getDireccion());
+        telefono.setText(sitio.getTelefono());
+        facebook.setText(sitio.getFacebook());
+
+
+
     }
 
 

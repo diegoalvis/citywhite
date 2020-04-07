@@ -44,11 +44,11 @@ El 29 de diciembre de 2013, mientras disfrutaba de las vacaciones navideñas con
     <string name="iniciar_sesion">Iniciar Sesion</string>
     <string name="no_tengo_cuenta">No tengo cuenta. Registrame</string>
     <string name="no_hay_sitios">No hay sitios agregados en favoritos</string>
-    <string name="texto_ubicacion_detalle">UBICACION</string>
+    <string name="texto_ubicacion_detalle">VER EN MAPA</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="text_edit_user">Edita la informacion personal</string>
+    <string name="text_edit_user">Edita tu informacion personal</string>
     <string name="text_btn_actualizar_datos_usuario">ACTUALIZAR DATOS</string>
 
 </resources>
