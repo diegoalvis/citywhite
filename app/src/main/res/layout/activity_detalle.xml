@@ -53,7 +53,7 @@
             android:drawingCacheQuality="auto"
             android:focusable="true"
             android:soundEffectsEnabled="false"
-            app:fabCustomSize="50dp"
+            app:fabCustomSize="40dp"
             app:fabSize="auto"
             app:layout_constraintBottom_toBottomOf="@+id/imagen_lugar_detalle"
             app:layout_constraintEnd_toEndOf="parent"
@@ -67,18 +67,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:backgroundTint="#FE4081"
+            android:backgroundTint="@android:color/white"
             android:clickable="true"
-            android:layout_marginTop="8dp"
             android:drawingCacheQuality="auto"
             android:focusable="true"
             android:soundEffectsEnabled="false"
-            app:fabCustomSize="40dp"
+            app:fabCustomSize="41dp"
             app:fabSize="auto"
-            app:layout_constraintStart_toStartOf="@+id/titulo_lugar_detalle"
-            app:layout_constraintTop_toBottomOf="@+id/titulo_lugar_detalle"
-            app:maxImageSize="30dp"
-            app:srcCompat="@drawable/ic_favorite_white" />
+            app:layout_constraintBottom_toBottomOf="@+id/btn_add_favorito_detalle"
+            app:layout_constraintEnd_toStartOf="@+id/btn_add_favorito_detalle"
+            app:layout_constraintTop_toTopOf="@+id/btn_add_favorito_detalle"
+            app:maxImageSize="40dp"
+            app:srcCompat="@drawable/reproducir" />
 
 
         <TextView
