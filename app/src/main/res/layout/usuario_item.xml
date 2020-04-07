@@ -27,11 +27,14 @@
 
         <TextView
             android:id="@+id/correo_usuario_item"
-            android:layout_width="54dp"
+            android:layout_width="wrap_content"
             android:layout_height="21dp"
+            android:layout_marginEnd="32dp"
             android:text="Usuarios123@hotmail.com"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@+id/image_usuario_item"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/nombre_usuario_item"
             app:layout_constraintTop_toBottomOf="@+id/nombre_usuario_item"
             tools:text="Usuarios123@hotmail.com" />
