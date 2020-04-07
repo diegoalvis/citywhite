@@ -187,6 +187,9 @@ public class RegistrarSitioActivity extends AppCompatActivity implements View.On
             case R.id.img_imagen_Sitio_ADMIN:
                 escogerImagen();
                 break;
+            case R.id.ibtn_escoger_Sonido_ADMIN:
+                escogerAudio();
+                break;
         }
     }
 
