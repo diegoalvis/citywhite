@@ -13,14 +13,14 @@ public class Sitio implements Serializable {
     private String facebook;
     private String imagenPath;
     private String nombreSonido;
-    private Double lat;
-    private Double lng;
+    private String lat;
+    private String lng;
 
 
     public Sitio() {
     }
 
-    public Sitio(String nombre, String descripcion, String direccion, String telefono, String facebook, String imagenPath, String nombreSonido, Double lat, Double lng) {
+    public Sitio(String nombre, String descripcion, String direccion, String telefono, String facebook, String imagenPath, String nombreSonido, String lat, String lng) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.direccion = direccion;

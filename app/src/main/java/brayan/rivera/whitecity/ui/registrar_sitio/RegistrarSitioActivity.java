@@ -20,8 +20,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -35,6 +37,7 @@ import brayan.rivera.whitecity.data.modelos.Sitio;
 
 public class RegistrarSitioActivity extends AppCompatActivity implements View.OnClickListener {
 
+    ProgressBar progressBar;
     Spinner sp_categorias_REGISTRO_ADMIN;
     EditText txt_nombre_Sitio_REGISTRO_ADMIN;
     EditText txt_descripcion_REGISTRO_ADMIN;
@@ -42,13 +45,15 @@ public class RegistrarSitioActivity extends AppCompatActivity implements View.On
     EditText txt_telefono_REGISTRO_ADMIN;
     EditText txt_facebook_REGISTRO_ADMIN;
     EditText txt_nombre_Sonido_ADMIN;
+    EditText txt_latitud_ADMIN;
+    EditText txt_longitud_ADMIN;
     Button btn_subir_Sitios_REGISTRO_ADMIN;
     ImageView ibtn_escoger_Sonido_ADMIN;
     ImageView img_imagen_Sitio_ADMIN;
-    ProgressBar progressBar;
 
 
     static final int PICK_IMAGE_REQUEST = 71;
+    static final int PICK_AUDIO_REQUEST = 72;
 
     String categoria;
     String nombre;
@@ -58,7 +63,9 @@ public class RegistrarSitioActivity extends AppCompatActivity implements View.On
     String facebook;
     String nombreImagen;
     String nombreAudio;
+    String latitud, longitud;
     Uri uriImage;
+    Uri uriAudio;
 
 
     @Override
@@ -77,6 +84,8 @@ public class RegistrarSitioActivity extends AppCompatActivity implements View.On
         ibtn_escoger_Sonido_ADMIN = findViewById(R.id.ibtn_escoger_Sonido_ADMIN);
         img_imagen_Sitio_ADMIN = findViewById(R.id.img_imagen_Sitio_ADMIN);
         btn_subir_Sitios_REGISTRO_ADMIN = findViewById(R.id.btn_subir_Sitio_REGISTRO_ADMIN);
+        txt_latitud_ADMIN = findViewById(R.id.coord_latitud_REGISTRO_ADMIN);
+        txt_longitud_ADMIN = findViewById(R.id.coord_longitud_REGISTRO_ADMIN);
 
         img_imagen_Sitio_ADMIN.setOnClickListener(this);
         ibtn_escoger_Sonido_ADMIN.setOnClickListener(this);
@@ -124,22 +133,31 @@ public class RegistrarSitioActivity extends AppCompatActivity implements View.On
         direccion = txt_direccion_REGISTRO_ADMIN.getText().toString();
         telefono = txt_telefono_REGISTRO_ADMIN.getText().toString();
         facebook = txt_facebook_REGISTRO_ADMIN.getText().toString();
-        nombreImagen = nombre + "_imagen";
-        nombreAudio = txt_nombre_Sonido_ADMIN.getText().toString();
+        latitud = txt_latitud_ADMIN.getText().toString();
+        longitud = txt_latitud_ADMIN.getText().toString();
 
-        if (uriImage != null && categoria != null) {
+        nombreImagen = nombre + "_imagen";
+        nombreAudio = txt_nombre_Sonido_ADMIN.getText().toString() + +"_audio";
+
+        if (uriImage != null && categoria != null && !nombre.isEmpty() && !descripcion.isEmpty()) {
             progressBar.setVisibility(View.VISIBLE);
             // subir imagen primero
-            FirebaseStorage storage = FirebaseStorage.getInstance();
+            final FirebaseStorage storage = FirebaseStorage.getInstance();
             StorageReference storagereference = storage.getReference("fotos/" + nombreImagen);
             storagereference.putFile(uriImage)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            progressBar.setVisibility(View.GONE);
-                            Sitio sitio = new Sitio(nombre, descripcion, direccion, telefono, facebook, nombreImagen, nombreAudio, 0.0, 0.0);
-                            FireBaseHelper helper = new FireBaseHelper();
-                            helper.registrarSitio(sitio, categoria);
+                            // subir audio
+                            StorageReference storagereference = storage.getReference("sonidos/" + nombreAudio);
+                            storagereference.putFile(uriAudio).addOnCompleteListener(
+                                    new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                                            progressBar.setVisibility(View.GONE);
+                                            registrarSitio();
+                                        }
+                                    });
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
@@ -153,6 +171,12 @@ public class RegistrarSitioActivity extends AppCompatActivity implements View.On
         }
     }
 
+    private void registrarSitio() {
+        Sitio sitio = new Sitio(nombre, descripcion, direccion, telefono, facebook, nombreImagen, nombreAudio, latitud, longitud);
+        FireBaseHelper helper = new FireBaseHelper();
+        helper.registrarSitio(sitio, categoria);
+    }
+
 
     @Override
     public void onClick(View v) {
@@ -164,29 +188,52 @@ public class RegistrarSitioActivity extends AppCompatActivity implements View.On
                 escogerImagen();
                 break;
         }
-
     }
 
     private void escogerImagen() {
-        //vamos a crear un intent para abrir el storage del celular  y traer un archivo tipo imagen
+        //vamos a crear un intent para abrir el storage del celular y traer un archivo tipo imagen
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Selecione una imagen"), PICK_IMAGE_REQUEST);
     }
 
+    private void escogerAudio() {
+        //vamos a crear un intent para abrir el storage del celular y traer un archivo de audio
+        Intent intent_upload = new Intent();
+        intent_upload.setType("audio/*");
+        intent_upload.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent_upload, PICK_AUDIO_REQUEST);
+    }
 
     // fuente https://stackoverflow.com/a/58761883/7089060
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
-            uriImage = data.getData();
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uriImage);
-                img_imagen_Sitio_ADMIN.setImageBitmap(bitmap);
-            } catch (IOException e) {
-                e.printStackTrace();
+        if (resultCode == Activity.RESULT_OK && data != null) {
+            if (requestCode == PICK_IMAGE_REQUEST) {
+                uriImage = data.getData();
+                try {
+                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uriImage);
+                    img_imagen_Sitio_ADMIN.setImageBitmap(bitmap);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (requestCode == PICK_AUDIO_REQUEST) {
+                uriAudio = data.getData();
+                // subir audio
+                FirebaseStorage storage = FirebaseStorage.getInstance();
+                StorageReference storagereference = storage.getReference("sonidos/" + "prueba_audio");
+                storagereference.putFile(uriAudio).addOnCompleteListener(
+                        new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                                Toast.makeText(RegistrarSitioActivity.this, "Termino", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
             }
         }
     }
