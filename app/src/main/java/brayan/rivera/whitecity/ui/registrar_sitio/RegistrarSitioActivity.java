@@ -137,7 +137,7 @@ public class RegistrarSitioActivity extends AppCompatActivity implements View.On
         longitud = txt_latitud_ADMIN.getText().toString();
 
         nombreImagen = nombre + "_imagen";
-        nombreAudio = txt_nombre_Sonido_ADMIN.getText().toString() + +"_audio";
+        nombreAudio = txt_nombre_Sonido_ADMIN.getText().toString() + "_audio";
 
         if (uriImage != null && categoria != null && !nombre.isEmpty() && !descripcion.isEmpty()) {
             progressBar.setVisibility(View.VISIBLE);
