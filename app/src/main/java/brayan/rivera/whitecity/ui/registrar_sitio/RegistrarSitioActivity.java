@@ -92,6 +92,9 @@ public class RegistrarSitioActivity extends AppCompatActivity implements View.On
         sp_categorias_REGISTRO_ADMIN.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> spn, android.view.View v, int posicion, long id) {
                 switch (posicion) {
+                    case 0:
+                        categoria = null;
+                        break;
                     case 1:
                         categoria = "iglesias";
                         break;
@@ -103,6 +106,9 @@ public class RegistrarSitioActivity extends AppCompatActivity implements View.On
                         break;
                     case 4:
                         categoria = "hoteles";
+                        break;
+                    default:
+                        categoria = null;
                         break;
                 }
             }
@@ -141,8 +147,7 @@ public class RegistrarSitioActivity extends AppCompatActivity implements View.On
                         public void onFailure(@NonNull Exception e) {
                             progressBar.setVisibility(View.GONE);
                         }
-                    })
-            ;
+                    });
         } else {
             Toast.makeText(this, "Falta informacion", Toast.LENGTH_SHORT).show();
         }
