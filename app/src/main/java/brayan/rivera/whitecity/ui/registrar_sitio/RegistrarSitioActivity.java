@@ -44,7 +44,6 @@ public class RegistrarSitioActivity extends AppCompatActivity implements View.On
     EditText txt_direccion_REGISTRO_ADMIN;
     EditText txt_telefono_REGISTRO_ADMIN;
     EditText txt_facebook_REGISTRO_ADMIN;
-    EditText txt_nombre_Sonido_ADMIN;
     EditText txt_latitud_ADMIN;
     EditText txt_longitud_ADMIN;
     Button btn_subir_Sitios_REGISTRO_ADMIN;
@@ -63,7 +62,7 @@ public class RegistrarSitioActivity extends AppCompatActivity implements View.On
     String facebook;
     String nombreImagen;
     String nombreAudio;
-    String latitud, longitud;
+    Double latitud, longitud;
     Uri uriImage;
     Uri uriAudio;
 
@@ -79,7 +78,6 @@ public class RegistrarSitioActivity extends AppCompatActivity implements View.On
         txt_direccion_REGISTRO_ADMIN = findViewById(R.id.txt_direccion_Sitio_REGISTRO_ADMIN);
         txt_telefono_REGISTRO_ADMIN = findViewById(R.id.txt_telefono_Sitio_REGISTRO_ADMIN);
         txt_facebook_REGISTRO_ADMIN = findViewById(R.id.txt_facebook_Sitio_REGISTRO_ADMIN);
-        txt_nombre_Sonido_ADMIN = findViewById(R.id.edt_nombre_Sonido_ADMIN);
         sp_categorias_REGISTRO_ADMIN = findViewById(R.id.sp_categorias_Sitio_REGISTRO_ADMIN);
         ibtn_escoger_Sonido_ADMIN = findViewById(R.id.ibtn_escoger_Sonido_ADMIN);
         img_imagen_Sitio_ADMIN = findViewById(R.id.img_imagen_Sitio_ADMIN);
@@ -133,11 +131,12 @@ public class RegistrarSitioActivity extends AppCompatActivity implements View.On
         direccion = txt_direccion_REGISTRO_ADMIN.getText().toString();
         telefono = txt_telefono_REGISTRO_ADMIN.getText().toString();
         facebook = txt_facebook_REGISTRO_ADMIN.getText().toString();
-        latitud = txt_latitud_ADMIN.getText().toString();
-        longitud = txt_latitud_ADMIN.getText().toString();
+
+        latitud = Double.parseDouble(txt_latitud_ADMIN.getText().toString());
+        longitud = Double.parseDouble(txt_latitud_ADMIN.getText().toString());
 
         nombreImagen = nombre + "_imagen";
-        nombreAudio = txt_nombre_Sonido_ADMIN.getText().toString() + "_audio";
+        nombreAudio = nombre + "_audio";
 
         if (uriImage != null && categoria != null && !nombre.isEmpty() && !descripcion.isEmpty()) {
             progressBar.setVisibility(View.VISIBLE);
@@ -226,17 +225,6 @@ public class RegistrarSitioActivity extends AppCompatActivity implements View.On
 
             if (requestCode == PICK_AUDIO_REQUEST) {
                 uriAudio = data.getData();
-                // subir audio
-                FirebaseStorage storage = FirebaseStorage.getInstance();
-                StorageReference storagereference = storage.getReference("sonidos/" + "prueba_audio");
-                storagereference.putFile(uriAudio).addOnCompleteListener(
-                        new OnCompleteListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                                Toast.makeText(RegistrarSitioActivity.this, "Termino", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-
             }
         }
     }

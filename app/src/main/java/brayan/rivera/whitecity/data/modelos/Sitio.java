@@ -13,14 +13,14 @@ public class Sitio implements Serializable {
     private String facebook;
     private String imagenPath;
     private String nombreSonido;
-    private String lat;
-    private String lng;
+    private Double lat;
+    private Double lng;
 
 
     public Sitio() {
     }
 
-    public Sitio(String nombre, String descripcion, String direccion, String telefono, String facebook, String imagenPath, String nombreSonido, String lat, String lng) {
+    public Sitio(String nombre, String descripcion, String direccion, String telefono, String facebook, String imagenPath, String nombreSonido, Double lat, Double lng) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.direccion = direccion;
@@ -88,19 +88,19 @@ public class Sitio implements Serializable {
         this.nombreSonido = nombreSonido;
     }
 
-    public String getLat() {
+    public Double getLat() {
         return lat;
     }
 
-    public void setLat(String lat) {
+    public void setLat(Double lat) {
         this.lat = lat;
     }
 
-    public String getLng() {
+    public Double getLng() {
         return lng;
     }
 
-    public void setLng(String lng) {
+    public void setLng(Double lng) {
         this.lng = lng;
     }
 }

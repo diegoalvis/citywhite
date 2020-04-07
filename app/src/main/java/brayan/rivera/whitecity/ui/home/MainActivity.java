@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
         });
 
-        MenuItem itemRegistrarSitio = menu.findItem(R.id.item_registrar_sitios);
+        MenuItem itemRegistrarSitio = menu.findItem(R.id.item_admin);
         SessionHelper session = new SessionHelper(this);
         if (session.getIsAdmin()) {
             itemRegistrarSitio.setVisible(true);
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         //implemento un switch para realizar las acciones dependiendo del boton presionado
         switch (item.getItemId()) {
-            case R.id.item_registrar_sitios:
+            case R.id.item_admin:
                 Intent intent = new Intent(MainActivity.this, RegistrarSitioActivity.class);
                 startActivity(intent);
                 break;
