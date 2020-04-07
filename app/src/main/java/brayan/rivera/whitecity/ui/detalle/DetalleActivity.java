@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +29,8 @@ import brayan.rivera.whitecity.ui.login.LoginActivity;
 public class DetalleActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Sitio sitio;
+
+    MediaPlayer mediaPlayer = new MediaPlayer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +55,6 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
         final ImageView imagen = (ImageView) findViewById(R.id.imagen_lugar_detalle);
         ImageView favorito = (ImageView) findViewById(R.id.btn_add_favorito_detalle);
         ImageView playSonido = (ImageView) findViewById(R.id.btn_play_sonido);
-
 
         // cargar imagen guardada en firebase
         StorageReference storageRef = FirebaseStorage.getInstance().getReference();
@@ -114,23 +116,33 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
         }
 
         if (v.getId() == R.id.btn_play_sonido) {
+            final ProgressBar progressBar = findViewById(R.id.progress);
+            progressBar.setVisibility(View.VISIBLE);
             // cargar sonido url desde firebase storage
             StorageReference storageRef = FirebaseStorage.getInstance().getReference();
             storageRef.child("sonidos/" + sitio.getNombreSonido()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
                     try {
-                        MediaPlayer mediaPlayer = new MediaPlayer();
                         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
                         mediaPlayer.setDataSource(uri.toString());
                         mediaPlayer.prepare(); // might take long! (for buffering, etc)
+
+                        progressBar.setVisibility(View.GONE);
                         mediaPlayer.start();
                     } catch (IOException e) {
+                        progressBar.setVisibility(View.GONE);
                         e.printStackTrace();
                     }
                 }
             });
-
         }
+    }
+
+    // detener audio cuando la activitidad se destruye
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mediaPlayer.stop();
     }
 }

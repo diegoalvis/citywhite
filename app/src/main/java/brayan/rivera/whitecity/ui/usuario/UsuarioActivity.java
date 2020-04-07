@@ -1,17 +1,38 @@
 package brayan.rivera.whitecity.ui.usuario;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import brayan.rivera.whitecity.R;
+import brayan.rivera.whitecity.controlador.SessionHelper;
 import brayan.rivera.whitecity.data.modelos.Sitio;
 import brayan.rivera.whitecity.data.modelos.Usuario;
+import brayan.rivera.whitecity.ui.home.MainActivity;
 
-public class UsuarioActivity extends AppCompatActivity {
+public class UsuarioActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Usuario usuario;
+    
+    private ProgressBar progressBar;
+    private EditText editNombre;
+    private EditText editEmail;
+    private EditText editPass;
+    private EditText editPass2;
+    private Button btnActualizar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,13 +48,61 @@ public class UsuarioActivity extends AppCompatActivity {
 
     private void cargarInfo(Usuario usuario) {
 
-        TextView nombre = (TextView) findViewById(R.id.name_edit_usuario);
-        TextView email = (TextView) findViewById(R.id.email_edit_usuario);
+        progressBar = findViewById(R.id.progress);
+        editNombre = findViewById(R.id.name_edit_usuario);
+        editEmail = findViewById(R.id.email_edit_usuario);
+        editPass = findViewById(R.id.pass_edit_usuario);
+        editPass2 = findViewById(R.id.pass_2_edit_usuario);
+        btnActualizar = findViewById(R.id.btn_actualizar_datos_usuario);
 
+        editNombre.setText(usuario.getNombre());
+        editEmail.setText(usuario.getCorreo());
+        btnActualizar.setOnClickListener(this);
+    }
 
+    private void validarCampos() {
+        if (editNombre.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Nombre esta vacio", Toast.LENGTH_SHORT).show();
+        } else if (editEmail.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Email esta vacio", Toast.LENGTH_SHORT).show();
+        } else if (editPass.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Contraseña esta vacia", Toast.LENGTH_SHORT).show();
+        } else if (editPass2.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Contraseña esta vacia", Toast.LENGTH_SHORT).show();
+        } else if (!editPass.getText().toString().equals(editPass2.getText().toString())) {
+            Toast.makeText(this, "Las Contraseñas No coinciden", Toast.LENGTH_SHORT).show();
+        } else {
+            Usuario usuario = new Usuario(editNombre.getText().toString(), editEmail.getText().toString(), editPass.getText().toString(), false);
+            registrarNuevoUsuario(usuario);
+        }
+    }
+    
+    
+    private void registrarNuevoUsuario(Usuario usuario) {
+        progressBar.setVisibility(View.VISIBLE);
 
-        nombre.setText(usuario.getNombre());
-        email.setText(usuario.getCorreo());
+        SessionHelper session = new SessionHelper(this);
+        String key = session.getUserId();
 
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+        database.child("usuarios/" + key + "/").setValue(usuario)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        finish();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        progressBar.setVisibility(View.GONE);
+                        Toast.makeText(UsuarioActivity.this, "No se pudo actualizar usuario.", Toast.LENGTH_LONG).show();
+                    }
+                });
+    }
+
+    @Override
+    public void onClick(View v) {
+        validarCampos();
     }
 }
