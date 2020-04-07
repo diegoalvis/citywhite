@@ -17,7 +17,7 @@ public class FireBaseHelper {
         this.database = FirebaseDatabase.getInstance();
     }
 
-    void agregarFavorito(Sitio sitio, String key) {
+    public void agregarFavorito(Sitio sitio, String key) {
         DatabaseReference ref = database.getReference().child("usuarios/" + key + "/favoritos/" + sitio.getNombre());
         ref.setValue(sitio);
     }
