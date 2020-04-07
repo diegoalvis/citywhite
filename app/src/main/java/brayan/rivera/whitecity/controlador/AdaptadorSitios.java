@@ -84,7 +84,6 @@ public class AdaptadorSitios extends RecyclerView.Adapter<AdaptadorSitios.SitioV
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
                         SessionHelper session = new SessionHelper(context);
                         // validar si el usuario tiene id (ya se ha logueado)
                         if (session.getUserId() != null) {
@@ -99,8 +98,6 @@ public class AdaptadorSitios extends RecyclerView.Adapter<AdaptadorSitios.SitioV
                             Intent intent = new Intent(context, LoginActivity.class);
                             context.startActivity(intent);
                         }
-
-
                     }
                 });
     }

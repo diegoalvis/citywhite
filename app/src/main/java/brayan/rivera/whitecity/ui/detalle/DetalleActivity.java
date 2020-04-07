@@ -1,6 +1,5 @@
 package brayan.rivera.whitecity.ui.detalle;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,7 +21,7 @@ import brayan.rivera.whitecity.controlador.SessionHelper;
 import brayan.rivera.whitecity.data.modelos.Sitio;
 import brayan.rivera.whitecity.ui.login.LoginActivity;
 
-public class DetalleActivity extends AppCompatActivity {
+public class DetalleActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Sitio sitio;
 
@@ -41,6 +40,7 @@ public class DetalleActivity extends AppCompatActivity {
     private void cargarInfo(final Sitio sitio) {
 
         TextView nombre = (TextView) findViewById(R.id.titulo_lugar_detalle);
+        TextView verUbicacion = (TextView) findViewById(R.id.ubicion_detalle);
         TextView descripcion = (TextView) findViewById(R.id.descripcion_lugar_detalle);
         TextView direccion = (TextView) findViewById(R.id.direccion_lugar_detalle);
         TextView telefono = (TextView) findViewById(R.id.telefono_lugar_detalle);
@@ -61,40 +61,50 @@ public class DetalleActivity extends AppCompatActivity {
             }
         });
 
+        // cargar informacion del sitio
         nombre.setText(sitio.getNombre());
         descripcion.setText(sitio.getDescripcion());
-        direccion.setText("Direccion: "+ sitio.getDireccion());
-        telefono.setText("Telefono: "+sitio.getTelefono());
+        direccion.setText("Direccion: " + sitio.getDireccion());
+        telefono.setText("Telefono: " + sitio.getTelefono());
         facebook.setText(sitio.getFacebook());
 
-
-
-        favorito.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        SessionHelper session = new SessionHelper(DetalleActivity.this);
-                        // validar si el usuario tiene id (ya se ha logueado)
-                        if (session.getUserId() != null) {
-                            // esto cuando esta logueado
-                            String key = new SessionHelper(DetalleActivity.this).getUserId();
-                            FireBaseHelper fireBaseHelper = new FireBaseHelper();
-                            fireBaseHelper.agregarFavorito(sitio, key);
-                            Toast.makeText(DetalleActivity.this, "Sitio agregado a favoritos", Toast.LENGTH_SHORT).show();
-
-                        } else {
-                            // navegar al registro
-                            Intent intent = new Intent(DetalleActivity.this, LoginActivity.class);
-                            DetalleActivity.this.startActivity(intent);
-                        }
-
-
-                    }
-                });
-
+        // agregar listener para el boton agregar a favoritos
+        favorito.setOnClickListener(this);
+        // agregar listener para el boton ver en mapa
+        verUbicacion.setOnClickListener(this);
+        // agregar listener para el boton facebook
+        facebook.setOnClickListener(this);
 
     }
 
 
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.btn_add_favorito_detalle) {
+            SessionHelper session = new SessionHelper(DetalleActivity.this);
+            // validar si el usuario tiene id (ya se ha logueado)
+            if (session.getUserId() != null) {
+                // esto cuando esta logueado
+                String key = new SessionHelper(DetalleActivity.this).getUserId();
+                FireBaseHelper fireBaseHelper = new FireBaseHelper();
+                fireBaseHelper.agregarFavorito(sitio, key);
+                Toast.makeText(DetalleActivity.this, "Sitio agregado a favoritos", Toast.LENGTH_SHORT).show();
+
+            } else {
+                // navegar al registro
+                Intent intent = new Intent(DetalleActivity.this, LoginActivity.class);
+                DetalleActivity.this.startActivity(intent);
+            }
+        }
+
+        if (v.getId() == R.id.ubicion_detalle) {
+            String uri = "https://www.google.com/maps/search/?api=1&query=" + sitio.getLat() + "," + sitio.getLng();
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(uri)));
+        }
+
+        if (v.getId() == R.id.facebook_lugar_detalle) {
+            String uri = sitio.getFacebook();
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(uri)));
+        }
+    }
 }
