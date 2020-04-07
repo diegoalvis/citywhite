@@ -88,19 +88,19 @@ public class Sitio implements Serializable {
         this.nombreSonido = nombreSonido;
     }
 
-    public Double getLat() {
+    public String getLat() {
         return lat;
     }
 
-    public void setLat(Double lat) {
+    public void setLat(String lat) {
         this.lat = lat;
     }
 
-    public Double getLng() {
+    public String getLng() {
         return lng;
     }
 
-    public void setLng(Double lng) {
+    public void setLng(String lng) {
         this.lng = lng;
     }
 }
