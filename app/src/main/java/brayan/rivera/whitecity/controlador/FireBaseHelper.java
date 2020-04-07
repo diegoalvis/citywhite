@@ -23,28 +23,15 @@ public class FireBaseHelper {
     }
 
     public void registrarSitio(Sitio sitio, String categoria) {
-        DatabaseReference ref = database.getReference("sitios/" + categoria);
-        Sitio datos = new Sitio();
-//
-//        datos.setNombre(nomb);
-//        datos.setDescripcion(desc);
-//        datos.setDireccion(dir);
-//        datos.setTelefono(tel);
-//        datos.setFacebook(face);
-//        datos.setNombreSonido(audio);
-
-//        indice.child(RegistrarSitioFragment.categoria).child(nomb).setValue(datos);
-
+        DatabaseReference ref = database.getReference("sitios/" + categoria + "/" + sitio.getNombre());
+        ref.setValue(sitio);
     }
 
 
     public void subirImagen(String img) {
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storagereference = storage.getReference("");
 
-        FirebaseStorage storage2;
-        StorageReference storagereference2;
-
-        storage2 = FirebaseStorage.getInstance();
-        storagereference2 = storage2.getReference();
 
 //        if (AdministradorActivity.url_Imagen_ADMIN != null) {
 //

@@ -65,13 +65,17 @@ public class AdaptadorSitios extends RecyclerView.Adapter<AdaptadorSitios.SitioV
             }
         });
 
-        // set ver mas listener
+        holder.imagen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navegarAlDetalle(sitio);
+            }
+        });
+
         holder.verMas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, DetalleActivity.class);
-                intent.putExtra("sitio", sitio);
-                context.startActivity(intent);
+                navegarAlDetalle(sitio);
             }
         });
 
@@ -79,12 +83,19 @@ public class AdaptadorSitios extends RecyclerView.Adapter<AdaptadorSitios.SitioV
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        // validar si el usuario esta logueado
                         String key = new SessionHelper(context).getUserId();
                         FireBaseHelper fireBaseHelper = new FireBaseHelper();
                         fireBaseHelper.agregarFavorito(sitio, key);
                         Toast.makeText(context, "Sitio agregado a favoritos", Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    private void navegarAlDetalle(Sitio sitio) {
+        Intent intent = new Intent(context, DetalleActivity.class);
+        intent.putExtra("sitio", sitio);
+        context.startActivity(intent);
     }
 
     @Override
