@@ -111,6 +111,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:hint="Latitud"
+            android:text="0"
             android:inputType="numberDecimal"
             android:textAlignment="center"
             app:layout_constraintBaseline_toBaselineOf="@+id/coord_longitud_REGISTRO_ADMIN"
@@ -124,6 +125,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:hint="Longitud"
+            android:text="0"
             android:inputType="numberDecimal"
             android:textAlignment="center"
             app:layout_constraintEnd_toStartOf="@+id/coord_latitud_REGISTRO_ADMIN"
@@ -165,13 +167,13 @@
             app:layout_constraintTop_toBottomOf="@+id/sp_categorias_Sitio_REGISTRO_ADMIN" />
 
 
-        <EditText
+        <TextView
             android:id="@+id/edt_nombre_Sonido_ADMIN"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:hint="Ingrese Nombre Audio"
+            android:layout_margin="16dp"
             android:paddingLeft="70dp"
+            android:text="Selecciona Audio"
             android:textAlignment="center"
             app:layout_constraintEnd_toStartOf="@+id/ibtn_escoger_Sonido_ADMIN"
             app:layout_constraintHorizontal_bias="0.5"
@@ -186,11 +188,9 @@
             android:layout_marginEnd="16dp"
             android:background="@drawable/sonido"
             app:layout_constraintBottom_toBottomOf="@+id/edt_nombre_Sonido_ADMIN"
-            app:layout_constraintEnd_toEndOf="@+id/coord_latitud_REGISTRO_ADMIN"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/edt_nombre_Sonido_ADMIN"
-            app:layout_constraintTop_toTopOf="@+id/edt_nombre_Sonido_ADMIN"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toTopOf="@+id/edt_nombre_Sonido_ADMIN" />
 
         <ProgressBar
             android:id="@+id/progress"
