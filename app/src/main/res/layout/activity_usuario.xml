@@ -60,7 +60,7 @@
         android:layout_height="wrap_content"
         android:autofillHints=""
         android:ems="10"
-        android:hint="@string/confirma_contrasenia"
+        android:hint="@string/confirma_nueva_contrasenia"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="@+id/pass_edit_usuario"
