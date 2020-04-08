@@ -48,7 +48,7 @@ public class MuseosFragment extends Fragment {
         progressBar = view.findViewById(R.id.progress);
 
         titulo.setText(R.string.title_museos);
-        adaptador = new AdaptadorSitios(getActivity());
+        adaptador = new AdaptadorSitios(getActivity(), false);
 
         rvLista.setAdapter(adaptador);
         return view;

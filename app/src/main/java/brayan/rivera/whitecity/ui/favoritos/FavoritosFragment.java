@@ -48,7 +48,7 @@ public class FavoritosFragment extends Fragment {
         noHaySitios = view.findViewById(R.id.tv_no_hay_sitios);
 
         titulo.setText(R.string.title_favoitos);
-        adaptador = new AdaptadorSitios(getActivity());
+        adaptador = new AdaptadorSitios(getActivity(), false);
 
         rvLista.setAdapter(adaptador);
         return view;

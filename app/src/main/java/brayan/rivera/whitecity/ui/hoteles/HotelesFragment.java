@@ -48,7 +48,7 @@ public class HotelesFragment extends Fragment {
         progressBar = view.findViewById(R.id.progress);
 
         titulo.setText(R.string.title_hoteles);
-        adaptador = new AdaptadorSitios(getActivity());
+        adaptador = new AdaptadorSitios(getActivity(), false);
 
         rvLista.setAdapter(adaptador);
         return view;
