@@ -26,13 +26,14 @@ import brayan.rivera.whitecity.ui.home.MainActivity;
 public class UsuarioActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Usuario usuario;
-    
+
     private ProgressBar progressBar;
     private EditText editNombre;
     private EditText editEmail;
     private EditText editPass;
     private EditText editPass2;
     private Button btnActualizar;
+    private Button btnCerrarSesion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +59,7 @@ public class UsuarioActivity extends AppCompatActivity implements View.OnClickLi
         editNombre.setText(usuario.getNombre());
         editEmail.setText(usuario.getCorreo());
         btnActualizar.setOnClickListener(this);
+        btnCerrarSesion.setOnClickListener(this);
     }
 
     private void validarCampos() {
