@@ -1,16 +1,15 @@
 package brayan.rivera.whitecity.ui.usuario;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -19,10 +18,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import brayan.rivera.whitecity.R;
 import brayan.rivera.whitecity.controlador.SessionHelper;
-import brayan.rivera.whitecity.data.modelos.Sitio;
 import brayan.rivera.whitecity.data.modelos.Usuario;
 import brayan.rivera.whitecity.ui.SplashActivity;
-import brayan.rivera.whitecity.ui.home.MainActivity;
 
 public class UsuarioActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -56,6 +53,7 @@ public class UsuarioActivity extends AppCompatActivity implements View.OnClickLi
         editPass = findViewById(R.id.pass_edit_usuario);
         editPass2 = findViewById(R.id.pass_2_edit_usuario);
         btnActualizar = findViewById(R.id.btn_actualizar_datos_usuario);
+        btnCerrarSesion = findViewById(R.id.btn_cerrar_sesion_usuario);
 
         editNombre.setText(usuario.getNombre());
         editEmail.setText(usuario.getCorreo());
@@ -79,8 +77,8 @@ public class UsuarioActivity extends AppCompatActivity implements View.OnClickLi
             registrarNuevoUsuario(usuario);
         }
     }
-    
-    
+
+
     private void registrarNuevoUsuario(Usuario usuario) {
         progressBar.setVisibility(View.VISIBLE);
 
@@ -105,14 +103,12 @@ public class UsuarioActivity extends AppCompatActivity implements View.OnClickLi
     }
 
 
-
-
     @Override
     public void onClick(View v) {
-        if (R.id.btnActualizar) {
+        if (v.getId() == R.id.btn_actualizar_datos_usuario) {
             validarCampos();
         }
-        if (R.id.btnActualizar) {
+        if (v.getId() == R.id.btn_cerrar_sesion_usuario) {
             cerrarSession();
         }
     }
