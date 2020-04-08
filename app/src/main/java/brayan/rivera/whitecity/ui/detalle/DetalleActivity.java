@@ -106,7 +106,7 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
         }
 
         if (v.getId() == R.id.ubicion_detalle) {
-            String uri = "https://www.google.com/maps/search/?api=1&query=" + sitio.getLat() + "," + sitio.getLng();
+            String uri = "http://maps.google.com/maps?daddr=" + sitio.getLat() + "," + sitio.getLng();
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(uri)));
         }
 

@@ -22,6 +22,7 @@ import java.util.ArrayList;
 
 import brayan.rivera.whitecity.R;
 import brayan.rivera.whitecity.data.modelos.Sitio;
+import brayan.rivera.whitecity.ui.admin.RegistrarSitioActivity;
 import brayan.rivera.whitecity.ui.detalle.DetalleActivity;
 import brayan.rivera.whitecity.ui.login.LoginActivity;
 
@@ -31,10 +32,12 @@ public class AdaptadorSitios extends RecyclerView.Adapter<AdaptadorSitios.SitioV
     private ArrayList<Sitio> sitios;
     //escuchador onclicklistener
     private Context context;
+    private boolean editMode = false;
 
 
-    public AdaptadorSitios(Context context) {
+    public AdaptadorSitios(Context context, boolean editMode) {
         this.context = context;
+        this.editMode = editMode;
         sitios = new ArrayList<>();
     }
 
@@ -93,6 +96,11 @@ public class AdaptadorSitios extends RecyclerView.Adapter<AdaptadorSitios.SitioV
                             fireBaseHelper.agregarFavorito(sitio, key);
                             Toast.makeText(context, "Sitio agregado a favoritos", Toast.LENGTH_SHORT).show();
 
+                        } else if(editMode) {
+                            // navegar al registro
+                            Intent intent = new Intent(context, RegistrarSitioActivity.class);
+                            intent.putExtra("sitio", sitio);
+                            context.startActivity(intent);
                         } else {
                             // navegar al registro
                             Intent intent = new Intent(context, LoginActivity.class);
