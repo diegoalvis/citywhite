@@ -112,8 +112,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:hint="Latitud"
+            android:inputType="numberDecimal|numberSigned"
             android:text="0"
-            android:inputType="numberDecimal|numberSigned"            android:textAlignment="center"
+            android:textAlignment="center"
             app:layout_constraintBaseline_toBaselineOf="@+id/coord_longitud_REGISTRO_ADMIN"
             app:layout_constraintEnd_toEndOf="@+id/txt_facebook_Sitio_REGISTRO_ADMIN"
             app:layout_constraintHorizontal_bias="0.5"
@@ -125,8 +126,8 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:hint="Longitud"
-            android:text="0"
             android:inputType="numberDecimal|numberSigned"
+            android:text="0"
             android:textAlignment="center"
             app:layout_constraintEnd_toStartOf="@+id/coord_latitud_REGISTRO_ADMIN"
             app:layout_constraintHorizontal_bias="0.5"
@@ -165,6 +166,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sp_categorias_Sitio_REGISTRO_ADMIN" />
 
+
+        <Button
+            android:id="@+id/btn_eliminar_sitio_REGISTRO_ADMIN"
+            style="@style/boton_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Eliminar sitio"
+            app:layout_constraintEnd_toEndOf="@+id/btn_subir_Sitio_REGISTRO_ADMIN"
+            app:layout_constraintStart_toStartOf="@+id/btn_subir_Sitio_REGISTRO_ADMIN"
+            app:layout_constraintTop_toBottomOf="@+id/btn_subir_Sitio_REGISTRO_ADMIN" />
 
         <TextView
             android:id="@+id/edt_nombre_Sonido_ADMIN"
