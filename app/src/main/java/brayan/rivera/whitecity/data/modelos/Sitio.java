@@ -13,6 +13,7 @@ public class Sitio implements Serializable {
     private String facebook;
     private String imagenPath;
     private String nombreSonido;
+    private String categoria;
     private Double lat;
     private Double lng;
 
@@ -102,5 +103,13 @@ public class Sitio implements Serializable {
 
     public void setLng(Double lng) {
         this.lng = lng;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 }

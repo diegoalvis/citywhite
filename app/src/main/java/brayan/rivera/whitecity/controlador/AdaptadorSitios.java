@@ -32,7 +32,7 @@ public class AdaptadorSitios extends RecyclerView.Adapter<AdaptadorSitios.SitioV
     private ArrayList<Sitio> sitios;
     //escuchador onclicklistener
     private Context context;
-    private boolean editMode = false;
+    private boolean editMode;
 
 
     public AdaptadorSitios(Context context, boolean editMode) {
@@ -72,14 +72,14 @@ public class AdaptadorSitios extends RecyclerView.Adapter<AdaptadorSitios.SitioV
         holder.imagen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navegarAlDetalle(sitio);
+                navegar(sitio);
             }
         });
 
         holder.verMas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navegarAlDetalle(sitio);
+                navegar(sitio);
             }
         });
 
@@ -95,12 +95,6 @@ public class AdaptadorSitios extends RecyclerView.Adapter<AdaptadorSitios.SitioV
                             FireBaseHelper fireBaseHelper = new FireBaseHelper();
                             fireBaseHelper.agregarFavorito(sitio, key);
                             Toast.makeText(context, "Sitio agregado a favoritos", Toast.LENGTH_SHORT).show();
-
-                        } else if(editMode) {
-                            // navegar al registro
-                            Intent intent = new Intent(context, RegistrarSitioActivity.class);
-                            intent.putExtra("sitio", sitio);
-                            context.startActivity(intent);
                         } else {
                             // navegar al registro
                             Intent intent = new Intent(context, LoginActivity.class);
@@ -110,10 +104,18 @@ public class AdaptadorSitios extends RecyclerView.Adapter<AdaptadorSitios.SitioV
                 });
     }
 
-    private void navegarAlDetalle(Sitio sitio) {
-        Intent intent = new Intent(context, DetalleActivity.class);
-        intent.putExtra("sitio", sitio);
-        context.startActivity(intent);
+    private void navegar(Sitio sitio) {
+        if (editMode) {
+            // navegar al registro
+            Intent intent = new Intent(context, RegistrarSitioActivity.class);
+            intent.putExtra("sitio", sitio);
+            context.startActivity(intent);
+        } else {
+            //navegar al detalle
+            Intent intent = new Intent(context, DetalleActivity.class);
+            intent.putExtra("sitio", sitio);
+            context.startActivity(intent);
+        }
     }
 
     @Override

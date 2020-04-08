@@ -51,7 +51,9 @@ public class ListarSitiosActivity extends AppCompatActivity {
                 ArrayList<Sitio> sitios = new ArrayList<>();
                 for (DataSnapshot sitioSnapshot : dataSnapshot.getChildren()) {
                     for (DataSnapshot snapshot : sitioSnapshot.getChildren()) {
-                        sitios.add(snapshot.getValue(Sitio.class));
+                        Sitio sitio = snapshot.getValue(Sitio.class);
+                        sitio.setCategoria(sitioSnapshot.getKey());
+                        sitios.add(sitio);
                     }
                 }
                 progressBar.setVisibility(View.GONE);

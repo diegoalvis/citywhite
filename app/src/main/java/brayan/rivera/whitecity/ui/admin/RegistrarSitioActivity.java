@@ -24,10 +24,14 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.File;
 import java.io.IOException;
 
 import brayan.rivera.whitecity.R;
@@ -47,6 +51,7 @@ public class RegistrarSitioActivity extends AppCompatActivity implements View.On
     EditText txt_latitud_ADMIN;
     EditText txt_longitud_ADMIN;
     Button btn_subir_Sitios_REGISTRO_ADMIN;
+    Button btn_eliminar_Sitios_REGISTRO_ADMIN;
     ImageView ibtn_escoger_Sonido_ADMIN;
     ImageView img_imagen_Sitio_ADMIN;
 
@@ -66,6 +71,7 @@ public class RegistrarSitioActivity extends AppCompatActivity implements View.On
     Uri uriImage;
     Uri uriAudio;
 
+    Sitio sitio;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -82,14 +88,64 @@ public class RegistrarSitioActivity extends AppCompatActivity implements View.On
         ibtn_escoger_Sonido_ADMIN = findViewById(R.id.ibtn_escoger_Sonido_ADMIN);
         img_imagen_Sitio_ADMIN = findViewById(R.id.img_imagen_Sitio_ADMIN);
         btn_subir_Sitios_REGISTRO_ADMIN = findViewById(R.id.btn_subir_Sitio_REGISTRO_ADMIN);
+        btn_eliminar_Sitios_REGISTRO_ADMIN = findViewById(R.id.btn_eliminar_sitio_REGISTRO_ADMIN);
         txt_latitud_ADMIN = findViewById(R.id.coord_latitud_REGISTRO_ADMIN);
         txt_longitud_ADMIN = findViewById(R.id.coord_longitud_REGISTRO_ADMIN);
 
         img_imagen_Sitio_ADMIN.setOnClickListener(this);
         ibtn_escoger_Sonido_ADMIN.setOnClickListener(this);
         btn_subir_Sitios_REGISTRO_ADMIN.setOnClickListener(this);
+        btn_eliminar_Sitios_REGISTRO_ADMIN.setOnClickListener(this);
 
         cargarCategorias();
+
+        // Obtener sitio. Si ha sido enviado por extras significa que esta en modo de edicion
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            sitio = (Sitio) extras.getSerializable("sitio");
+        }
+
+        if (sitio != null) {
+            btn_subir_Sitios_REGISTRO_ADMIN.setText("Actualizar sitio");
+            btn_eliminar_Sitios_REGISTRO_ADMIN.setVisibility(View.VISIBLE);
+            sp_categorias_REGISTRO_ADMIN.setVisibility(View.GONE);
+            cargarDatosSitio(sitio);
+        }
+    }
+
+    private void cargarDatosSitio(Sitio sitio) {
+        txt_nombre_Sitio_REGISTRO_ADMIN.setText(sitio.getNombre());
+        txt_descripcion_REGISTRO_ADMIN.setText(sitio.getDescripcion());
+        txt_direccion_REGISTRO_ADMIN.setText(sitio.getDireccion());
+        txt_telefono_REGISTRO_ADMIN.setText(sitio.getTelefono());
+        txt_facebook_REGISTRO_ADMIN.setText(sitio.getFacebook());
+        txt_latitud_ADMIN.setText(String.valueOf(sitio.getLat()));
+        txt_longitud_ADMIN.setText(String.valueOf(sitio.getLng()));
+
+        nombreImagen = sitio.getImagenPath();
+        nombreAudio = sitio.getNombreSonido();
+
+        categoria = sitio.getCategoria();
+
+        // cargar imagen guardada en firebase
+        try {
+            final File localFile = File.createTempFile("images", "jpg");
+            StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+            storageRef.child("fotos/" + sitio.getImagenPath()).getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                    try {
+                        uriImage = Uri.fromFile(localFile);
+                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uriImage);
+                        img_imagen_Sitio_ADMIN.setImageBitmap(bitmap);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -99,9 +155,6 @@ public class RegistrarSitioActivity extends AppCompatActivity implements View.On
         sp_categorias_REGISTRO_ADMIN.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> spn, android.view.View v, int posicion, long id) {
                 switch (posicion) {
-                    case 0:
-                        categoria = null;
-                        break;
                     case 1:
                         categoria = "iglesias";
                         break;
@@ -135,8 +188,6 @@ public class RegistrarSitioActivity extends AppCompatActivity implements View.On
         latitud = Double.parseDouble(txt_latitud_ADMIN.getText().toString());
         longitud = Double.parseDouble(txt_latitud_ADMIN.getText().toString());
 
-        nombreImagen = nombre + "_imagen";
-        nombreAudio = nombre + "_audio";
 
         if (uriImage != null && categoria != null && !nombre.isEmpty() && !descripcion.isEmpty()) {
             progressBar.setVisibility(View.VISIBLE);
@@ -147,16 +198,21 @@ public class RegistrarSitioActivity extends AppCompatActivity implements View.On
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            // subir audio
-                            StorageReference storagereference = storage.getReference("sonidos/" + nombreAudio);
-                            storagereference.putFile(uriAudio).addOnCompleteListener(
-                                    new OnCompleteListener<UploadTask.TaskSnapshot>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                                            progressBar.setVisibility(View.GONE);
-                                            registrarSitio();
-                                        }
-                                    });
+                            if (uriAudio != null) {
+                                // subir audio
+                                StorageReference storagereference = storage.getReference("sonidos/" + nombreAudio);
+                                storagereference.putFile(uriAudio).addOnCompleteListener(
+                                        new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                                                progressBar.setVisibility(View.GONE);
+                                                registrarSitio();
+                                            }
+                                        });
+                            } else {
+                                progressBar.setVisibility(View.GONE);
+                                registrarSitio();
+                            }
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
@@ -171,6 +227,9 @@ public class RegistrarSitioActivity extends AppCompatActivity implements View.On
     }
 
     private void registrarSitio() {
+        // en caso de que se este editando se borra el registro anterior
+        eliminarRegistro();
+
         Sitio sitio = new Sitio(nombre, descripcion, direccion, telefono, facebook, nombreImagen, nombreAudio, latitud, longitud);
         FireBaseHelper helper = new FireBaseHelper();
         helper.registrarSitio(sitio, categoria);
@@ -190,6 +249,17 @@ public class RegistrarSitioActivity extends AppCompatActivity implements View.On
             case R.id.ibtn_escoger_Sonido_ADMIN:
                 escogerAudio();
                 break;
+            case R.id.btn_eliminar_sitio_REGISTRO_ADMIN:
+                eliminarRegistro();
+                finish();
+                break;
+        }
+    }
+
+    private void eliminarRegistro() {
+        if(categoria != null && sitio != null) {
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            database.getReference("sitios/" + categoria + "/" + sitio.getNombre()).getRef().removeValue();
         }
     }
 
@@ -216,6 +286,7 @@ public class RegistrarSitioActivity extends AppCompatActivity implements View.On
         if (resultCode == Activity.RESULT_OK && data != null) {
             if (requestCode == PICK_IMAGE_REQUEST) {
                 uriImage = data.getData();
+                nombreImagen = nombre + "_imagen";
                 try {
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uriImage);
                     img_imagen_Sitio_ADMIN.setImageBitmap(bitmap);
@@ -226,6 +297,7 @@ public class RegistrarSitioActivity extends AppCompatActivity implements View.On
 
             if (requestCode == PICK_AUDIO_REQUEST) {
                 uriAudio = data.getData();
+                nombreAudio = nombre + "_audio";
             }
         }
     }
