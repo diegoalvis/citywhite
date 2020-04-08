@@ -74,16 +74,19 @@ public class UsuarioActivity extends AppCompatActivity implements View.OnClickLi
             Toast.makeText(this, "Las Contraseñas No coinciden", Toast.LENGTH_SHORT).show();
         } else {
             Usuario usuario = new Usuario(editNombre.getText().toString(), editEmail.getText().toString(), editPass.getText().toString(), false);
-            registrarNuevoUsuario(usuario);
+            actualizarUsuario(usuario);
         }
     }
 
 
-    private void registrarNuevoUsuario(Usuario usuario) {
+    private void actualizarUsuario(Usuario usuario) {
         progressBar.setVisibility(View.VISIBLE);
 
         SessionHelper session = new SessionHelper(this);
         String key = session.getUserId();
+
+        boolean isAdmin = session.getIsAdmin();
+        usuario.setAdmin(isAdmin);
 
         DatabaseReference database = FirebaseDatabase.getInstance().getReference();
         database.child("usuarios/" + key + "/").setValue(usuario)
