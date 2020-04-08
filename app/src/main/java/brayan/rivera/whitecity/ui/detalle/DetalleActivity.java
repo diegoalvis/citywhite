@@ -116,6 +116,9 @@ public class DetalleActivity extends AppCompatActivity implements View.OnClickLi
         }
 
         if (v.getId() == R.id.btn_play_sonido) {
+            mediaPlayer.stop();
+            //se vuleve a instaciar para evitar que se rompa la applicacion por volver a dar PLAY
+            mediaPlayer = new MediaPlayer();
             final ProgressBar progressBar = findViewById(R.id.progress);
             progressBar.setVisibility(View.VISIBLE);
             // cargar sonido url desde firebase storage
