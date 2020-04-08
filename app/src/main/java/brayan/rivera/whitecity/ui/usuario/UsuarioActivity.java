@@ -21,6 +21,7 @@ import brayan.rivera.whitecity.R;
 import brayan.rivera.whitecity.controlador.SessionHelper;
 import brayan.rivera.whitecity.data.modelos.Sitio;
 import brayan.rivera.whitecity.data.modelos.Usuario;
+import brayan.rivera.whitecity.ui.SplashActivity;
 import brayan.rivera.whitecity.ui.home.MainActivity;
 
 public class UsuarioActivity extends AppCompatActivity implements View.OnClickListener {
@@ -101,8 +102,24 @@ public class UsuarioActivity extends AppCompatActivity implements View.OnClickLi
                 });
     }
 
+
+
+
     @Override
     public void onClick(View v) {
-        validarCampos();
+        if (R.id.btnActualizar) {
+            validarCampos();
+        }
+        if (R.id.btnActualizar) {
+            cerrarSession();
+        }
+    }
+
+    private void cerrarSession() {
+        SessionHelper sessionHelper = new SessionHelper(this);
+        sessionHelper.cerrarSession();
+        finishAffinity();
+        Intent intent = new Intent(this, SplashActivity.class);
+        startActivity(intent);
     }
 }

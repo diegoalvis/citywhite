@@ -37,4 +37,8 @@ public class SessionHelper {
         return preferences.getBoolean("admin", false);
     }
 
+    public void cerrarSession() {
+        SharedPreferences preferences = context.getSharedPreferences(preferencias, Context.MODE_PRIVATE);
+        preferences.edit().clear().apply();
+    }
 }
